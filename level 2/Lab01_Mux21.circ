@@ -70,36 +70,34 @@
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
     </comp>
-    <comp lib="1" loc="(140,170)" name="NOT Gate"/>
     <comp lib="1" loc="(190,170)" name="NOT Gate"/>
     <comp lib="1" loc="(270,190)" name="AND Gate"/>
     <comp lib="1" loc="(270,290)" name="AND Gate"/>
     <comp lib="1" loc="(390,230)" name="OR Gate"/>
-    <comp lib="8" loc="(153,110)" name="Text">
+    <comp lib="8" loc="(150,110)" name="Text">
       <a name="text" val="Lab 01: 2-Way, 1-Bit Multiplexer"/>
     </comp>
-    <comp lib="8" loc="(30,171)" name="Text">
+    <comp lib="8" loc="(30,170)" name="Text">
       <a name="text" val="Sel"/>
     </comp>
-    <comp lib="8" loc="(32,316)" name="Text">
+    <comp lib="8" loc="(30,315)" name="Text">
       <a name="text" val="In2"/>
     </comp>
-    <comp lib="8" loc="(37,214)" name="Text">
+    <comp lib="8" loc="(35,210)" name="Text">
       <a name="text" val="In1"/>
     </comp>
-    <comp lib="8" loc="(509,237)" name="Text">
+    <comp lib="8" loc="(505,235)" name="Text">
       <a name="text" val="Out1"/>
     </comp>
-    <comp lib="8" loc="(77,86)" name="Text">
-      <a name="text" val="Sayat Abdikul"/>
-    </comp>
-    <comp lib="8" loc="(79,135)" name="Text">
+    <comp lib="8" loc="(75,135)" name="Text">
       <a name="text" val="June 14, 2024"/>
     </comp>
-    <wire from="(100,170)" to="(110,170)"/>
+    <comp lib="8" loc="(75,85)" name="Text">
+      <a name="text" val="Sayat Abdikul"/>
+    </comp>
+    <wire from="(100,170)" to="(150,170)"/>
     <wire from="(100,210)" to="(220,210)"/>
     <wire from="(100,310)" to="(220,310)"/>
-    <wire from="(140,170)" to="(150,170)"/>
     <wire from="(150,170)" to="(150,270)"/>
     <wire from="(150,170)" to="(160,170)"/>
     <wire from="(150,270)" to="(220,270)"/>
