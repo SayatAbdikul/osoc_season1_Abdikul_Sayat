@@ -104,6 +104,15 @@
       <a name="width" val="4"/>
     </comp>
     <comp lib="5" loc="(610,180)" name="Hex Digit Display"/>
+    <comp lib="8" loc="(179,66)" name="Text">
+      <a name="text" val="Sayat Abdikul"/>
+    </comp>
+    <comp lib="8" loc="(182,118)" name="Text">
+      <a name="text" val="June 16, 2024"/>
+    </comp>
+    <comp lib="8" loc="(262,91)" name="Text">
+      <a name="text" val="Lab 03: Nine-line Priority Encoder"/>
+    </comp>
     <comp loc="(520,200)" name="Encoder"/>
     <wire from="(190,200)" to="(300,200)"/>
     <wire from="(190,220)" to="(300,220)"/>
