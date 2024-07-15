@@ -196,9 +196,8 @@ VL_INLINE_OPT void VALU___024root___ico_sequent__TOP__0(VALU___024root* vlSelf) 
                                                         & (~ (IData)(vlSelf->in_b))))
                                                        : 
                                                       ((IData)(vlSelf->in_a) 
-                                                       + 
-                                                       ((IData)(vlSelf->in_a) 
-                                                        & (~ (IData)(vlSelf->in_b))))))
+                                                       | ((IData)(vlSelf->in_a) 
+                                                          & (~ (IData)(vlSelf->in_b))))))
                                                      : 
                                                     ((2U 
                                                       & (IData)(vlSelf->select))
@@ -208,14 +207,13 @@ VL_INLINE_OPT void VALU___024root___ico_sequent__TOP__0(VALU___024root* vlSelf) 
                                                        ? 0xffffU
                                                        : 
                                                       ((IData)(vlSelf->in_a) 
-                                                       + 
-                                                       (~ (IData)(vlSelf->in_b))))
+                                                       | (~ (IData)(vlSelf->in_b))))
                                                       : 
                                                      ((1U 
                                                        & (IData)(vlSelf->select))
                                                        ? 
                                                       ((IData)(vlSelf->in_a) 
-                                                       + (IData)(vlSelf->in_b))
+                                                       | (IData)(vlSelf->in_b))
                                                        : (IData)(vlSelf->in_a)))))));
     vlSelf->alu_out = vlSelf->ALU__DOT__alu_result;
 }
