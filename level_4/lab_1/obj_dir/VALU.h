@@ -5,25 +5,26 @@
 // The class here is then constructed to instantiate the design.
 // See the Verilator manual for examples.
 
-#ifndef VERILATED_VALU_AI_H_
-#define VERILATED_VALU_AI_H_  // guard
+#ifndef VERILATED_VALU_H_
+#define VERILATED_VALU_H_  // guard
 
 #include "verilated.h"
 
-class Valu_ai__Syms;
-class Valu_ai___024root;
+class VALU__Syms;
+class VALU___024root;
+class VerilatedVcdC;
 
 // This class is the main interface to the Verilated model
-class alignas(VL_CACHE_LINE_BYTES) Valu_ai VL_NOT_FINAL : public VerilatedModel {
+class alignas(VL_CACHE_LINE_BYTES) VALU VL_NOT_FINAL : public VerilatedModel {
   private:
     // Symbol table holding complete model state (owned by this class)
-    Valu_ai__Syms* const vlSymsp;
+    VALU__Syms* const vlSymsp;
 
   public:
 
     // CONSTEXPR CAPABILITIES
     // Verilated with --trace?
-    static constexpr bool traceCapable = false;
+    static constexpr bool traceCapable = true;
 
     // PORTS
     // The application code writes and reads these signals to
@@ -43,19 +44,19 @@ class alignas(VL_CACHE_LINE_BYTES) Valu_ai VL_NOT_FINAL : public VerilatedModel 
 
     // Root instance pointer to allow access to model internals,
     // including inlined /* verilator public_flat_* */ items.
-    Valu_ai___024root* const rootp;
+    VALU___024root* const rootp;
 
     // CONSTRUCTORS
     /// Construct the model; called by application code
     /// If contextp is null, then the model will use the default global context
     /// If name is "", then makes a wrapper with a
     /// single model invisible with respect to DPI scope names.
-    explicit Valu_ai(VerilatedContext* contextp, const char* name = "TOP");
-    explicit Valu_ai(const char* name = "TOP");
+    explicit VALU(VerilatedContext* contextp, const char* name = "TOP");
+    explicit VALU(const char* name = "TOP");
     /// Destroy the model; called (often implicitly) by application code
-    virtual ~Valu_ai();
+    virtual ~VALU();
   private:
-    VL_UNCOPYABLE(Valu_ai);  ///< Copying not allowed
+    VL_UNCOPYABLE(VALU);  ///< Copying not allowed
 
   public:
     // API METHODS
@@ -87,6 +88,7 @@ class alignas(VL_CACHE_LINE_BYTES) Valu_ai VL_NOT_FINAL : public VerilatedModel 
     /// Re-init after cloning the model at the process level (e.g. fork in Linux)
     /// Re-allocate necessary resources. Called after cloning.
     void atClone() const;
+    std::unique_ptr<VerilatedTraceConfig> traceConfig() const override final;
   private:
     // Internal functions - trace registration
     void traceBaseModel(VerilatedTraceBaseC* tfp, int levels, int options);

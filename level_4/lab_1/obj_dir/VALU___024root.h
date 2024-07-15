@@ -1,16 +1,16 @@
 // Verilated -*- C++ -*-
 // DESCRIPTION: Verilator output: Design internal header
-// See Valu_ai.h for the primary calling header
+// See VALU.h for the primary calling header
 
-#ifndef VERILATED_VALU_AI___024ROOT_H_
-#define VERILATED_VALU_AI___024ROOT_H_  // guard
+#ifndef VERILATED_VALU___024ROOT_H_
+#define VERILATED_VALU___024ROOT_H_  // guard
 
 #include "verilated.h"
 
 
-class Valu_ai__Syms;
+class VALU__Syms;
 
-class alignas(VL_CACHE_LINE_BYTES) Valu_ai___024root final : public VerilatedModule {
+class alignas(VL_CACHE_LINE_BYTES) VALU___024root final : public VerilatedModule {
   public:
 
     // DESIGN SPECIFIC STATE
@@ -25,7 +25,7 @@ class alignas(VL_CACHE_LINE_BYTES) Valu_ai___024root final : public VerilatedMod
     VL_IN16(in_a,15,0);
     VL_IN16(in_b,15,0);
     VL_OUT16(alu_out,15,0);
-    IData/*16:0*/ ALU__DOT__temp;
+    SData/*15:0*/ ALU__DOT__alu_result;
     IData/*31:0*/ __VactIterCount;
     VlTriggerVec<1> __VstlTriggered;
     VlTriggerVec<1> __VicoTriggered;
@@ -33,12 +33,12 @@ class alignas(VL_CACHE_LINE_BYTES) Valu_ai___024root final : public VerilatedMod
     VlTriggerVec<0> __VnbaTriggered;
 
     // INTERNAL VARIABLES
-    Valu_ai__Syms* const vlSymsp;
+    VALU__Syms* const vlSymsp;
 
     // CONSTRUCTORS
-    Valu_ai___024root(Valu_ai__Syms* symsp, const char* v__name);
-    ~Valu_ai___024root();
-    VL_UNCOPYABLE(Valu_ai___024root);
+    VALU___024root(VALU__Syms* symsp, const char* v__name);
+    ~VALU___024root();
+    VL_UNCOPYABLE(VALU___024root);
 
     // INTERNAL METHODS
     void __Vconfigure(bool first);

@@ -3,11 +3,11 @@
 //
 // Internal details; most user sources do not need this header,
 // unless using verilator public meta comments.
-// Suggest use Valu_ai.h instead.
+// Suggest use VALU.h instead.
 
 
-#ifndef VERILATED_VALU_AI__PCH_H_
-#define VERILATED_VALU_AI__PCH_H_  // guard
+#ifndef VERILATED_VALU__PCH_H_
+#define VERILATED_VALU__PCH_H_  // guard
 
 // GCC and Clang only will precompile headers (PCH) for the first header.
 // So, make sure this is the one and only PCH.
@@ -20,7 +20,7 @@
 
 #include "verilated.h"
 
-#include "Valu_ai__Syms.h"
-#include "Valu_ai.h"
+#include "VALU__Syms.h"
+#include "VALU.h"
 
 #endif  // guard

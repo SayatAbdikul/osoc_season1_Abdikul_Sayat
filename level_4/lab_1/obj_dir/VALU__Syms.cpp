@@ -1,16 +1,16 @@
 // Verilated -*- C++ -*-
 // DESCRIPTION: Verilator output: Symbol table implementation internals
 
-#include "Valu_ai__pch.h"
-#include "Valu_ai.h"
-#include "Valu_ai___024root.h"
+#include "VALU__pch.h"
+#include "VALU.h"
+#include "VALU___024root.h"
 
 // FUNCTIONS
-Valu_ai__Syms::~Valu_ai__Syms()
+VALU__Syms::~VALU__Syms()
 {
 }
 
-Valu_ai__Syms::Valu_ai__Syms(VerilatedContext* contextp, const char* namep, Valu_ai* modelp)
+VALU__Syms::VALU__Syms(VerilatedContext* contextp, const char* namep, VALU* modelp)
     : VerilatedSyms{contextp}
     // Setup internal state of the Syms class
     , __Vm_modelp{modelp}
