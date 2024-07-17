@@ -35,16 +35,16 @@ int main(int argc, char **argv) {
                 success = (out == a);
                 break;
             case 1:
-                success = (out == a | b);
+                success = (out == (a | b));
                 break;
             case 2:
-                success = (out == a | ~b);
+                success = (out == a | (~b));
                 break;
             case 3:
                 success = (out == 65535);
                 break;
             case 4:
-                success = (out == a | (a & ~b));
+                success = (out == (a | (a & ~b)));
                 break;
             case 5:
                 success = (out == (a | b) + (a & ~b));
@@ -120,13 +120,13 @@ int main(int argc, char **argv) {
                 success = (out == p+~b);
                 break;
             case 6:
-                success = (out == a ^ b);
+                success = (out == (a ^ b));
                 break;
             case 7:
                 success = (out == (a & (~b)));
                 break;
             case 8:
-                success = (out == ~a | b);
+                success = out == (~a) | b;
                 break;
             case 9:
                 success = (out == p+~(a ^ b));

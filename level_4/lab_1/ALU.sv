@@ -21,7 +21,7 @@ module ALU (
                 4'd5: alu_result = ~in_b;
                 4'd6: alu_result = in_a ^ in_b;
                 4'd7: alu_result = in_a & (~in_b);
-                4'd8: alu_result = ~in_a | in_b;
+                4'd8: alu_result = (~in_a) | in_b;
                 4'd9: alu_result = ~(in_a ^ in_b);
                 4'd10: alu_result = in_b;
                 4'd11: alu_result = in_a & in_b;
@@ -34,7 +34,7 @@ module ALU (
             case (select)
                 4'd0: alu_result = in_a;
                 4'd1: alu_result = in_a | in_b;
-                4'd2: alu_result = in_a | ~in_b;
+                4'd2: alu_result = in_a | (~in_b);
                 4'd3: alu_result = -1;
                 4'd4: alu_result = in_a | (in_a & ~in_b);
                 4'd5: alu_result = (in_a | in_b) + (in_a & ~in_b);

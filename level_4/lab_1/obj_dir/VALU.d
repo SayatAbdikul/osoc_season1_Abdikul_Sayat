@@ -1,0 +1,11 @@
+VALU.o: \
+  /Users/sayat/Documents/GitHub/osoc_season1_Abdikul_Sayat/level_4/lab_1/obj_dir/VALU__pch.h \
+  /opt/homebrew/Cellar/verilator/5.026/share/verilator/include/verilated.h \
+  /opt/homebrew/Cellar/verilator/5.026/share/verilator/include/verilatedos.h \
+  /opt/homebrew/Cellar/verilator/5.026/share/verilator/include/verilated_config.h \
+  /opt/homebrew/Cellar/verilator/5.026/share/verilator/include/verilated_types.h \
+  /opt/homebrew/Cellar/verilator/5.026/share/verilator/include/verilated_funcs.h \
+  /Users/sayat/Documents/GitHub/osoc_season1_Abdikul_Sayat/level_4/lab_1/obj_dir/VALU__Syms.h \
+  /Users/sayat/Documents/GitHub/osoc_season1_Abdikul_Sayat/level_4/lab_1/obj_dir/VALU.h \
+  /Users/sayat/Documents/GitHub/osoc_season1_Abdikul_Sayat/level_4/lab_1/obj_dir/VALU___024root.h \
+  VALU.cpp VALU__pch.h
