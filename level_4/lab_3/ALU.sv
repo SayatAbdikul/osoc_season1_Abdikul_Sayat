@@ -27,6 +27,7 @@ module ALU (
                 4'd14: alu_result = in_a | in_b;
                 4'd15: alu_result = in_a;
             endcase
+            alu_out = alu_result;
         end else begin
             case (select)
                 4'd0: alu_result = in_a;
@@ -46,6 +47,7 @@ module ALU (
                 4'd14: alu_result = (in_a | (~in_b)) + in_a;
                 4'd15: alu_result = in_a - 1;
             endcase
+            alu_out = alu_result;
         end
     end
 endmodule
