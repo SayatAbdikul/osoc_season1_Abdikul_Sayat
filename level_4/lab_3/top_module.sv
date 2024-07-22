@@ -6,7 +6,6 @@ module top_module (
     output [15:0] result
 );
     reg en_i, en_s, en_c;
-    reg [15:0] reg_s, reg_c;
 
     always @(posedge clk or posedge reset) begin
         if (reset) begin
