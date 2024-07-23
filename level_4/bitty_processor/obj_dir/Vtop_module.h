@@ -32,6 +32,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop_module VL_NOT_FINAL : public VerilatedMo
     VL_IN8(&clk,0,0);
     VL_IN8(&reset,0,0);
     VL_OUT8(&done,0,0);
+    VL_OUT8(&select,2,0);
     VL_IN16(&instruction,15,0);
     VL_OUT16(&result,15,0);
 

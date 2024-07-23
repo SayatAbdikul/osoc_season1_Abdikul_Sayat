@@ -6,7 +6,8 @@ module ControlUnit (
     input en_c, 
     input en_i, 
     output done,
-    output [15:0] d_out
+    output [15:0] d_out,
+    output [2:0] select
 );
     parameter IDLE = 0, LOAD = 1, CALC = 2, STORE = 3, DONE = 4;
     /* verilator lint_off UNUSEDSIGNAL */
@@ -15,8 +16,7 @@ module ControlUnit (
     reg [2:0] state, next_state;
     reg [15:0] registers [7:0];
     wire [2:0] Rx = reg_i[15:13], Ry = reg_i[12:10];
-    wire [3:0] sel = reg_i[6:3];
-    wire mode = reg_i[2];
+    wire [2:0] sel = instruction[4:2];
     wire [15:0] y = registers[Ry];
     wire [15:0] result;
     integer i;
@@ -54,10 +54,10 @@ module ControlUnit (
         .in_a(reg_s),
         .in_b(y),
         .select(sel),
-        .mode(mode),
         .alu_out(result)
     );
 
     assign d_out = reg_c;
+    assign select = sel;
     assign done = (state == DONE);
 endmodule

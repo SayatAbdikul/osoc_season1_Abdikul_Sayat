@@ -13,6 +13,7 @@ Vtop_module::Vtop_module(VerilatedContext* _vcontextp__, const char* _vcname__)
     , clk{vlSymsp->TOP.clk}
     , reset{vlSymsp->TOP.reset}
     , done{vlSymsp->TOP.done}
+    , select{vlSymsp->TOP.select}
     , instruction{vlSymsp->TOP.instruction}
     , result{vlSymsp->TOP.result}
     , rootp{&(vlSymsp->TOP)}

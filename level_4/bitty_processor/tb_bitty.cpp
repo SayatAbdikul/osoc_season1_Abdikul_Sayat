@@ -2,7 +2,7 @@
 #include "Vtop_module.h"          
 #include "verilated_vcd_c.h"
 #include <iostream>
-#define MAX_SIM_TIME 400
+#define MAX_SIM_TIME 10
 
 
 int main(int argc, char **argv) {
@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
     Verilated::traceEverOn(true);
     dut->trace(trace, 99);
     trace->open("trace.vcd");
-    int instruction = 48140, sim_time = 0;
+    int instruction = 0b1011110000010000, sim_time = 0;
     dut->clk = 0;
     while(sim_time < MAX_SIM_TIME){
         dut->clk = sim_time;
@@ -26,6 +26,8 @@ int main(int argc, char **argv) {
             dut->clk=sim_time;
             dut->eval();
         }
-        std::cout<<dut->result<<"\n";
+        std::cout<<"result is "<<std::bitset<16>(dut->result)<<"\n";
+        std::cout<<"done is "<<std::bitset<1>(dut->done)<<"\n";
+        //std::cout<<"select is "<<std::bitset<3>(dut->select)<<"\n";
     }
 }

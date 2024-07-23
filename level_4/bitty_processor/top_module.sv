@@ -3,7 +3,8 @@ module top_module (
     input reset,
     input [15:0] instruction,
     output done,
-    output [15:0] result
+    output [15:0] result,
+    output [2:0] select
 );
     reg en_i, en_s, en_c;
 
@@ -27,7 +28,8 @@ module top_module (
         .en_c(en_c),
         .en_i(en_i),
         .done(done),
-        .d_out(result)
+        .d_out(result),
+        .select(select)
     );
 
 endmodule
