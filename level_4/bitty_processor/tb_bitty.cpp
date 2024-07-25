@@ -28,6 +28,6 @@ int main(int argc, char **argv) {
         }
         std::cout<<"result is "<<std::bitset<16>(dut->result)<<"\n";
         std::cout<<"done is "<<std::bitset<1>(dut->done)<<"\n";
-        //std::cout<<"select is "<<std::bitset<3>(dut->select)<<"\n";
+        std::cout<<"select is "<<std::bitset<3>(dut->select)<<"\n";
     }
 }
