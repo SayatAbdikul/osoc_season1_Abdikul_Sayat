@@ -48,14 +48,19 @@ module ControlUnit (
         cpp_result = ALU({16'b0, reg_s}, {16'b0, y}, {29'b0, sel}); // Call the DPI-C function with proper bit-width
         result = cpp_result[15:0]; // Use the lower 16 bits of the result
     end
-
+    reg [5:0] tests;
     always @(posedge clk) begin
         if (state == DONE && reg_c != 0) begin
             $display("Error!\n The cpp result is %d\n", result);
             $display("The verilog result is %d\n", reg_c);
-        end else if (state == DONE) begin
-            $display("The operation is successful\n");
-        end
+            tests = tests + 1;
+        end 
+        // else if (state == DONE) begin
+        //     $display("The operation is successful\n");
+        //     $display("The test number: %d\n", tests);
+        //     $display("The instruction is: %d\n", instruction);
+        //     tests = tests + 1;
+        // end
     end
 
     always @(*) begin

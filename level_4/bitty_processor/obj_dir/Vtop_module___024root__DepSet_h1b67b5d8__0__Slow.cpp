@@ -82,6 +82,7 @@ VL_ATTR_COLD void Vtop_module___024root___eval_stl(Vtop_module___024root* vlSelf
     // Body
     if ((1ULL & vlSelf->__VstlTriggered.word(0U))) {
         Vtop_module___024root___stl_sequent__TOP__0(vlSelf);
+        vlSelf->__Vm_traceActivity[2U] = 1U;
         vlSelf->__Vm_traceActivity[1U] = 1U;
         vlSelf->__Vm_traceActivity[0U] = 1U;
     }
@@ -181,11 +182,13 @@ VL_ATTR_COLD void Vtop_module___024root___ctor_var_reset(Vtop_module___024root* 
     vlSelf->top_module__DOT__u_ControlUnit__DOT__result = VL_RAND_RESET_I(16);
     vlSelf->top_module__DOT__u_ControlUnit__DOT__i = VL_RAND_RESET_I(32);
     vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result = 0;
+    vlSelf->top_module__DOT__u_ControlUnit__DOT__tests = VL_RAND_RESET_I(6);
     vlSelf->__Vfunc_ALU__0__Vfuncout = 0;
     vlSelf->__Vtableidx1 = 0;
+    vlSelf->__Vdly__top_module__DOT__u_ControlUnit__DOT__reg_c = VL_RAND_RESET_I(16);
     vlSelf->__Vtrigprevexpr___TOP__clk__0 = VL_RAND_RESET_I(1);
     vlSelf->__Vtrigprevexpr___TOP__reset__0 = VL_RAND_RESET_I(1);
-    for (int __Vi0 = 0; __Vi0 < 2; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 3; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = 0;
     }
 }

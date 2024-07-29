@@ -42,18 +42,23 @@ void Vtop_module___024root___eval_act(Vtop_module___024root* vlSelf) {
 
 void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024root* vlSelf);
 void Vtop_module___024root___nba_sequent__TOP__1(Vtop_module___024root* vlSelf);
+void Vtop_module___024root___nba_sequent__TOP__2(Vtop_module___024root* vlSelf);
 
 void Vtop_module___024root___eval_nba(Vtop_module___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___eval_nba\n"); );
     // Body
-    if ((2ULL & vlSelf->__VnbaTriggered.word(0U))) {
+    if ((1ULL & vlSelf->__VnbaTriggered.word(0U))) {
         Vtop_module___024root___nba_sequent__TOP__0(vlSelf);
+        vlSelf->__Vm_traceActivity[1U] = 1U;
+    }
+    if ((2ULL & vlSelf->__VnbaTriggered.word(0U))) {
+        Vtop_module___024root___nba_sequent__TOP__1(vlSelf);
     }
     if ((1ULL & vlSelf->__VnbaTriggered.word(0U))) {
-        Vtop_module___024root___nba_sequent__TOP__1(vlSelf);
-        vlSelf->__Vm_traceActivity[1U] = 1U;
+        Vtop_module___024root___nba_sequent__TOP__2(vlSelf);
+        vlSelf->__Vm_traceActivity[2U] = 1U;
     }
 }
 
@@ -61,14 +66,86 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024
     (void)vlSelf;  // Prevent unused variable warning
     Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___nba_sequent__TOP__0\n"); );
+    // Init
+    SData/*15:0*/ __VdlyVal__top_module__DOT__u_ControlUnit__DOT__registers__v8;
+    __VdlyVal__top_module__DOT__u_ControlUnit__DOT__registers__v8 = 0;
+    CData/*2:0*/ __VdlyDim0__top_module__DOT__u_ControlUnit__DOT__registers__v8;
+    __VdlyDim0__top_module__DOT__u_ControlUnit__DOT__registers__v8 = 0;
+    CData/*0:0*/ __VdlySet__top_module__DOT__u_ControlUnit__DOT__registers__v0;
+    __VdlySet__top_module__DOT__u_ControlUnit__DOT__registers__v0 = 0;
+    CData/*0:0*/ __VdlySet__top_module__DOT__u_ControlUnit__DOT__registers__v8;
+    __VdlySet__top_module__DOT__u_ControlUnit__DOT__registers__v8 = 0;
+    // Body
+    vlSelf->__Vdly__top_module__DOT__u_ControlUnit__DOT__reg_c 
+        = vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c;
+    __VdlySet__top_module__DOT__u_ControlUnit__DOT__registers__v0 = 0U;
+    __VdlySet__top_module__DOT__u_ControlUnit__DOT__registers__v8 = 0U;
+    if (vlSelf->reset) {
+        vlSelf->top_module__DOT__u_ControlUnit__DOT__i = 8U;
+        vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i = 0U;
+        vlSelf->__Vdly__top_module__DOT__u_ControlUnit__DOT__reg_c = 0U;
+        vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s = 0U;
+        __VdlySet__top_module__DOT__u_ControlUnit__DOT__registers__v0 = 1U;
+    } else {
+        if (((0U == (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__state)) 
+             & (IData)(vlSelf->top_module__DOT__en_i))) {
+            vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i 
+                = vlSelf->instruction;
+        }
+        if (((1U == (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__state)) 
+             & (IData)(vlSelf->top_module__DOT__en_s))) {
+            vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s 
+                = vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
+                [vlSelf->top_module__DOT__u_ControlUnit__DOT__Rx];
+        }
+        if ((3U == (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__state))) {
+            __VdlyVal__top_module__DOT__u_ControlUnit__DOT__registers__v8 
+                = vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c;
+            __VdlyDim0__top_module__DOT__u_ControlUnit__DOT__registers__v8 
+                = vlSelf->top_module__DOT__u_ControlUnit__DOT__Rx;
+            __VdlySet__top_module__DOT__u_ControlUnit__DOT__registers__v8 = 1U;
+        }
+        if (((2U == (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__state)) 
+             & (IData)(vlSelf->top_module__DOT__en_c))) {
+            vlSelf->__Vdly__top_module__DOT__u_ControlUnit__DOT__reg_c 
+                = vlSelf->top_module__DOT__u_ControlUnit__DOT__result;
+        }
+    }
+    if (__VdlySet__top_module__DOT__u_ControlUnit__DOT__registers__v0) {
+        vlSelf->top_module__DOT__u_ControlUnit__DOT__registers[0U] = 0U;
+        vlSelf->top_module__DOT__u_ControlUnit__DOT__registers[1U] = 0U;
+        vlSelf->top_module__DOT__u_ControlUnit__DOT__registers[2U] = 0U;
+        vlSelf->top_module__DOT__u_ControlUnit__DOT__registers[3U] = 0U;
+        vlSelf->top_module__DOT__u_ControlUnit__DOT__registers[4U] = 0U;
+        vlSelf->top_module__DOT__u_ControlUnit__DOT__registers[5U] = 0U;
+        vlSelf->top_module__DOT__u_ControlUnit__DOT__registers[6U] = 0U;
+        vlSelf->top_module__DOT__u_ControlUnit__DOT__registers[7U] = 0U;
+    }
+    if (__VdlySet__top_module__DOT__u_ControlUnit__DOT__registers__v8) {
+        vlSelf->top_module__DOT__u_ControlUnit__DOT__registers[__VdlyDim0__top_module__DOT__u_ControlUnit__DOT__registers__v8] 
+            = __VdlyVal__top_module__DOT__u_ControlUnit__DOT__registers__v8;
+    }
+    vlSelf->top_module__DOT__u_ControlUnit__DOT__Rx 
+        = (7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
+                 >> 0xdU));
+    vlSelf->top_module__DOT__en_i = (1U & (~ (IData)(vlSelf->reset)));
+    vlSelf->top_module__DOT__en_s = (1U & (~ (IData)(vlSelf->reset)));
+    vlSelf->top_module__DOT__en_c = (1U & (~ (IData)(vlSelf->reset)));
+}
+
+VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__1(Vtop_module___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___nba_sequent__TOP__1\n"); );
     // Body
     if (VL_UNLIKELY(((4U == (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__state)) 
                      & (0U != (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c))))) {
-        VL_WRITEF_NX("Error!\n The cpp result is %5#\n\nThe verilog result is %5#\n\n",0,
-                     16,vlSelf->top_module__DOT__u_ControlUnit__DOT__result,
-                     16,(IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c));
-    } else if (VL_UNLIKELY((4U == (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__state)))) {
-        VL_WRITEF_NX("The operation is successful\n\n",0);
+        VL_WRITEF_NX("Error!\n The cpp result is %5#\n\n",0,
+                     16,vlSelf->top_module__DOT__u_ControlUnit__DOT__result);
+        vlSelf->top_module__DOT__u_ControlUnit__DOT__tests 
+            = (0x3fU & ((IData)(1U) + (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__tests)));
+        VL_WRITEF_NX("The verilog result is %5#\n\n",0,
+                     16,vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c);
     }
 }
 
