@@ -16,6 +16,7 @@ Vtop_module::Vtop_module(VerilatedContext* _vcontextp__, const char* _vcname__)
     , select{vlSymsp->TOP.select}
     , instruction{vlSymsp->TOP.instruction}
     , result{vlSymsp->TOP.result}
+    , __PVT____024unit{vlSymsp->TOP.__PVT____024unit}
     , rootp{&(vlSymsp->TOP)}
 {
     // Register model with the context

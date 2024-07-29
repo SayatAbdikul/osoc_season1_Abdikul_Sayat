@@ -87,76 +87,6 @@ VL_ATTR_COLD void Vtop_module___024root___eval_stl(Vtop_module___024root* vlSelf
     }
 }
 
-extern const VlUnpacked<CData/*2:0*/, 64> Vtop_module__ConstPool__TABLE_h576d4726_0;
-
-VL_ATTR_COLD void Vtop_module___024root___stl_sequent__TOP__0(Vtop_module___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
-    Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___stl_sequent__TOP__0\n"); );
-    // Init
-    CData/*5:0*/ __Vtableidx1;
-    __Vtableidx1 = 0;
-    // Body
-    vlSelf->done = (4U == (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__state));
-    vlSelf->result = vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c;
-    vlSelf->top_module__DOT__u_ControlUnit__DOT__Rx 
-        = (7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
-                 >> 0xdU));
-    vlSelf->select = (7U & ((IData)(vlSelf->instruction) 
-                            >> 2U));
-    __Vtableidx1 = (((IData)(vlSelf->top_module__DOT__en_c) 
-                     << 5U) | (((IData)(vlSelf->top_module__DOT__en_s) 
-                                << 4U) | (((IData)(vlSelf->top_module__DOT__en_i) 
-                                           << 3U) | (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__state))));
-    vlSelf->top_module__DOT__u_ControlUnit__DOT__next_state 
-        = Vtop_module__ConstPool__TABLE_h576d4726_0
-        [__Vtableidx1];
-    vlSelf->top_module__DOT__u_ControlUnit__DOT__y 
-        = vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
-        [(7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
-                >> 0xaU))];
-    if (((((((((0U == (IData)(vlSelf->select)) | (1U 
-                                                  == (IData)(vlSelf->select))) 
-              | (2U == (IData)(vlSelf->select))) | 
-             (3U == (IData)(vlSelf->select))) | (4U 
-                                                 == (IData)(vlSelf->select))) 
-           | (5U == (IData)(vlSelf->select))) | (6U 
-                                                 == (IData)(vlSelf->select))) 
-         | (7U == (IData)(vlSelf->select)))) {
-        vlSelf->top_module__DOT__u_ControlUnit__DOT__result 
-            = (0xffffU & ((0U == (IData)(vlSelf->select))
-                           ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s) 
-                              + (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__y))
-                           : ((1U == (IData)(vlSelf->select))
-                               ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s) 
-                                  - (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__y))
-                               : ((2U == (IData)(vlSelf->select))
-                                   ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s) 
-                                      & (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__y))
-                                   : ((3U == (IData)(vlSelf->select))
-                                       ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s) 
-                                          | (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__y))
-                                       : ((4U == (IData)(vlSelf->select))
-                                           ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s) 
-                                              ^ (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__y))
-                                           : ((5U == (IData)(vlSelf->select))
-                                               ? VL_SHIFTL_III(16,16,16, (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s), (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__y))
-                                               : ((6U 
-                                                   == (IData)(vlSelf->select))
-                                                   ? 
-                                                  VL_SHIFTR_III(16,16,16, (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s), (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__y))
-                                                   : 
-                                                  (((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s) 
-                                                    > (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__y))
-                                                    ? 1U
-                                                    : 
-                                                   (((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s) 
-                                                     < (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__y))
-                                                     ? 2U
-                                                     : 0U))))))))));
-    }
-}
-
 VL_ATTR_COLD void Vtop_module___024root___eval_triggers__stl(Vtop_module___024root* vlSelf);
 
 VL_ATTR_COLD bool Vtop_module___024root___eval_phase__stl(Vtop_module___024root* vlSelf) {
@@ -201,6 +131,9 @@ VL_ATTR_COLD void Vtop_module___024root___dump_triggers__act(Vtop_module___024ro
     if ((1ULL & vlSelf->__VactTriggered.word(0U))) {
         VL_DBG_MSGF("         'act' region trigger index 0 is active: @(posedge clk or posedge reset)\n");
     }
+    if ((2ULL & vlSelf->__VactTriggered.word(0U))) {
+        VL_DBG_MSGF("         'act' region trigger index 1 is active: @(posedge clk)\n");
+    }
 }
 #endif  // VL_DEBUG
 
@@ -215,6 +148,9 @@ VL_ATTR_COLD void Vtop_module___024root___dump_triggers__nba(Vtop_module___024ro
     }
     if ((1ULL & vlSelf->__VnbaTriggered.word(0U))) {
         VL_DBG_MSGF("         'nba' region trigger index 0 is active: @(posedge clk or posedge reset)\n");
+    }
+    if ((2ULL & vlSelf->__VnbaTriggered.word(0U))) {
+        VL_DBG_MSGF("         'nba' region trigger index 1 is active: @(posedge clk)\n");
     }
 }
 #endif  // VL_DEBUG
@@ -242,9 +178,11 @@ VL_ATTR_COLD void Vtop_module___024root___ctor_var_reset(Vtop_module___024root* 
         vlSelf->top_module__DOT__u_ControlUnit__DOT__registers[__Vi0] = VL_RAND_RESET_I(16);
     }
     vlSelf->top_module__DOT__u_ControlUnit__DOT__Rx = VL_RAND_RESET_I(3);
-    vlSelf->top_module__DOT__u_ControlUnit__DOT__y = VL_RAND_RESET_I(16);
     vlSelf->top_module__DOT__u_ControlUnit__DOT__result = VL_RAND_RESET_I(16);
     vlSelf->top_module__DOT__u_ControlUnit__DOT__i = VL_RAND_RESET_I(32);
+    vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result = 0;
+    vlSelf->__Vfunc_ALU__0__Vfuncout = 0;
+    vlSelf->__Vtableidx1 = 0;
     vlSelf->__Vtrigprevexpr___TOP__clk__0 = VL_RAND_RESET_I(1);
     vlSelf->__Vtrigprevexpr___TOP__reset__0 = VL_RAND_RESET_I(1);
     for (int __Vi0 = 0; __Vi0 < 2; ++__Vi0) {

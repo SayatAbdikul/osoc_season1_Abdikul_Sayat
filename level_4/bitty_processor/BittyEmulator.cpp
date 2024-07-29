@@ -13,7 +13,7 @@ uint16_t getRange(int x, int y, uint16_t instruction) {
     return (instruction & mask) >> x;
 }
 
-uint16_t ALU(uint16_t x, uint16_t y, uint8_t select) {
+extern "C" int ALU(int x, int y, int select) {
     switch (select) {
     case 0:
         return x + y;

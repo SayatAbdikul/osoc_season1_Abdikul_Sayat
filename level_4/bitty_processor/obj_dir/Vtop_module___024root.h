@@ -6,12 +6,15 @@
 #define VERILATED_VTOP_MODULE___024ROOT_H_  // guard
 
 #include "verilated.h"
+class Vtop_module___024unit;
 
 
 class Vtop_module__Syms;
 
 class alignas(VL_CACHE_LINE_BYTES) Vtop_module___024root final : public VerilatedModule {
   public:
+    // CELLS
+    Vtop_module___024unit* __PVT____024unit;
 
     // DESIGN SPECIFIC STATE
     VL_IN8(clk,0,0);
@@ -24,6 +27,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop_module___024root final : public Verilate
     CData/*2:0*/ top_module__DOT__u_ControlUnit__DOT__state;
     CData/*2:0*/ top_module__DOT__u_ControlUnit__DOT__next_state;
     CData/*2:0*/ top_module__DOT__u_ControlUnit__DOT__Rx;
+    CData/*5:0*/ __Vtableidx1;
     CData/*0:0*/ __VstlFirstIteration;
     CData/*0:0*/ __VicoFirstIteration;
     CData/*0:0*/ __Vtrigprevexpr___TOP__clk__0;
@@ -34,16 +38,17 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop_module___024root final : public Verilate
     SData/*15:0*/ top_module__DOT__u_ControlUnit__DOT__reg_s;
     SData/*15:0*/ top_module__DOT__u_ControlUnit__DOT__reg_c;
     SData/*15:0*/ top_module__DOT__u_ControlUnit__DOT__reg_i;
-    SData/*15:0*/ top_module__DOT__u_ControlUnit__DOT__y;
     SData/*15:0*/ top_module__DOT__u_ControlUnit__DOT__result;
     IData/*31:0*/ top_module__DOT__u_ControlUnit__DOT__i;
+    IData/*31:0*/ top_module__DOT__u_ControlUnit__DOT__cpp_result;
+    IData/*31:0*/ __Vfunc_ALU__0__Vfuncout;
     IData/*31:0*/ __VactIterCount;
     VlUnpacked<SData/*15:0*/, 8> top_module__DOT__u_ControlUnit__DOT__registers;
     VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;
     VlTriggerVec<1> __VstlTriggered;
     VlTriggerVec<1> __VicoTriggered;
-    VlTriggerVec<1> __VactTriggered;
-    VlTriggerVec<1> __VnbaTriggered;
+    VlTriggerVec<2> __VactTriggered;
+    VlTriggerVec<2> __VnbaTriggered;
 
     // INTERNAL VARIABLES
     Vtop_module__Syms* const vlSymsp;

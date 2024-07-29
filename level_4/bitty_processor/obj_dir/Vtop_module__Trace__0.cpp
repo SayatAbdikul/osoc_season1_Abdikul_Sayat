@@ -44,7 +44,9 @@ void Vtop_module___024root__trace_chg_0_sub_0(Vtop_module___024root* vlSelf, Ver
                                        >> 0xdU))),3);
         bufp->chgCData(oldp+17,((7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
                                        >> 0xaU))),3);
-        bufp->chgSData(oldp+18,(vlSelf->top_module__DOT__u_ControlUnit__DOT__y),16);
+        bufp->chgSData(oldp+18,(vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
+                                [(7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
+                                        >> 0xaU))]),16);
         bufp->chgIData(oldp+19,(vlSelf->top_module__DOT__u_ControlUnit__DOT__i),32);
     }
     bufp->chgBit(oldp+20,(vlSelf->clk));
@@ -54,6 +56,7 @@ void Vtop_module___024root__trace_chg_0_sub_0(Vtop_module___024root* vlSelf, Ver
     bufp->chgSData(oldp+24,(vlSelf->result),16);
     bufp->chgCData(oldp+25,(vlSelf->select),3);
     bufp->chgSData(oldp+26,(vlSelf->top_module__DOT__u_ControlUnit__DOT__result),16);
+    bufp->chgIData(oldp+27,(vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result),32);
 }
 
 void Vtop_module___024root__trace_cleanup(void* voidSelf, VerilatedVcd* /*unused*/) {
