@@ -3,7 +3,7 @@
 class BittyInstructionGenerator {
 public:
     BittyInstructionGenerator() = default;
-    uint16_t Generate(int max_size);
+    void Generate(int max_size, int n);
 };
 
 #endif
