@@ -44,7 +44,7 @@ VL_ATTR_COLD void Vtop_module___024root___stl_sequent__TOP__0(Vtop_module___024r
     vlSelf->top_module__DOT__u_ControlUnit__DOT__next_state 
         = Vtop_module__ConstPool__TABLE_h576d4726_0
         [vlSelf->__Vtableidx1];
-    vlSelf->select = (7U & ((IData)(vlSelf->instruction) 
+    vlSelf->select = (7U & ((IData)(vlSelf->top_module__DOT__instruction) 
                             >> 2U));
     Vtop_module___024unit____Vdpiimwrap_ALU_TOP____024unit(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s, 
                                                            vlSelf->top_module__DOT__u_ControlUnit__DOT__registers

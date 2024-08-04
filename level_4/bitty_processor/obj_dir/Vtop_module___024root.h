@@ -24,18 +24,20 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop_module___024root final : public Verilate
     CData/*0:0*/ top_module__DOT__en_i;
     CData/*0:0*/ top_module__DOT__en_s;
     CData/*0:0*/ top_module__DOT__en_c;
+    CData/*0:0*/ top_module__DOT__en_pc;
+    CData/*7:0*/ top_module__DOT__fetch__DOT__pc;
     CData/*2:0*/ top_module__DOT__u_ControlUnit__DOT__state;
     CData/*2:0*/ top_module__DOT__u_ControlUnit__DOT__next_state;
     CData/*2:0*/ top_module__DOT__u_ControlUnit__DOT__Rx;
     CData/*5:0*/ top_module__DOT__u_ControlUnit__DOT__tests;
     CData/*5:0*/ __Vtableidx1;
+    CData/*7:0*/ __Vdly__top_module__DOT__fetch__DOT__pc;
     CData/*0:0*/ __VstlFirstIteration;
-    CData/*0:0*/ __VicoFirstIteration;
     CData/*0:0*/ __Vtrigprevexpr___TOP__clk__0;
     CData/*0:0*/ __Vtrigprevexpr___TOP__reset__0;
     CData/*0:0*/ __VactContinue;
-    VL_IN16(instruction,15,0);
     VL_OUT16(result,15,0);
+    SData/*15:0*/ top_module__DOT__instruction;
     SData/*15:0*/ top_module__DOT__u_ControlUnit__DOT__reg_s;
     SData/*15:0*/ top_module__DOT__u_ControlUnit__DOT__reg_c;
     SData/*15:0*/ top_module__DOT__u_ControlUnit__DOT__reg_i;
@@ -45,10 +47,10 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop_module___024root final : public Verilate
     IData/*31:0*/ top_module__DOT__u_ControlUnit__DOT__cpp_result;
     IData/*31:0*/ __Vfunc_ALU__0__Vfuncout;
     IData/*31:0*/ __VactIterCount;
+    VlUnpacked<SData/*15:0*/, 256> top_module__DOT__fetch__DOT__memory;
     VlUnpacked<SData/*15:0*/, 8> top_module__DOT__u_ControlUnit__DOT__registers;
     VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
     VlTriggerVec<1> __VstlTriggered;
-    VlTriggerVec<1> __VicoTriggered;
     VlTriggerVec<2> __VactTriggered;
     VlTriggerVec<2> __VnbaTriggered;
 

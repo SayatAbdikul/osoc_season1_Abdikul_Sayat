@@ -2,8 +2,6 @@
 #include "Vtop_module.h"          
 #include "verilated_vcd_c.h"
 #include <iostream>
-#include "BittyInstructionGenerator.h"
-#include "BittyInstructionGenerator.cpp"
 #define MAX_SIM_TIME 10000000
 
 int main(int argc, char **argv) {
@@ -16,12 +14,10 @@ int main(int argc, char **argv) {
     dut->trace(trace, 99);
     trace->open("trace.vcd");
     int sim_time = 0;
-    BittyInstructionGenerator generator;
     dut->clk = 0;
     int tests=0;
     while(sim_time < MAX_SIM_TIME){
         dut->clk = sim_time;
-        dut->instruction = generator.Generate(65535);
         dut->reset = 0;
         for(int i=0; i<5; i++) {
             sim_time++;

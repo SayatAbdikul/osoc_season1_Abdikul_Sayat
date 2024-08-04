@@ -7,44 +7,6 @@
 #include "Vtop_module___024root.h"
 
 #ifdef VL_DEBUG
-VL_ATTR_COLD void Vtop_module___024root___dump_triggers__ico(Vtop_module___024root* vlSelf);
-#endif  // VL_DEBUG
-
-void Vtop_module___024root___eval_triggers__ico(Vtop_module___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
-    Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___eval_triggers__ico\n"); );
-    // Body
-    vlSelf->__VicoTriggered.set(0U, (IData)(vlSelf->__VicoFirstIteration));
-#ifdef VL_DEBUG
-    if (VL_UNLIKELY(vlSymsp->_vm_contextp__->debug())) {
-        Vtop_module___024root___dump_triggers__ico(vlSelf);
-    }
-#endif
-}
-
-void Vtop_module___024unit____Vdpiimwrap_ALU_TOP____024unit(IData/*31:0*/ q, IData/*31:0*/ r, IData/*31:0*/ w, IData/*31:0*/ &ALU__Vfuncrtn);
-
-VL_INLINE_OPT void Vtop_module___024root___ico_sequent__TOP__0(Vtop_module___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
-    Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___ico_sequent__TOP__0\n"); );
-    // Body
-    vlSelf->select = (7U & ((IData)(vlSelf->instruction) 
-                            >> 2U));
-    Vtop_module___024unit____Vdpiimwrap_ALU_TOP____024unit(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s, 
-                                                           vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
-                                                           [
-                                                           (7U 
-                                                            & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
-                                                               >> 0xaU))], vlSelf->select, vlSelf->__Vfunc_ALU__0__Vfuncout);
-    vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result 
-        = vlSelf->__Vfunc_ALU__0__Vfuncout;
-    vlSelf->top_module__DOT__u_ControlUnit__DOT__result 
-        = (0xffffU & vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result);
-}
-
-#ifdef VL_DEBUG
 VL_ATTR_COLD void Vtop_module___024root___dump_triggers__act(Vtop_module___024root* vlSelf);
 #endif  // VL_DEBUG
 
@@ -68,15 +30,13 @@ void Vtop_module___024root___eval_triggers__act(Vtop_module___024root* vlSelf) {
 #endif
 }
 
-extern const VlUnpacked<CData/*2:0*/, 64> Vtop_module__ConstPool__TABLE_h576d4726_0;
+void Vtop_module___024unit____Vdpiimwrap_ALU_TOP____024unit(IData/*31:0*/ q, IData/*31:0*/ r, IData/*31:0*/ w, IData/*31:0*/ &ALU__Vfuncrtn);
 
-VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__2(Vtop_module___024root* vlSelf) {
+VL_INLINE_OPT void Vtop_module___024root___nba_comb__TOP__0(Vtop_module___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___nba_sequent__TOP__2\n"); );
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___nba_comb__TOP__0\n"); );
     // Body
-    vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c 
-        = vlSelf->__Vdly__top_module__DOT__u_ControlUnit__DOT__reg_c;
     Vtop_module___024unit____Vdpiimwrap_ALU_TOP____024unit(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s, 
                                                            vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
                                                            [
@@ -87,16 +47,4 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__2(Vtop_module___024
         = vlSelf->__Vfunc_ALU__0__Vfuncout;
     vlSelf->top_module__DOT__u_ControlUnit__DOT__result 
         = (0xffffU & vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result);
-    vlSelf->result = vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c;
-    vlSelf->top_module__DOT__u_ControlUnit__DOT__state 
-        = ((IData)(vlSelf->reset) ? 0U : (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__next_state));
-    vlSelf->done = (4U == (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__state));
-    vlSelf->__Vtableidx1 = (((IData)(vlSelf->top_module__DOT__en_c) 
-                             << 5U) | (((IData)(vlSelf->top_module__DOT__en_s) 
-                                        << 4U) | (((IData)(vlSelf->top_module__DOT__en_i) 
-                                                   << 3U) 
-                                                  | (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__state))));
-    vlSelf->top_module__DOT__u_ControlUnit__DOT__next_state 
-        = Vtop_module__ConstPool__TABLE_h576d4726_0
-        [vlSelf->__Vtableidx1];
 }

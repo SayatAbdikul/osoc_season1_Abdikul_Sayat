@@ -47,19 +47,21 @@ void Vtop_module___024root__trace_chg_0_sub_0(Vtop_module___024root* vlSelf, Ver
         bufp->chgIData(oldp+16,(vlSelf->top_module__DOT__u_ControlUnit__DOT__i),32);
     }
     if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[2U])) {
-        bufp->chgSData(oldp+17,(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c),16);
-        bufp->chgCData(oldp+18,(vlSelf->top_module__DOT__u_ControlUnit__DOT__state),3);
-        bufp->chgCData(oldp+19,(vlSelf->top_module__DOT__u_ControlUnit__DOT__next_state),3);
+        bufp->chgBit(oldp+17,(vlSelf->top_module__DOT__en_pc));
+        bufp->chgCData(oldp+18,(vlSelf->top_module__DOT__fetch__DOT__pc),8);
+        bufp->chgSData(oldp+19,(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c),16);
+        bufp->chgCData(oldp+20,(vlSelf->top_module__DOT__u_ControlUnit__DOT__state),3);
+        bufp->chgCData(oldp+21,(vlSelf->top_module__DOT__u_ControlUnit__DOT__next_state),3);
     }
-    bufp->chgBit(oldp+20,(vlSelf->clk));
-    bufp->chgBit(oldp+21,(vlSelf->reset));
-    bufp->chgSData(oldp+22,(vlSelf->instruction),16);
-    bufp->chgBit(oldp+23,(vlSelf->done));
-    bufp->chgSData(oldp+24,(vlSelf->result),16);
-    bufp->chgCData(oldp+25,(vlSelf->select),3);
-    bufp->chgSData(oldp+26,(vlSelf->top_module__DOT__u_ControlUnit__DOT__result),16);
-    bufp->chgIData(oldp+27,(vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result),32);
-    bufp->chgCData(oldp+28,(vlSelf->top_module__DOT__u_ControlUnit__DOT__tests),6);
+    bufp->chgBit(oldp+22,(vlSelf->clk));
+    bufp->chgBit(oldp+23,(vlSelf->reset));
+    bufp->chgBit(oldp+24,(vlSelf->done));
+    bufp->chgSData(oldp+25,(vlSelf->result),16);
+    bufp->chgCData(oldp+26,(vlSelf->select),3);
+    bufp->chgSData(oldp+27,(vlSelf->top_module__DOT__instruction),16);
+    bufp->chgSData(oldp+28,(vlSelf->top_module__DOT__u_ControlUnit__DOT__result),16);
+    bufp->chgIData(oldp+29,(vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result),32);
+    bufp->chgCData(oldp+30,(vlSelf->top_module__DOT__u_ControlUnit__DOT__tests),6);
 }
 
 void Vtop_module___024root__trace_cleanup(void* voidSelf, VerilatedVcd* /*unused*/) {

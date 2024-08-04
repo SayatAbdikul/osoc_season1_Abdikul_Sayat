@@ -53,14 +53,12 @@ module ControlUnit (
         if (state == DONE && reg_c != 0) begin
             $display("Error!\n The cpp result is %d\n", result);
             $display("The verilog result is %d\n", reg_c);
+        end else if (state == DONE) begin
+            // $display("The operation is successful\n");
+            // $display("The test number: %d\n", tests);
+            // $display("The instruction: %d\n", reg_s);
             tests = tests + 1;
-        end 
-        // else if (state == DONE) begin
-        //     $display("The operation is successful\n");
-        //     $display("The test number: %d\n", tests);
-        //     $display("The instruction is: %d\n", instruction);
-        //     tests = tests + 1;
-        // end
+        end
     end
 
     always @(*) begin

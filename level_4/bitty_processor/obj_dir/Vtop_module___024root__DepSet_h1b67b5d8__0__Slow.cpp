@@ -11,13 +11,27 @@ VL_ATTR_COLD void Vtop_module___024root___eval_static(Vtop_module___024root* vlS
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___eval_static\n"); );
 }
 
+VL_ATTR_COLD void Vtop_module___024root___eval_initial__TOP(Vtop_module___024root* vlSelf);
+
 VL_ATTR_COLD void Vtop_module___024root___eval_initial(Vtop_module___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___eval_initial\n"); );
     // Body
+    Vtop_module___024root___eval_initial__TOP(vlSelf);
     vlSelf->__Vtrigprevexpr___TOP__clk__0 = vlSelf->clk;
     vlSelf->__Vtrigprevexpr___TOP__reset__0 = vlSelf->reset;
+}
+
+VL_ATTR_COLD void Vtop_module___024root___eval_initial__TOP(Vtop_module___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___eval_initial__TOP\n"); );
+    // Body
+    vlSelf->top_module__DOT__fetch__DOT__memory[0U] = 0x1234U;
+    vlSelf->top_module__DOT__fetch__DOT__memory[1U] = 0x5678U;
+    vlSelf->top_module__DOT__fetch__DOT__memory[2U] = 0x9abcU;
+    vlSelf->top_module__DOT__fetch__DOT__memory[3U] = 0xdef0U;
 }
 
 VL_ATTR_COLD void Vtop_module___024root___eval_final(Vtop_module___024root* vlSelf) {
@@ -106,21 +120,6 @@ VL_ATTR_COLD bool Vtop_module___024root___eval_phase__stl(Vtop_module___024root*
 }
 
 #ifdef VL_DEBUG
-VL_ATTR_COLD void Vtop_module___024root___dump_triggers__ico(Vtop_module___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
-    Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___dump_triggers__ico\n"); );
-    // Body
-    if ((1U & (~ vlSelf->__VicoTriggered.any()))) {
-        VL_DBG_MSGF("         No triggers active\n");
-    }
-    if ((1ULL & vlSelf->__VicoTriggered.word(0U))) {
-        VL_DBG_MSGF("         'ico' region trigger index 0 is active: Internal 'ico' trigger - first iteration\n");
-    }
-}
-#endif  // VL_DEBUG
-
-#ifdef VL_DEBUG
 VL_ATTR_COLD void Vtop_module___024root___dump_triggers__act(Vtop_module___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
@@ -163,13 +162,18 @@ VL_ATTR_COLD void Vtop_module___024root___ctor_var_reset(Vtop_module___024root* 
     // Body
     vlSelf->clk = VL_RAND_RESET_I(1);
     vlSelf->reset = VL_RAND_RESET_I(1);
-    vlSelf->instruction = VL_RAND_RESET_I(16);
     vlSelf->done = VL_RAND_RESET_I(1);
     vlSelf->result = VL_RAND_RESET_I(16);
     vlSelf->select = VL_RAND_RESET_I(3);
     vlSelf->top_module__DOT__en_i = VL_RAND_RESET_I(1);
     vlSelf->top_module__DOT__en_s = VL_RAND_RESET_I(1);
     vlSelf->top_module__DOT__en_c = VL_RAND_RESET_I(1);
+    vlSelf->top_module__DOT__en_pc = VL_RAND_RESET_I(1);
+    vlSelf->top_module__DOT__instruction = VL_RAND_RESET_I(16);
+    vlSelf->top_module__DOT__fetch__DOT__pc = VL_RAND_RESET_I(8);
+    for (int __Vi0 = 0; __Vi0 < 256; ++__Vi0) {
+        vlSelf->top_module__DOT__fetch__DOT__memory[__Vi0] = VL_RAND_RESET_I(16);
+    }
     vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s = VL_RAND_RESET_I(16);
     vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c = VL_RAND_RESET_I(16);
     vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i = VL_RAND_RESET_I(16);
@@ -185,6 +189,7 @@ VL_ATTR_COLD void Vtop_module___024root___ctor_var_reset(Vtop_module___024root* 
     vlSelf->top_module__DOT__u_ControlUnit__DOT__tests = VL_RAND_RESET_I(6);
     vlSelf->__Vfunc_ALU__0__Vfuncout = 0;
     vlSelf->__Vtableidx1 = 0;
+    vlSelf->__Vdly__top_module__DOT__fetch__DOT__pc = VL_RAND_RESET_I(8);
     vlSelf->__Vdly__top_module__DOT__u_ControlUnit__DOT__reg_c = VL_RAND_RESET_I(16);
     vlSelf->__Vtrigprevexpr___TOP__clk__0 = VL_RAND_RESET_I(1);
     vlSelf->__Vtrigprevexpr___TOP__reset__0 = VL_RAND_RESET_I(1);
