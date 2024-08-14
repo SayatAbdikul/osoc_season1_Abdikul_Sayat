@@ -8,7 +8,6 @@ uint16_t getRange(int x, int y, uint16_t instruction) {
         std::cerr << "Invalid bit range" << std::endl;
         return 0;
     }
-
     uint16_t mask = ((1 << (y - x + 1)) - 1) << x;
     return (instruction & mask) >> x;
 }
@@ -40,6 +39,12 @@ extern "C" int ALU(int x, int y, int select) {
 BittyEmulator::BittyEmulator() : registers_(8), done(false), reg_inst(0), reg_c(0), reg_s(0) {
     registers_[0] = 15;
     registers_[1] = 7;
+    registers_[2] = 12;
+    registers_[3] = 1;
+    registers_[4] = 9;
+    registers_[5] = 2;
+    registers_[6] = 22;
+    registers_[7] = 7;
 }
 
 uint16_t BittyEmulator::Evaluate(uint16_t instruction) {

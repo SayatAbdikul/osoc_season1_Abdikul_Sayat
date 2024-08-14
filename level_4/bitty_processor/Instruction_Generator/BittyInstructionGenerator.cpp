@@ -4,7 +4,7 @@
 using namespace std;
 void Generate(int max_size, int n){
     std::ofstream outFile;
-    outFile.open("output.txt");
+    outFile.open("instructions.txt");
     if(outFile.is_open()){
         for(int i=0; i<n; i++){
             outFile<<rand() % max_size<<"\n";
