@@ -8,10 +8,7 @@ module FetchUnit(
     reg [15:0] memory [255:0];
 
     initial begin
-        memory[0] = 16'h1234;
-        memory[1] = 16'h5678;
-        memory[2] = 16'h9ABC;
-        memory[3] = 16'hDEF0;
+        $readmemh("Instruction_Generator/instructions.txt", memory);
     end
 
     always @(posedge clk or posedge reset) begin

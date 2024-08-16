@@ -23,15 +23,16 @@ VL_ATTR_COLD void Vtop_module___024root___eval_initial(Vtop_module___024root* vl
     vlSelf->__Vtrigprevexpr___TOP__reset__0 = vlSelf->reset;
 }
 
+extern const VlWide<10>/*319:0*/ Vtop_module__ConstPool__CONST_h120d09b2_0;
+
 VL_ATTR_COLD void Vtop_module___024root___eval_initial__TOP(Vtop_module___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___eval_initial__TOP\n"); );
     // Body
-    vlSelf->top_module__DOT__fetch__DOT__memory[0U] = 0x1234U;
-    vlSelf->top_module__DOT__fetch__DOT__memory[1U] = 0x5678U;
-    vlSelf->top_module__DOT__fetch__DOT__memory[2U] = 0x9abcU;
-    vlSelf->top_module__DOT__fetch__DOT__memory[3U] = 0xdef0U;
+    VL_READMEM_N(true, 16, 256, 0, VL_CVT_PACK_STR_NW(10, Vtop_module__ConstPool__CONST_h120d09b2_0)
+                 ,  &(vlSelf->top_module__DOT__fetch__DOT__memory)
+                 , 0, ~0ULL);
 }
 
 VL_ATTR_COLD void Vtop_module___024root___eval_final(Vtop_module___024root* vlSelf) {

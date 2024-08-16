@@ -7,5 +7,4 @@ tb_bitty.o: ../tb_bitty.cpp \
   Vtop_module.h \
   /opt/homebrew/Cellar/verilator/5.026/share/verilator/include/vltstd/svdpi.h \
   /opt/homebrew/Cellar/verilator/5.026/share/verilator/include/verilated_vcd_c.h \
-  /opt/homebrew/Cellar/verilator/5.026/share/verilator/include/verilated_trace.h \
-  ../BittyInstructionGenerator.h ../BittyInstructionGenerator.cpp
+  /opt/homebrew/Cellar/verilator/5.026/share/verilator/include/verilated_trace.h
