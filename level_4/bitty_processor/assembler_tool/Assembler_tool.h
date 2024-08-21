@@ -1,3 +1,5 @@
+#ifndef ASSEMBLER_TOOL_H
+#define ASSEMBLER_TOOL_H
 #include <iostream>
 #include <fstream>
 #include <getopt.h>
@@ -5,8 +7,10 @@
 
 class Assembler_tool {
 public:
-    int instruction;
-    void Assembler_tool();
-    std::string Assemble(std::string instruction);
-    int Disassemble(int instruction);
-}
+    std::string commands[8] = {"ADD", "SUB", "AND", "OR", "XOR", "SHL", "SHR", "CMP"};
+    Assembler_tool();
+    int Assemble(std::string instruction);
+    std::string Disassemble(int instruction);
+};
+
+#endif
