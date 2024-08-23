@@ -37,18 +37,17 @@ void Vtop_module___024root__trace_chg_0_sub_0(Vtop_module___024root* vlSelf, Ver
         bufp->chgSData(oldp+10,(vlSelf->top_module__DOT__u_ControlUnit__DOT__registers[5]),16);
         bufp->chgSData(oldp+11,(vlSelf->top_module__DOT__u_ControlUnit__DOT__registers[6]),16);
         bufp->chgSData(oldp+12,(vlSelf->top_module__DOT__u_ControlUnit__DOT__registers[7]),16);
-        bufp->chgCData(oldp+13,((7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
-                                       >> 0xdU))),3);
+        bufp->chgCData(oldp+13,((3U & (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i))),2);
         bufp->chgCData(oldp+14,((7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
+                                       >> 0xdU))),3);
+        bufp->chgCData(oldp+15,((7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
                                        >> 0xaU))),3);
-        bufp->chgCData(oldp+15,((0xffU & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
-                                          >> 5U))),8);
-        bufp->chgSData(oldp+16,(vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
+        bufp->chgSData(oldp+16,(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand),16);
+        bufp->chgSData(oldp+17,(vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
                                 [(7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
                                         >> 0xaU))]),16);
-        bufp->chgIData(oldp+17,(vlSelf->top_module__DOT__u_ControlUnit__DOT__i),32);
-        bufp->chgSData(oldp+18,(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a),16);
-        bufp->chgSData(oldp+19,(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_b),16);
+        bufp->chgIData(oldp+18,(vlSelf->top_module__DOT__u_ControlUnit__DOT__i),32);
+        bufp->chgSData(oldp+19,(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a),16);
     }
     if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[2U])) {
         bufp->chgBit(oldp+20,(vlSelf->top_module__DOT__en_pc));

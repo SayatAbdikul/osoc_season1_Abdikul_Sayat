@@ -41,8 +41,8 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop_module___024root final : public Verilate
     SData/*15:0*/ top_module__DOT__u_ControlUnit__DOT__reg_s;
     SData/*15:0*/ top_module__DOT__u_ControlUnit__DOT__reg_c;
     SData/*15:0*/ top_module__DOT__u_ControlUnit__DOT__reg_i;
+    SData/*15:0*/ top_module__DOT__u_ControlUnit__DOT__operand;
     SData/*15:0*/ top_module__DOT__u_ControlUnit__DOT__result;
-    SData/*15:0*/ top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_b;
     SData/*15:0*/ top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a;
     SData/*15:0*/ __Vdly__top_module__DOT__u_ControlUnit__DOT__reg_c;
     IData/*31:0*/ top_module__DOT__u_ControlUnit__DOT__i;

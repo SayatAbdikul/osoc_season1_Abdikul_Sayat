@@ -19,16 +19,20 @@ module ControlUnit (
     /* verilator lint_off UNUSEDSIGNAL */
     reg [2:0] state, next_state;
     reg [15:0] registers [7:0];
-    //wire [1:0] format = reg_i[];
+    wire [1:0] format = reg_i[1:0];
     wire [2:0] Rx = reg_i[15:13], Ry = reg_i[12:10];
-    wire [7:0] Immediate = reg_i[12:5];
+    reg [15:0] operand = registers[Ry];
     wire [2:0] sel = instruction[4:2];
     wire [15:0] y = registers[Ry];
     reg [15:0] result;
+
     integer i;
     int cpp_result;
 
     always @(posedge clk or posedge reset) begin
+        if(format == 1) begin
+            operand <= {8'b00000000, reg_i[12:5]};
+        end
         if (reset) begin
             reg_i <= 0;
             reg_c <= 0;
@@ -47,7 +51,7 @@ module ControlUnit (
     end
     Bitty_ALU b_alu(
         .in_a(registers[Rx]),
-        .in_b(registers[Ry]),
+        .in_b(operand),
         .select(sel),
         .alu_out(result)
     );

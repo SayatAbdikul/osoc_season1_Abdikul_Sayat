@@ -48,10 +48,6 @@ VL_ATTR_COLD void Vtop_module___024root___stl_sequent__TOP__0(Vtop_module___024r
         = vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
         [(7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
                 >> 0xdU))];
-    vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_b 
-        = vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
-        [(7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
-                >> 0xaU))];
     vlSelf->select = (7U & ((IData)(vlSelf->top_module__DOT__instruction) 
                             >> 2U));
     if (((((((((0U == (IData)(vlSelf->select)) | (1U 
@@ -65,32 +61,32 @@ VL_ATTR_COLD void Vtop_module___024root___stl_sequent__TOP__0(Vtop_module___024r
         vlSelf->top_module__DOT__u_ControlUnit__DOT__result 
             = (0xffffU & ((0U == (IData)(vlSelf->select))
                            ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                              + (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_b))
+                              + (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
                            : ((1U == (IData)(vlSelf->select))
                                ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                  - (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_b))
+                                  - (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
                                : ((2U == (IData)(vlSelf->select))
                                    ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                      & (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_b))
+                                      & (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
                                    : ((3U == (IData)(vlSelf->select))
                                        ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                          | (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_b))
+                                          | (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
                                        : ((4U == (IData)(vlSelf->select))
                                            ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                              ^ (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_b))
+                                              ^ (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
                                            : ((5U == (IData)(vlSelf->select))
-                                               ? VL_SHIFTL_III(16,16,16, (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a), (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_b))
+                                               ? VL_SHIFTL_III(16,16,16, (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a), (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
                                                : ((6U 
                                                    == (IData)(vlSelf->select))
                                                    ? 
-                                                  VL_SHIFTR_III(16,16,16, (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a), (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_b))
+                                                  VL_SHIFTR_III(16,16,16, (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a), (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
                                                    : 
                                                   (((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                                    > (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_b))
+                                                    > (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
                                                     ? 1U
                                                     : 
                                                    (((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                                     < (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_b))
+                                                     < (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
                                                      ? 2U
                                                      : 0U))))))))));
     }

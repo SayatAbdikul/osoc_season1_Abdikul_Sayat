@@ -5,10 +5,28 @@
 #include "Vtop_module__pch.h"
 #include "Vtop_module___024root.h"
 
+VL_ATTR_COLD void Vtop_module___024root___eval_static__TOP(Vtop_module___024root* vlSelf);
+
 VL_ATTR_COLD void Vtop_module___024root___eval_static(Vtop_module___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___eval_static\n"); );
+    // Body
+    Vtop_module___024root___eval_static__TOP(vlSelf);
+    vlSelf->__Vm_traceActivity[2U] = 1U;
+    vlSelf->__Vm_traceActivity[1U] = 1U;
+    vlSelf->__Vm_traceActivity[0U] = 1U;
+}
+
+VL_ATTR_COLD void Vtop_module___024root___eval_static__TOP(Vtop_module___024root* vlSelf) {
+    (void)vlSelf;  // Prevent unused variable warning
+    Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___eval_static__TOP\n"); );
+    // Body
+    vlSelf->top_module__DOT__u_ControlUnit__DOT__operand 
+        = vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
+        [(7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
+                >> 0xaU))];
 }
 
 VL_ATTR_COLD void Vtop_module___024root___eval_initial__TOP(Vtop_module___024root* vlSelf);
@@ -184,10 +202,10 @@ VL_ATTR_COLD void Vtop_module___024root___ctor_var_reset(Vtop_module___024root* 
         vlSelf->top_module__DOT__u_ControlUnit__DOT__registers[__Vi0] = VL_RAND_RESET_I(16);
     }
     vlSelf->top_module__DOT__u_ControlUnit__DOT__Rx = VL_RAND_RESET_I(3);
+    vlSelf->top_module__DOT__u_ControlUnit__DOT__operand = VL_RAND_RESET_I(16);
     vlSelf->top_module__DOT__u_ControlUnit__DOT__result = VL_RAND_RESET_I(16);
     vlSelf->top_module__DOT__u_ControlUnit__DOT__i = VL_RAND_RESET_I(32);
     vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result = 0;
-    vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_b = VL_RAND_RESET_I(16);
     vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a = VL_RAND_RESET_I(16);
     vlSelf->top_module__DOT__u_ControlUnit__DOT__tests = VL_RAND_RESET_I(6);
     vlSelf->__Vfunc_ALU__0__Vfuncout = 0;

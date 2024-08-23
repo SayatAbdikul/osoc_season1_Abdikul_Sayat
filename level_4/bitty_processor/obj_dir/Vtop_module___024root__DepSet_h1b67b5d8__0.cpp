@@ -57,6 +57,11 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024
         = vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c;
     __VdlySet__top_module__DOT__u_ControlUnit__DOT__registers__v0 = 0U;
     __VdlySet__top_module__DOT__u_ControlUnit__DOT__registers__v8 = 0U;
+    if ((1U == (3U & (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i)))) {
+        vlSelf->top_module__DOT__u_ControlUnit__DOT__operand 
+            = (0xffU & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
+                        >> 5U));
+    }
     if (vlSelf->reset) {
         vlSelf->top_module__DOT__u_ControlUnit__DOT__i = 8U;
         vlSelf->__Vdly__top_module__DOT__fetch__DOT__pc = 0U;
@@ -114,10 +119,6 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024
         = vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
         [(7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
                 >> 0xdU))];
-    vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_b 
-        = vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
-        [(7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
-                >> 0xaU))];
     vlSelf->top_module__DOT__en_i = (1U & (~ (IData)(vlSelf->reset)));
     vlSelf->top_module__DOT__en_s = (1U & (~ (IData)(vlSelf->reset)));
     vlSelf->top_module__DOT__en_c = (1U & (~ (IData)(vlSelf->reset)));
