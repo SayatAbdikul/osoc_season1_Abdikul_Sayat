@@ -41,27 +41,31 @@ void Vtop_module___024root__trace_chg_0_sub_0(Vtop_module___024root* vlSelf, Ver
                                        >> 0xdU))),3);
         bufp->chgCData(oldp+14,((7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
                                        >> 0xaU))),3);
-        bufp->chgSData(oldp+15,(vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
+        bufp->chgCData(oldp+15,((0xffU & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
+                                          >> 5U))),8);
+        bufp->chgSData(oldp+16,(vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
                                 [(7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
                                         >> 0xaU))]),16);
-        bufp->chgIData(oldp+16,(vlSelf->top_module__DOT__u_ControlUnit__DOT__i),32);
+        bufp->chgIData(oldp+17,(vlSelf->top_module__DOT__u_ControlUnit__DOT__i),32);
+        bufp->chgSData(oldp+18,(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a),16);
+        bufp->chgSData(oldp+19,(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_b),16);
     }
     if (VL_UNLIKELY(vlSelf->__Vm_traceActivity[2U])) {
-        bufp->chgBit(oldp+17,(vlSelf->top_module__DOT__en_pc));
-        bufp->chgCData(oldp+18,(vlSelf->top_module__DOT__fetch__DOT__pc),8);
-        bufp->chgSData(oldp+19,(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c),16);
-        bufp->chgCData(oldp+20,(vlSelf->top_module__DOT__u_ControlUnit__DOT__state),3);
-        bufp->chgCData(oldp+21,(vlSelf->top_module__DOT__u_ControlUnit__DOT__next_state),3);
+        bufp->chgBit(oldp+20,(vlSelf->top_module__DOT__en_pc));
+        bufp->chgCData(oldp+21,(vlSelf->top_module__DOT__fetch__DOT__pc),8);
+        bufp->chgSData(oldp+22,(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c),16);
+        bufp->chgCData(oldp+23,(vlSelf->top_module__DOT__u_ControlUnit__DOT__state),3);
+        bufp->chgCData(oldp+24,(vlSelf->top_module__DOT__u_ControlUnit__DOT__next_state),3);
     }
-    bufp->chgBit(oldp+22,(vlSelf->clk));
-    bufp->chgBit(oldp+23,(vlSelf->reset));
-    bufp->chgBit(oldp+24,(vlSelf->done));
-    bufp->chgSData(oldp+25,(vlSelf->result),16);
-    bufp->chgCData(oldp+26,(vlSelf->select),3);
-    bufp->chgSData(oldp+27,(vlSelf->top_module__DOT__instruction),16);
-    bufp->chgSData(oldp+28,(vlSelf->top_module__DOT__u_ControlUnit__DOT__result),16);
-    bufp->chgIData(oldp+29,(vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result),32);
-    bufp->chgCData(oldp+30,(vlSelf->top_module__DOT__u_ControlUnit__DOT__tests),6);
+    bufp->chgBit(oldp+25,(vlSelf->clk));
+    bufp->chgBit(oldp+26,(vlSelf->reset));
+    bufp->chgBit(oldp+27,(vlSelf->done));
+    bufp->chgSData(oldp+28,(vlSelf->result),16);
+    bufp->chgCData(oldp+29,(vlSelf->select),3);
+    bufp->chgSData(oldp+30,(vlSelf->top_module__DOT__instruction),16);
+    bufp->chgSData(oldp+31,(vlSelf->top_module__DOT__u_ControlUnit__DOT__result),16);
+    bufp->chgIData(oldp+32,(vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result),32);
+    bufp->chgCData(oldp+33,(vlSelf->top_module__DOT__u_ControlUnit__DOT__tests),6);
 }
 
 void Vtop_module___024root__trace_cleanup(void* voidSelf, VerilatedVcd* /*unused*/) {

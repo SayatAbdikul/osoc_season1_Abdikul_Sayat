@@ -1,4 +1,4 @@
-module ALU (
+module Bitty_ALU (
     input wire [15:0] in_a,
     input wire [15:0] in_b,
     input wire [2:0] select,

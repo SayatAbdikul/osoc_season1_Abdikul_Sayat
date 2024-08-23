@@ -187,6 +187,8 @@ VL_ATTR_COLD void Vtop_module___024root___ctor_var_reset(Vtop_module___024root* 
     vlSelf->top_module__DOT__u_ControlUnit__DOT__result = VL_RAND_RESET_I(16);
     vlSelf->top_module__DOT__u_ControlUnit__DOT__i = VL_RAND_RESET_I(32);
     vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result = 0;
+    vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_b = VL_RAND_RESET_I(16);
+    vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a = VL_RAND_RESET_I(16);
     vlSelf->top_module__DOT__u_ControlUnit__DOT__tests = VL_RAND_RESET_I(6);
     vlSelf->__Vfunc_ALU__0__Vfuncout = 0;
     vlSelf->__Vtableidx1 = 0;

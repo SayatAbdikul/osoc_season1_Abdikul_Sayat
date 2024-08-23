@@ -110,6 +110,14 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024
     vlSelf->top_module__DOT__u_ControlUnit__DOT__Rx 
         = (7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
                  >> 0xdU));
+    vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a 
+        = vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
+        [(7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
+                >> 0xdU))];
+    vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_b 
+        = vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
+        [(7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
+                >> 0xaU))];
     vlSelf->top_module__DOT__en_i = (1U & (~ (IData)(vlSelf->reset)));
     vlSelf->top_module__DOT__en_s = (1U & (~ (IData)(vlSelf->reset)));
     vlSelf->top_module__DOT__en_c = (1U & (~ (IData)(vlSelf->reset)));
@@ -121,7 +129,8 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__1(Vtop_module___024
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___nba_sequent__TOP__1\n"); );
     // Body
     if (VL_UNLIKELY(((4U == (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__state)) 
-                     & (0U != (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c))))) {
+                     & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__result) 
+                        != vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result)))) {
         VL_WRITEF_NX("Error!\n The cpp result is %5#\n\nThe verilog result is %5#\n\n",0,
                      16,vlSelf->top_module__DOT__u_ControlUnit__DOT__result,
                      16,(IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c));

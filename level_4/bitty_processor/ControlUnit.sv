@@ -19,7 +19,9 @@ module ControlUnit (
     /* verilator lint_off UNUSEDSIGNAL */
     reg [2:0] state, next_state;
     reg [15:0] registers [7:0];
+    //wire [1:0] format = reg_i[];
     wire [2:0] Rx = reg_i[15:13], Ry = reg_i[12:10];
+    wire [7:0] Immediate = reg_i[12:5];
     wire [2:0] sel = instruction[4:2];
     wire [15:0] y = registers[Ry];
     reg [15:0] result;
@@ -43,22 +45,28 @@ module ControlUnit (
             if (state == STORE) registers[Rx] <= reg_c;
         end
     end
-
+    Bitty_ALU b_alu(
+        .in_a(registers[Rx]),
+        .in_b(registers[Ry]),
+        .select(sel),
+        .alu_out(result)
+    );
     always @(*) begin
-        cpp_result = ALU({16'b0, reg_s}, {16'b0, y}, {29'b0, sel}); // Call the DPI-C function with proper bit-width
-        result = cpp_result[15:0]; // Use the lower 16 bits of the result
+        cpp_result = ALU({16'b0, reg_s}, {16'b0, y}, {29'b0, sel}); 
     end
     reg [5:0] tests;
     always @(posedge clk) begin
-        if (state == DONE && reg_c != 0) begin
+        /* verilator lint_off WIDTHEXPAND */
+        if (state == DONE && result != cpp_result) begin
             $display("Error!\n The cpp result is %d\n", result);
             $display("The verilog result is %d\n", reg_c);
         end else if (state == DONE) begin
             // $display("The operation is successful\n");
             // $display("The test number: %d\n", tests);
             // $display("The instruction: %d\n", reg_s);
-            tests = tests + 1;
+            tests <= tests + 1;
         end
+        /* verilator lint_off WIDTHEXPAND */
     end
 
     always @(*) begin
