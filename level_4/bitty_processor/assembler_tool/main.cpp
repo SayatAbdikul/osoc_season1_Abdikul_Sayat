@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     std::string mode, inputFileName, outputFileName;
 
     // Parsing CL arguments
-    int opt, output_file_bool=0; //output_file is to know is there an output file
+    int opt, output_file_bool=0; //output_file_bool is to know is there an output file
     while ((opt = getopt(argc, argv, "i:o:ad")) != -1) {
         switch (opt) {
             case 'i':

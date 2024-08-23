@@ -31,7 +31,7 @@ module ControlUnit (
 
     always @(posedge clk or posedge reset) begin
         if(format == 1) begin
-            operand <= {8'b00000000, reg_i[12:5]};
+            operand <= {8'b0, reg_i[12:5]};
         end
         if (reset) begin
             reg_i <= 0;

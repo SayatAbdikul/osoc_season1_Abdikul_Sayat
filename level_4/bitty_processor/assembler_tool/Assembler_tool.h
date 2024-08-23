@@ -10,7 +10,11 @@ public:
     std::string commands[8] = {"ADD", "SUB", "AND", "OR", "XOR", "SHL", "SHR", "CMP"};
     Assembler_tool();
     int Assemble(std::string instruction);
+    int AssembleGeneral(std::string instruction);
+    int AssembleImmediate(std::string instruction);
     std::string Disassemble(int instruction);
+    std::string DisassembleGeneral(int instruction);
+    std::string DisassembleImmediate(int instruction);
 };
 
 #endif
