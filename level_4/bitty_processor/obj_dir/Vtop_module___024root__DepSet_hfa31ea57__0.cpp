@@ -32,57 +32,71 @@ void Vtop_module___024root___eval_triggers__act(Vtop_module___024root* vlSelf) {
 
 void Vtop_module___024unit____Vdpiimwrap_ALU_TOP____024unit(IData/*31:0*/ q, IData/*31:0*/ r, IData/*31:0*/ w, IData/*31:0*/ &ALU__Vfuncrtn);
 
-VL_INLINE_OPT void Vtop_module___024root___nba_comb__TOP__0(Vtop_module___024root* vlSelf) {
+VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___nba_comb__TOP__0\n"); );
+    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___nba_sequent__TOP__0\n"); );
+    // Init
+    IData/*31:0*/ __Vfunc_ALU__0__Vfuncout;
+    __Vfunc_ALU__0__Vfuncout = 0;
+    IData/*31:0*/ __Vfunc_ALU__1__Vfuncout;
+    __Vfunc_ALU__1__Vfuncout = 0;
     // Body
-    if (((((((((0U == (IData)(vlSelf->select)) | (1U 
-                                                  == (IData)(vlSelf->select))) 
-              | (2U == (IData)(vlSelf->select))) | 
-             (3U == (IData)(vlSelf->select))) | (4U 
-                                                 == (IData)(vlSelf->select))) 
-           | (5U == (IData)(vlSelf->select))) | (6U 
-                                                 == (IData)(vlSelf->select))) 
-         | (7U == (IData)(vlSelf->select)))) {
-        vlSelf->top_module__DOT__u_ControlUnit__DOT__result 
-            = (0xffffU & ((0U == (IData)(vlSelf->select))
-                           ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                              + (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                           : ((1U == (IData)(vlSelf->select))
-                               ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                  - (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                               : ((2U == (IData)(vlSelf->select))
-                                   ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                      & (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                                   : ((3U == (IData)(vlSelf->select))
-                                       ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                          | (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                                       : ((4U == (IData)(vlSelf->select))
-                                           ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                              ^ (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                                           : ((5U == (IData)(vlSelf->select))
-                                               ? VL_SHIFTL_III(16,16,16, (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a), (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                                               : ((6U 
-                                                   == (IData)(vlSelf->select))
-                                                   ? 
-                                                  VL_SHIFTR_III(16,16,16, (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a), (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                                                   : 
-                                                  (((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                                    > (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                                                    ? 1U
-                                                    : 
-                                                   (((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                                     < (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                                                     ? 2U
-                                                     : 0U))))))))));
+    vlSelf->__Vdly__top_module__DOT__instruction = vlSelf->top_module__DOT__instruction;
+    vlSelf->top_module__DOT__next_state = ((0U == (IData)(vlSelf->top_module__DOT__state))
+                                            ? 1U : 
+                                           ((1U == (IData)(vlSelf->top_module__DOT__state))
+                                             ? 2U : 
+                                            ((2U == (IData)(vlSelf->top_module__DOT__state))
+                                              ? 3U : 
+                                             ((3U == (IData)(vlSelf->top_module__DOT__state))
+                                               ? 4U
+                                               : 0U))));
+    if (vlSelf->top_module__DOT__en_s) {
+        vlSelf->top_module__DOT__u_ControlUnit__DOT__operand 
+            = ((1U == (3U & (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i)))
+                ? (0xffU & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
+                            >> 5U)) : vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
+               [(7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
+                       >> 0xaU))]);
     }
-    Vtop_module___024unit____Vdpiimwrap_ALU_TOP____024unit(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s, 
-                                                           vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
-                                                           [
-                                                           (7U 
-                                                            & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
-                                                               >> 0xaU))], vlSelf->select, vlSelf->__Vfunc_ALU__0__Vfuncout);
-    vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result 
-        = vlSelf->__Vfunc_ALU__0__Vfuncout;
+    if (vlSelf->top_module__DOT__en_s) {
+        if ((1U == (3U & (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i)))) {
+            Vtop_module___024unit____Vdpiimwrap_ALU_TOP____024unit(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s, 
+                                                                   (0xffU 
+                                                                    & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
+                                                                       >> 5U)), (IData)(vlSelf->select), __Vfunc_ALU__0__Vfuncout);
+            vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result 
+                = __Vfunc_ALU__0__Vfuncout;
+        } else {
+            Vtop_module___024unit____Vdpiimwrap_ALU_TOP____024unit(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s, 
+                                                                   vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
+                                                                   [
+                                                                   (7U 
+                                                                    & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
+                                                                       >> 0xaU))], vlSelf->select, __Vfunc_ALU__1__Vfuncout);
+            vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result 
+                = __Vfunc_ALU__1__Vfuncout;
+        }
+    }
+    if (vlSelf->top_module__DOT__en_pc) {
+        vlSelf->__Vdly__top_module__DOT__instruction 
+            = vlSelf->top_module__DOT__fetch__DOT__memory
+            [vlSelf->top_module__DOT__fetch__DOT__pc];
+    }
+    if (VL_UNLIKELY((((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c) 
+                      != vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result) 
+                     & ((IData)(vlSelf->top_module__DOT__en_reg) 
+                        >> (7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
+                                  >> 0xdU)))))) {
+        VL_WRITEF_NX("Error!\n The cpp result is %11d\n\nThe result is %5#\n\nThe reg_c is %5#\n\nThe format is %1#\n\nThe select is %1#\n\n",0,
+                     32,vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result,
+                     16,(IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__result),
+                     16,vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c,
+                     2,(3U & (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i)),
+                     3,(IData)(vlSelf->select));
+    } else if (vlSelf->top_module__DOT__en_c) {
+        vlSelf->top_module__DOT__u_ControlUnit__DOT__tests 
+            = (0x3fU & ((IData)(1U) + (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__tests)));
+    }
 }
