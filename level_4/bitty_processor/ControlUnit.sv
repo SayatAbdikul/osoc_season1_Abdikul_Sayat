@@ -46,13 +46,9 @@ module ControlUnit (
             end
         end
     end
-    Bitty_ALU b_alu(
-        .in_a(registers[Rx]),
-        .in_b(operand),
-        .select(sel),
-        .alu_out(result)
-    );
-    always @(posedge clk) begin
+    always @(*) begin
+        operand = 16'b0;
+        cpp_result = 0;
         if (en_s) begin
             if(format == 1) begin
                 operand = {8'b0, reg_i[12:5]};
@@ -63,11 +59,18 @@ module ControlUnit (
         if (en_s) begin
             if(format == 1) begin
                 cpp_result = ALU({16'b0, reg_s}, {16'b0, {8'b0, reg_i[12:5]}}, {29'b0, sel});
+                //$display("ALU operation on format 1: the x = %d, y = %d", {16'b0, reg_s}, {16'b0, {8'b0, reg_i[12:5]}});
             end else begin
                 cpp_result = ALU({16'b0, reg_s}, {16'b0, registers[Ry]}, {29'b0, sel});
             end
         end
     end
+    Bitty_ALU b_alu(
+        .in_a(registers[Rx]),
+        .in_b(operand),
+        .select(sel),
+        .alu_out(result)
+    );
     reg [5:0] tests;
     // always @(posedge clk) begin
     //     if(en_reg[Rx]) begin
@@ -76,16 +79,22 @@ module ControlUnit (
     // end
     always @(posedge clk) begin
          /* verilator lint_off WIDTHEXPAND */
-        if (reg_c != cpp_result && en_reg[Rx]) begin
+        if (reg_c != cpp_result && en_reg[Rx] && format==1) begin
             $display("Error!\n The cpp result is %d\n", cpp_result);
-            $display("The result is %d\n", result);
+            //$display("The result is %d\n", result);
             $display("The reg_c is %d\n", reg_c);
-            $display("The format is %d\n", format);
+            $display("The x is %d\n", registers[Rx]);
+            $display("The operand is %d\n", operand);
+            //$display("The format is %d\n", format);
             $display("The select is %d\n", sel);
-        end else if (en_c) begin
+        end else if (en_reg[Rx] && reg_c != 0) begin
+            //$display("cpp_result %d", cpp_result);
+            //$display("reg_c %d", reg_c);
             // $display("The operation is successful\n");
             // $display("The test number: %d\n", tests);
-            // $display("The instruction: %d\n", reg_s);
+            //  $display("The operand: %d\n", operand);
+            //  $display("The Ry: %d\n", Ry);
+            //  $display("The select: %d\n", sel);
             tests <= tests + 1;
         end
          /* verilator lint_off WIDTHEXPAND */

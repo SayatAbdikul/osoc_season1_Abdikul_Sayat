@@ -13,7 +13,6 @@ VL_ATTR_COLD void Vtop_module___024root___eval_static(Vtop_module___024root* vlS
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___eval_static\n"); );
     // Body
     Vtop_module___024root___eval_static__TOP(vlSelf);
-    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->__Vm_traceActivity[1U] = 1U;
     vlSelf->__Vm_traceActivity[0U] = 1U;
 }
@@ -117,64 +116,8 @@ VL_ATTR_COLD void Vtop_module___024root___eval_stl(Vtop_module___024root* vlSelf
     // Body
     if ((1ULL & vlSelf->__VstlTriggered.word(0U))) {
         Vtop_module___024root___stl_sequent__TOP__0(vlSelf);
-        vlSelf->__Vm_traceActivity[2U] = 1U;
         vlSelf->__Vm_traceActivity[1U] = 1U;
         vlSelf->__Vm_traceActivity[0U] = 1U;
-    }
-}
-
-VL_ATTR_COLD void Vtop_module___024root___stl_sequent__TOP__0(Vtop_module___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
-    Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___stl_sequent__TOP__0\n"); );
-    // Body
-    vlSelf->done = vlSelf->top_module__DOT__en_c;
-    vlSelf->result = vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_c;
-    vlSelf->select = (7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
-                            >> 2U));
-    vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a 
-        = vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
-        [(7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
-                >> 0xdU))];
-    if (((((((((0U == (IData)(vlSelf->select)) | (1U 
-                                                  == (IData)(vlSelf->select))) 
-              | (2U == (IData)(vlSelf->select))) | 
-             (3U == (IData)(vlSelf->select))) | (4U 
-                                                 == (IData)(vlSelf->select))) 
-           | (5U == (IData)(vlSelf->select))) | (6U 
-                                                 == (IData)(vlSelf->select))) 
-         | (7U == (IData)(vlSelf->select)))) {
-        vlSelf->top_module__DOT__u_ControlUnit__DOT__result 
-            = (0xffffU & ((0U == (IData)(vlSelf->select))
-                           ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                              + (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                           : ((1U == (IData)(vlSelf->select))
-                               ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                  - (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                               : ((2U == (IData)(vlSelf->select))
-                                   ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                      & (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                                   : ((3U == (IData)(vlSelf->select))
-                                       ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                          | (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                                       : ((4U == (IData)(vlSelf->select))
-                                           ? ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                              ^ (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                                           : ((5U == (IData)(vlSelf->select))
-                                               ? VL_SHIFTL_III(16,16,16, (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a), (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                                               : ((6U 
-                                                   == (IData)(vlSelf->select))
-                                                   ? 
-                                                  VL_SHIFTR_III(16,16,16, (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a), (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                                                   : 
-                                                  (((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                                    > (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                                                    ? 1U
-                                                    : 
-                                                   (((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a) 
-                                                     < (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__operand))
-                                                     ? 2U
-                                                     : 0U))))))))));
     }
 }
 
@@ -267,10 +210,12 @@ VL_ATTR_COLD void Vtop_module___024root___ctor_var_reset(Vtop_module___024root* 
     vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result = 0;
     vlSelf->top_module__DOT__u_ControlUnit__DOT____Vcellinp__b_alu__in_a = VL_RAND_RESET_I(16);
     vlSelf->top_module__DOT__u_ControlUnit__DOT__tests = VL_RAND_RESET_I(6);
+    vlSelf->__Vfunc_ALU__0__Vfuncout = 0;
+    vlSelf->__Vfunc_ALU__1__Vfuncout = 0;
     vlSelf->__Vdly__top_module__DOT__instruction = VL_RAND_RESET_I(16);
     vlSelf->__Vtrigprevexpr___TOP__clk__0 = VL_RAND_RESET_I(1);
     vlSelf->__Vtrigprevexpr___TOP__reset__0 = VL_RAND_RESET_I(1);
-    for (int __Vi0 = 0; __Vi0 < 3; ++__Vi0) {
+    for (int __Vi0 = 0; __Vi0 < 2; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = 0;
     }
 }

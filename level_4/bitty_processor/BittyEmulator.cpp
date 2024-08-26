@@ -11,11 +11,11 @@ uint16_t getRange(int x, int y, uint16_t instruction) {
     uint16_t mask = ((1 << (y - x + 1)) - 1) << x;
     return (instruction & mask) >> x;
 }
-
-extern "C" int ALU(int x, int y, int select) {
+int max_size = 65536;
+uint16_t ALU_internall(uint x, uint y, uint select){
     switch (select) {
     case 0:
-        return x + y;
+        return (x + y);
     case 1:
         return x - y;
     case 2:
@@ -25,15 +25,18 @@ extern "C" int ALU(int x, int y, int select) {
     case 4:
         return x ^ y;
     case 5:
-        return x << y;
+        return (y>31) ? 0 : x << y;
     case 6:
-        return x >> y;
+        return (y>31) ? 0 : x >> y;
     case 7:
         return (x > y) ? 1 : (x < y) ? 2 : 0;
     default:
         std::cerr << "Invalid ALU operation" << std::endl;
         return 0;
     }
+}
+extern "C" int ALU(int x, int y, int select) {
+    return ALU_internall(x, y, select);
 }
 
 BittyEmulator::BittyEmulator() : registers_(8), done(false), reg_inst(0), reg_c(0), reg_s(0) {
