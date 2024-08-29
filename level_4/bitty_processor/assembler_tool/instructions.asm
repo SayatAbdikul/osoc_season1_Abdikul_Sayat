@@ -1,2 +1,5 @@
 XOR r6 r5
 XORi r5 #5
+BIG #123
+BIE #222
+BIL #145
