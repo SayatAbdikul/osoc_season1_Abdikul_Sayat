@@ -46,19 +46,18 @@ module ControlUnit (
             end
         end
     end
-    always @(*) begin
-        operand = 16'b0;
-        cpp_result = 0;
-        if (en_s) begin
+    always_latch @(*) begin
+        if (en_reg[Rx]) begin
             if(format == 1) begin
                 operand = {8'b0, reg_i[12:5]};
             end else begin
                 operand = registers[Ry];
             end
         end
-        if (en_s) begin
+        if (en_reg[Rx]) begin
             if(format == 1) begin
                 cpp_result = ALU({16'b0, reg_s}, {16'b0, {8'b0, reg_i[12:5]}}, {29'b0, sel});
+                //$display("cpp_result=%d", cpp_result);
                 //$display("ALU operation on format 1: the x = %d, y = %d", {16'b0, reg_s}, {16'b0, {8'b0, reg_i[12:5]}});
             end else begin
                 cpp_result = ALU({16'b0, reg_s}, {16'b0, registers[Ry]}, {29'b0, sel});
@@ -88,8 +87,8 @@ module ControlUnit (
             //$display("The format is %d\n", format);
             $display("The select is %d\n", sel);
         end else if (en_reg[Rx] && reg_c != 0) begin
-            //$display("cpp_result %d", cpp_result);
-            //$display("reg_c %d", reg_c);
+            // $display("cpp_result %d", cpp_result);
+            // $display("reg_c %d", reg_c);
             // $display("The operation is successful\n");
             // $display("The test number: %d\n", tests);
             //  $display("The operand: %d\n", operand);

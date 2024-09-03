@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cstdint>  
-#include "BittyEmulator.h"
+#include "BetterEmulator.h"
 
 uint16_t getRange(int x, int y, uint16_t instruction) {
     if (x < 0 || y > 15 || x > y) {
@@ -17,7 +17,7 @@ uint16_t ALU_internall(uint x, uint y, uint select){
     case 0:
         return (x + y);
     case 1:
-        return x - y;
+        return (x>y) ? x-y : 65536-y+x;
     case 2:
         return x & y;
     case 3:
@@ -39,13 +39,17 @@ extern "C" int ALU(int x, int y, int select) {
     return ALU_internall(x, y, select);
 }
 
-BittyEmulator::BittyEmulator() : registers_(8), done(false), reg_inst(0), reg_c(0), reg_s(0) {
+BetterEmulator::BetterEmulator() : registers_(8), done(false), reg_inst(0), reg_c(0), reg_s(0) {
+    //registers_ = {1, 2, 3, 4, 5, 6, 7, 8};
 }
 
-uint16_t BittyEmulator::Evaluate(uint16_t instruction) {
+uint16_t BetterEmulator::Evaluate(uint16_t instruction) {
     int select = getRange(2, 4, instruction);
     int Rx = getRange(13, 15, instruction);
     int Ry = getRange(10, 12, instruction);
+    // std::cout<<"Rx "<<Rx<<"\n";
+    // std::cout<<"Ry "<<Ry<<"\n";
+    // std::cout<<"Select "<<select<<"\n";
     reg_c = ALU(registers_[Rx], registers_[Ry], select);
     reg_inst = instruction;
     reg_s = registers_[Rx];
@@ -53,7 +57,7 @@ uint16_t BittyEmulator::Evaluate(uint16_t instruction) {
     return reg_c;
 }
 
-uint16_t BittyEmulator::GetRegisterValue(uint16_t reg_num) const {
+uint16_t BetterEmulator::GetRegisterValue(uint16_t reg_num) const {
     if (reg_num >= registers_.size()) {
         std::cerr << "Invalid register number" << std::endl;
         return 0;

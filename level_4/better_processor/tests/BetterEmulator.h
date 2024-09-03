@@ -4,9 +4,9 @@
 #include <cstdint>  
 #include <vector>  
 
-class BittyEmulator {
+class BetterEmulator {
 public:
-    BittyEmulator();
+    BetterEmulator();
     uint16_t Evaluate(uint16_t instruction);
     uint16_t GetRegisterValue(uint16_t reg_num) const;
 

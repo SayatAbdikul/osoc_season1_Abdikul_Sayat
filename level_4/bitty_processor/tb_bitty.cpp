@@ -2,7 +2,7 @@
 #include "Vtop_module.h"          
 #include "verilated_vcd_c.h"
 #include <iostream>
-#define MAX_SIM_TIME 10000000
+#define MAX_SIM_TIME 10000
 
 int main(int argc, char **argv) {
     Verilated::commandArgs(argc, argv);
@@ -27,14 +27,14 @@ int main(int argc, char **argv) {
     dut->reset = 0;
 
     while(sim_time < MAX_SIM_TIME){
-        dut->clk = !dut->clk;
+        dut->clk = !(dut->clk);
         dut->eval();
         sim_time++;
         if (sim_time % 10 == 0) {
-            // std::cout << "Time: " << sim_time << "\n";
+            //std::cout << "Time: " << sim_time << "\n";
             // std::cout << "Result: " << std::bitset<16>(dut->result) << "\n";
             // std::cout << "Done: " << std::bitset<1>(dut->done) << "\n";
-            // std::cout << "Select: " << std::bitset<3>(dut->select) << "\n";
+            //std::cout << "Select: " << std::bitset<3>(dut->select) << "\n";
             tests++;
         }
     }

@@ -36,10 +36,11 @@ VL_ATTR_COLD void Vtop_module___024root___stl_sequent__TOP__0(Vtop_module___024r
         = vlSelf->top_module__DOT__u_ControlUnit__DOT__registers
         [(7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
                 >> 0xdU))];
-    vlSelf->top_module__DOT__u_ControlUnit__DOT__operand = 0U;
     vlSelf->select = (7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
                             >> 2U));
-    if (vlSelf->top_module__DOT__en_s) {
+    if ((1U & ((IData)(vlSelf->top_module__DOT__en_reg) 
+               >> (7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
+                         >> 0xdU))))) {
         vlSelf->top_module__DOT__u_ControlUnit__DOT__operand 
             = ((1U == (3U & (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i)))
                 ? (0xffU & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
@@ -87,8 +88,9 @@ VL_ATTR_COLD void Vtop_module___024root___stl_sequent__TOP__0(Vtop_module___024r
                                                      ? 2U
                                                      : 0U))))))))));
     }
-    vlSelf->top_module__DOT__u_ControlUnit__DOT__cpp_result = 0U;
-    if (vlSelf->top_module__DOT__en_s) {
+    if ((1U & ((IData)(vlSelf->top_module__DOT__en_reg) 
+               >> (7U & ((IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i) 
+                         >> 0xdU))))) {
         if ((1U == (3U & (IData)(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_i)))) {
             Vtop_module___024unit____Vdpiimwrap_ALU_TOP____024unit(vlSelf->top_module__DOT__u_ControlUnit__DOT__reg_s, 
                                                                    (0xffU 
