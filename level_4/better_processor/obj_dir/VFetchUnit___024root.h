@@ -17,16 +17,17 @@ class alignas(VL_CACHE_LINE_BYTES) VFetchUnit___024root final : public Verilated
     VL_IN8(clk,0,0);
     VL_IN8(reset,0,0);
     VL_IN8(en_pc,0,0);
-    CData/*7:0*/ FetchUnit__DOT__pc;
-    CData/*7:0*/ __Vdly__FetchUnit__DOT__pc;
+    VL_IN8(en_new_pc,0,0);
     CData/*0:0*/ __Vtrigprevexpr___TOP__clk__0;
     CData/*0:0*/ __Vtrigprevexpr___TOP__reset__0;
     CData/*0:0*/ __VactContinue;
+    VL_IN16(new_pc,11,0);
     VL_OUT16(instruction,15,0);
+    SData/*11:0*/ FetchUnit__DOT__pc;
     IData/*31:0*/ __VactIterCount;
-    VlUnpacked<SData/*15:0*/, 256> FetchUnit__DOT__memory;
-    VlTriggerVec<2> __VactTriggered;
-    VlTriggerVec<2> __VnbaTriggered;
+    VlUnpacked<SData/*15:0*/, 4096> FetchUnit__DOT__memory;
+    VlTriggerVec<1> __VactTriggered;
+    VlTriggerVec<1> __VnbaTriggered;
 
     // INTERNAL VARIABLES
     VFetchUnit__Syms* const vlSymsp;

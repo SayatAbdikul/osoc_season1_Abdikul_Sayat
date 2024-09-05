@@ -12,8 +12,6 @@ void VFetchUnit___024root___eval_act(VFetchUnit___024root* vlSelf) {
 }
 
 void VFetchUnit___024root___nba_sequent__TOP__0(VFetchUnit___024root* vlSelf);
-void VFetchUnit___024root___nba_sequent__TOP__1(VFetchUnit___024root* vlSelf);
-void VFetchUnit___024root___nba_sequent__TOP__2(VFetchUnit___024root* vlSelf);
 
 void VFetchUnit___024root___eval_nba(VFetchUnit___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
@@ -23,46 +21,28 @@ void VFetchUnit___024root___eval_nba(VFetchUnit___024root* vlSelf) {
     if ((1ULL & vlSelf->__VnbaTriggered.word(0U))) {
         VFetchUnit___024root___nba_sequent__TOP__0(vlSelf);
     }
-    if ((2ULL & vlSelf->__VnbaTriggered.word(0U))) {
-        VFetchUnit___024root___nba_sequent__TOP__1(vlSelf);
-    }
-    if ((1ULL & vlSelf->__VnbaTriggered.word(0U))) {
-        VFetchUnit___024root___nba_sequent__TOP__2(vlSelf);
-    }
 }
 
 VL_INLINE_OPT void VFetchUnit___024root___nba_sequent__TOP__0(VFetchUnit___024root* vlSelf) {
     (void)vlSelf;  // Prevent unused variable warning
     VFetchUnit__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    VFetchUnit___024root___nba_sequent__TOP__0\n"); );
+    // Init
+    SData/*11:0*/ __Vdly__FetchUnit__DOT__pc;
+    __Vdly__FetchUnit__DOT__pc = 0;
     // Body
-    vlSelf->__Vdly__FetchUnit__DOT__pc = vlSelf->FetchUnit__DOT__pc;
+    __Vdly__FetchUnit__DOT__pc = vlSelf->FetchUnit__DOT__pc;
     if (vlSelf->reset) {
-        vlSelf->__Vdly__FetchUnit__DOT__pc = 0U;
+        __Vdly__FetchUnit__DOT__pc = 0U;
+    } else if (vlSelf->en_new_pc) {
+        __Vdly__FetchUnit__DOT__pc = vlSelf->new_pc;
     } else if (vlSelf->en_pc) {
-        vlSelf->__Vdly__FetchUnit__DOT__pc = (0xffU 
-                                              & ((IData)(1U) 
-                                                 + (IData)(vlSelf->FetchUnit__DOT__pc)));
+        __Vdly__FetchUnit__DOT__pc = (0xfffU & ((IData)(1U) 
+                                                + (IData)(vlSelf->FetchUnit__DOT__pc)));
     }
-}
-
-VL_INLINE_OPT void VFetchUnit___024root___nba_sequent__TOP__1(VFetchUnit___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
-    VFetchUnit__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    VFetchUnit___024root___nba_sequent__TOP__1\n"); );
-    // Body
-    if (vlSelf->en_pc) {
-        vlSelf->instruction = vlSelf->FetchUnit__DOT__memory
-            [vlSelf->FetchUnit__DOT__pc];
-    }
-}
-
-VL_INLINE_OPT void VFetchUnit___024root___nba_sequent__TOP__2(VFetchUnit___024root* vlSelf) {
-    (void)vlSelf;  // Prevent unused variable warning
-    VFetchUnit__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
-    VL_DEBUG_IF(VL_DBG_MSGF("+    VFetchUnit___024root___nba_sequent__TOP__2\n"); );
-    // Body
-    vlSelf->FetchUnit__DOT__pc = vlSelf->__Vdly__FetchUnit__DOT__pc;
+    vlSelf->instruction = vlSelf->FetchUnit__DOT__memory
+        [vlSelf->FetchUnit__DOT__pc];
+    vlSelf->FetchUnit__DOT__pc = __Vdly__FetchUnit__DOT__pc;
 }
 
 void VFetchUnit___024root___eval_triggers__act(VFetchUnit___024root* vlSelf);
@@ -72,7 +52,7 @@ bool VFetchUnit___024root___eval_phase__act(VFetchUnit___024root* vlSelf) {
     VFetchUnit__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    VFetchUnit___024root___eval_phase__act\n"); );
     // Init
-    VlTriggerVec<2> __VpreTriggered;
+    VlTriggerVec<1> __VpreTriggered;
     CData/*0:0*/ __VactExecute;
     // Body
     VFetchUnit___024root___eval_triggers__act(vlSelf);
@@ -160,5 +140,9 @@ void VFetchUnit___024root___eval_debug_assertions(VFetchUnit___024root* vlSelf) 
         Verilated::overWidthError("reset");}
     if (VL_UNLIKELY((vlSelf->en_pc & 0xfeU))) {
         Verilated::overWidthError("en_pc");}
+    if (VL_UNLIKELY((vlSelf->new_pc & 0xf000U))) {
+        Verilated::overWidthError("new_pc");}
+    if (VL_UNLIKELY((vlSelf->en_new_pc & 0xfeU))) {
+        Verilated::overWidthError("en_new_pc");}
 }
 #endif  // VL_DEBUG

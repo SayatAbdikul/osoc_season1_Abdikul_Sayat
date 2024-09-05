@@ -13,9 +13,11 @@ VCore::VCore(VerilatedContext* _vcontextp__, const char* _vcname__)
     , clk{vlSymsp->TOP.clk}
     , reset{vlSymsp->TOP.reset}
     , run{vlSymsp->TOP.run}
+    , en_new_pc{vlSymsp->TOP.en_new_pc}
     , done{vlSymsp->TOP.done}
     , instruction{vlSymsp->TOP.instruction}
     , d_out{vlSymsp->TOP.d_out}
+    , new_pc{vlSymsp->TOP.new_pc}
     , __PVT____024unit{vlSymsp->TOP.__PVT____024unit}
     , rootp{&(vlSymsp->TOP)}
 {

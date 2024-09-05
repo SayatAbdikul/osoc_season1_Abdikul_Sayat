@@ -20,10 +20,11 @@ class alignas(VL_CACHE_LINE_BYTES) VCore___024root final : public VerilatedModul
     VL_IN8(clk,0,0);
     VL_IN8(reset,0,0);
     VL_IN8(run,0,0);
+    VL_OUT8(en_new_pc,0,0);
     VL_OUT8(done,0,0);
-    CData/*7:0*/ Core__DOT__en_reg;
     CData/*0:0*/ Core__DOT__en_c;
     CData/*0:0*/ Core__DOT__en_s;
+    CData/*7:0*/ Core__DOT__en_reg;
     CData/*1:0*/ Core__DOT__control__DOT__state;
     CData/*1:0*/ Core__DOT__control__DOT__next_state;
     CData/*0:0*/ __VstlFirstIteration;
@@ -33,10 +34,12 @@ class alignas(VL_CACHE_LINE_BYTES) VCore___024root final : public VerilatedModul
     CData/*0:0*/ __VactContinue;
     VL_IN16(instruction,15,0);
     VL_OUT16(d_out,15,0);
+    VL_OUT16(new_pc,11,0);
     SData/*15:0*/ Core__DOT__reg_c;
     SData/*15:0*/ Core__DOT__reg_s;
+    SData/*11:0*/ Core__DOT__pc_immediate;
     SData/*15:0*/ Core__DOT__result;
-    SData/*15:0*/ Core__DOT____Vcellinp__alu__in_b;
+    SData/*15:0*/ Core__DOT__operand;
     IData/*31:0*/ Core__DOT__cpp_result;
     IData/*31:0*/ __VactIterCount;
     VlUnpacked<SData/*15:0*/, 8> Core__DOT__registers;

@@ -19,8 +19,6 @@ void VFetchUnit___024root___eval_triggers__act(VFetchUnit___024root* vlSelf) {
                                       & (~ (IData)(vlSelf->__Vtrigprevexpr___TOP__clk__0))) 
                                      | ((IData)(vlSelf->reset) 
                                         & (~ (IData)(vlSelf->__Vtrigprevexpr___TOP__reset__0)))));
-    vlSelf->__VactTriggered.set(1U, ((IData)(vlSelf->clk) 
-                                     & (~ (IData)(vlSelf->__Vtrigprevexpr___TOP__clk__0))));
     vlSelf->__Vtrigprevexpr___TOP__clk__0 = vlSelf->clk;
     vlSelf->__Vtrigprevexpr___TOP__reset__0 = vlSelf->reset;
 #ifdef VL_DEBUG

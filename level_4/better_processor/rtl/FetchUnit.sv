@@ -2,10 +2,12 @@ module FetchUnit(
     input clk,
     input reset,
     input en_pc,
+    input [11:0] new_pc,
+    input en_new_pc,
     output reg [15:0] instruction
 );
-    reg [7:0] pc;
-    reg [15:0] memory [255:0];
+    reg [11:0] pc;
+    reg [15:0] memory [4095:0];
 
     initial begin
         $readmemh("./Instruction_Generator/instructions.txt", memory);
@@ -14,15 +16,13 @@ module FetchUnit(
     always @(posedge clk or posedge reset) begin
         if (reset) begin
             pc <= 0;
+        end else if(en_new_pc) begin
+            pc <= new_pc;
+            instruction <= memory[pc];
         end else if (en_pc) begin
             pc <= pc + 1;
+            instruction <= memory[pc];
         end
     end
 
-    always @(posedge clk) begin
-        if (en_pc) begin
-            instruction <= memory[pc];
-            //$display("program counter is %d", pc);
-        end
-    end
 endmodule

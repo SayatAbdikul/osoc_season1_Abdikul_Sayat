@@ -22,14 +22,8 @@ VL_ATTR_COLD void VCore___024root___eval_static__TOP(VCore___024root* vlSelf) {
     VCore__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    VCore___024root___eval_static__TOP\n"); );
     // Body
-    vlSelf->Core__DOT__registers[7U] = 8U;
-    vlSelf->Core__DOT__registers[6U] = 7U;
-    vlSelf->Core__DOT__registers[5U] = 6U;
-    vlSelf->Core__DOT__registers[4U] = 5U;
-    vlSelf->Core__DOT__registers[3U] = 4U;
-    vlSelf->Core__DOT__registers[2U] = 3U;
-    vlSelf->Core__DOT__registers[1U] = 2U;
-    vlSelf->Core__DOT__registers[0U] = 1U;
+    vlSelf->Core__DOT__operand = vlSelf->Core__DOT__registers
+        [(7U & ((IData)(vlSelf->instruction) >> 0xaU))];
 }
 
 VL_ATTR_COLD void VCore___024root___eval_initial(VCore___024root* vlSelf) {
@@ -124,6 +118,8 @@ VL_ATTR_COLD void VCore___024root___stl_sequent__TOP__0(VCore___024root* vlSelf)
     }
     vlSelf->Core__DOT__en_c = 0U;
     vlSelf->done = 0U;
+    vlSelf->new_pc = vlSelf->Core__DOT__pc_immediate;
+    vlSelf->en_new_pc = (2U == (3U & (IData)(vlSelf->instruction)));
     vlSelf->Core__DOT__en_reg = 0U;
     if ((0U != (IData)(vlSelf->Core__DOT__control__DOT__state))) {
         if ((1U == (IData)(vlSelf->Core__DOT__control__DOT__state))) {
@@ -142,8 +138,6 @@ VL_ATTR_COLD void VCore___024root___stl_sequent__TOP__0(VCore___024root* vlSelf)
             }
         }
     }
-    vlSelf->Core__DOT____Vcellinp__alu__in_b = vlSelf->Core__DOT__registers
-        [(7U & ((IData)(vlSelf->instruction) >> 0xaU))];
     vlSelf->Core__DOT__result = 0U;
     if (((((((((0U == (7U & ((IData)(vlSelf->instruction) 
                              >> 2U))) | (1U == (7U 
@@ -168,7 +162,7 @@ VL_ATTR_COLD void VCore___024root___stl_sequent__TOP__0(VCore___024root* vlSelf)
                                                      >> 2U)))
                                                  ? 
                                                 ((IData)(vlSelf->Core__DOT__reg_s) 
-                                                 + (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                 + (IData)(vlSelf->Core__DOT__operand))
                                                  : 
                                                 ((1U 
                                                   == 
@@ -177,7 +171,7 @@ VL_ATTR_COLD void VCore___024root___stl_sequent__TOP__0(VCore___024root* vlSelf)
                                                       >> 2U)))
                                                   ? 
                                                  ((IData)(vlSelf->Core__DOT__reg_s) 
-                                                  - (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                  - (IData)(vlSelf->Core__DOT__operand))
                                                   : 
                                                  ((2U 
                                                    == 
@@ -186,7 +180,7 @@ VL_ATTR_COLD void VCore___024root___stl_sequent__TOP__0(VCore___024root* vlSelf)
                                                        >> 2U)))
                                                    ? 
                                                   ((IData)(vlSelf->Core__DOT__reg_s) 
-                                                   & (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                   & (IData)(vlSelf->Core__DOT__operand))
                                                    : 
                                                   ((3U 
                                                     == 
@@ -195,7 +189,7 @@ VL_ATTR_COLD void VCore___024root___stl_sequent__TOP__0(VCore___024root* vlSelf)
                                                         >> 2U)))
                                                     ? 
                                                    ((IData)(vlSelf->Core__DOT__reg_s) 
-                                                    | (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                    | (IData)(vlSelf->Core__DOT__operand))
                                                     : 
                                                    ((4U 
                                                      == 
@@ -204,7 +198,7 @@ VL_ATTR_COLD void VCore___024root___stl_sequent__TOP__0(VCore___024root* vlSelf)
                                                          >> 2U)))
                                                      ? 
                                                     ((IData)(vlSelf->Core__DOT__reg_s) 
-                                                     ^ (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                     ^ (IData)(vlSelf->Core__DOT__operand))
                                                      : 
                                                     ((5U 
                                                       == 
@@ -212,7 +206,7 @@ VL_ATTR_COLD void VCore___024root___stl_sequent__TOP__0(VCore___024root* vlSelf)
                                                        & ((IData)(vlSelf->instruction) 
                                                           >> 2U)))
                                                       ? 
-                                                     VL_SHIFTL_III(16,16,16, (IData)(vlSelf->Core__DOT__reg_s), (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                     VL_SHIFTL_III(16,16,16, (IData)(vlSelf->Core__DOT__reg_s), (IData)(vlSelf->Core__DOT__operand))
                                                       : 
                                                      ((6U 
                                                        == 
@@ -220,14 +214,14 @@ VL_ATTR_COLD void VCore___024root___stl_sequent__TOP__0(VCore___024root* vlSelf)
                                                         & ((IData)(vlSelf->instruction) 
                                                            >> 2U)))
                                                        ? 
-                                                      VL_SHIFTR_III(16,16,16, (IData)(vlSelf->Core__DOT__reg_s), (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                      VL_SHIFTR_III(16,16,16, (IData)(vlSelf->Core__DOT__reg_s), (IData)(vlSelf->Core__DOT__operand))
                                                        : 
                                                       (((IData)(vlSelf->Core__DOT__reg_s) 
-                                                        > (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                        > (IData)(vlSelf->Core__DOT__operand))
                                                         ? 1U
                                                         : 
                                                        (((IData)(vlSelf->Core__DOT__reg_s) 
-                                                         < (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                         < (IData)(vlSelf->Core__DOT__operand))
                                                          ? 2U
                                                          : 0U))))))))));
     }
@@ -306,18 +300,21 @@ VL_ATTR_COLD void VCore___024root___ctor_var_reset(VCore___024root* vlSelf) {
     vlSelf->run = VL_RAND_RESET_I(1);
     vlSelf->reset = VL_RAND_RESET_I(1);
     vlSelf->d_out = VL_RAND_RESET_I(16);
+    vlSelf->new_pc = VL_RAND_RESET_I(12);
+    vlSelf->en_new_pc = VL_RAND_RESET_I(1);
     vlSelf->done = VL_RAND_RESET_I(1);
     vlSelf->Core__DOT__reg_c = VL_RAND_RESET_I(16);
     vlSelf->Core__DOT__reg_s = VL_RAND_RESET_I(16);
     for (int __Vi0 = 0; __Vi0 < 8; ++__Vi0) {
         vlSelf->Core__DOT__registers[__Vi0] = VL_RAND_RESET_I(16);
     }
-    vlSelf->Core__DOT__en_reg = VL_RAND_RESET_I(8);
+    vlSelf->Core__DOT__pc_immediate = VL_RAND_RESET_I(12);
     vlSelf->Core__DOT__en_c = VL_RAND_RESET_I(1);
     vlSelf->Core__DOT__en_s = VL_RAND_RESET_I(1);
-    vlSelf->Core__DOT__result = VL_RAND_RESET_I(16);
     vlSelf->Core__DOT__cpp_result = 0;
-    vlSelf->Core__DOT____Vcellinp__alu__in_b = VL_RAND_RESET_I(16);
+    vlSelf->Core__DOT__en_reg = VL_RAND_RESET_I(8);
+    vlSelf->Core__DOT__result = VL_RAND_RESET_I(16);
+    vlSelf->Core__DOT__operand = VL_RAND_RESET_I(16);
     vlSelf->Core__DOT__control__DOT__state = VL_RAND_RESET_I(2);
     vlSelf->Core__DOT__control__DOT__next_state = VL_RAND_RESET_I(2);
     vlSelf->__Vtrigprevexpr___TOP__clk__0 = VL_RAND_RESET_I(1);

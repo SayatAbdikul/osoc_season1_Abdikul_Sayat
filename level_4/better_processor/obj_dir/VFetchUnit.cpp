@@ -13,6 +13,8 @@ VFetchUnit::VFetchUnit(VerilatedContext* _vcontextp__, const char* _vcname__)
     , clk{vlSymsp->TOP.clk}
     , reset{vlSymsp->TOP.reset}
     , en_pc{vlSymsp->TOP.en_pc}
+    , en_new_pc{vlSymsp->TOP.en_new_pc}
+    , new_pc{vlSymsp->TOP.new_pc}
     , instruction{vlSymsp->TOP.instruction}
     , rootp{&(vlSymsp->TOP)}
 {

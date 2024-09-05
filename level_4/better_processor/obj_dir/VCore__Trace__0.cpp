@@ -34,28 +34,34 @@ void VCore___024root__trace_chg_0_sub_0(VCore___024root* vlSelf, VerilatedVcd::B
         bufp->chgSData(oldp+7,(vlSelf->Core__DOT__registers[5]),16);
         bufp->chgSData(oldp+8,(vlSelf->Core__DOT__registers[6]),16);
         bufp->chgSData(oldp+9,(vlSelf->Core__DOT__registers[7]),16);
-        bufp->chgBit(oldp+10,(vlSelf->Core__DOT__en_c));
-        bufp->chgBit(oldp+11,(vlSelf->Core__DOT__en_s));
-        bufp->chgIData(oldp+12,(vlSelf->Core__DOT__cpp_result),32);
-        bufp->chgCData(oldp+13,(vlSelf->Core__DOT__control__DOT__state),2);
-        bufp->chgCData(oldp+14,(vlSelf->Core__DOT__control__DOT__next_state),2);
+        bufp->chgSData(oldp+10,(vlSelf->Core__DOT__pc_immediate),12);
+        bufp->chgBit(oldp+11,(vlSelf->Core__DOT__en_c));
+        bufp->chgBit(oldp+12,(vlSelf->Core__DOT__en_s));
+        bufp->chgIData(oldp+13,(vlSelf->Core__DOT__cpp_result),32);
+        bufp->chgSData(oldp+14,(vlSelf->Core__DOT__operand),16);
+        bufp->chgCData(oldp+15,(vlSelf->Core__DOT__control__DOT__state),2);
+        bufp->chgCData(oldp+16,(vlSelf->Core__DOT__control__DOT__next_state),2);
     }
-    bufp->chgSData(oldp+15,(vlSelf->instruction),16);
-    bufp->chgBit(oldp+16,(vlSelf->clk));
-    bufp->chgBit(oldp+17,(vlSelf->run));
-    bufp->chgBit(oldp+18,(vlSelf->reset));
-    bufp->chgSData(oldp+19,(vlSelf->d_out),16);
-    bufp->chgBit(oldp+20,(vlSelf->done));
-    bufp->chgCData(oldp+21,(vlSelf->Core__DOT__en_reg),8);
-    bufp->chgSData(oldp+22,(vlSelf->Core__DOT__result),16);
-    bufp->chgCData(oldp+23,((7U & ((IData)(vlSelf->instruction) 
-                                   >> 0xdU))),3);
-    bufp->chgCData(oldp+24,((7U & ((IData)(vlSelf->instruction) 
-                                   >> 0xaU))),3);
+    bufp->chgSData(oldp+17,(vlSelf->instruction),16);
+    bufp->chgBit(oldp+18,(vlSelf->clk));
+    bufp->chgBit(oldp+19,(vlSelf->run));
+    bufp->chgBit(oldp+20,(vlSelf->reset));
+    bufp->chgSData(oldp+21,(vlSelf->d_out),16);
+    bufp->chgSData(oldp+22,(vlSelf->new_pc),12);
+    bufp->chgBit(oldp+23,(vlSelf->en_new_pc));
+    bufp->chgBit(oldp+24,(vlSelf->done));
     bufp->chgCData(oldp+25,((7U & ((IData)(vlSelf->instruction) 
-                                   >> 2U))),3);
-    bufp->chgSData(oldp+26,(vlSelf->Core__DOT____Vcellinp__alu__in_b),16);
+                                   >> 0xdU))),3);
+    bufp->chgCData(oldp+26,((7U & ((IData)(vlSelf->instruction) 
+                                   >> 0xaU))),3);
     bufp->chgCData(oldp+27,((7U & ((IData)(vlSelf->instruction) 
+                                   >> 2U))),3);
+    bufp->chgCData(oldp+28,(vlSelf->Core__DOT__en_reg),8);
+    bufp->chgSData(oldp+29,(vlSelf->Core__DOT__result),16);
+    bufp->chgCData(oldp+30,((3U & (IData)(vlSelf->instruction))),2);
+    bufp->chgCData(oldp+31,((3U & ((IData)(vlSelf->instruction) 
+                                   >> 2U))),2);
+    bufp->chgCData(oldp+32,((7U & ((IData)(vlSelf->instruction) 
                                    >> 0xdU))),3);
 }
 

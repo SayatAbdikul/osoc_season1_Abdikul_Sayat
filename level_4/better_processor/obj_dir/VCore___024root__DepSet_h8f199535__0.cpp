@@ -55,35 +55,58 @@ VL_INLINE_OPT void VCore___024root___nba_sequent__TOP__0(VCore___024root* vlSelf
     IData/*31:0*/ __Vfunc_ALU__0__Vfuncout;
     __Vfunc_ALU__0__Vfuncout = 0;
     // Body
+    vlSelf->Core__DOT__control__DOT__state = ((IData)(vlSelf->reset)
+                                               ? 0U
+                                               : (IData)(vlSelf->Core__DOT__control__DOT__next_state));
     if (vlSelf->reset) {
         vlSelf->Core__DOT__en_c = 0U;
         vlSelf->Core__DOT__en_s = 0U;
         vlSelf->Core__DOT__en_reg = 0U;
+    } else if ((2U == (3U & (IData)(vlSelf->instruction)))) {
+        if ((IData)(((0U == (0xcU & (IData)(vlSelf->instruction))) 
+                     & (0U == (IData)(vlSelf->Core__DOT__reg_c))))) {
+            vlSelf->Core__DOT__pc_immediate = (0xfffU 
+                                               & ((IData)(vlSelf->instruction) 
+                                                  >> 4U));
+        }
+        if ((IData)(((4U == (0xcU & (IData)(vlSelf->instruction))) 
+                     & (1U == (IData)(vlSelf->Core__DOT__reg_c))))) {
+            vlSelf->Core__DOT__pc_immediate = (0xfffU 
+                                               & ((IData)(vlSelf->instruction) 
+                                                  >> 4U));
+        }
+        if ((IData)(((8U == (0xcU & (IData)(vlSelf->instruction))) 
+                     & (2U == (IData)(vlSelf->Core__DOT__reg_c))))) {
+            vlSelf->Core__DOT__pc_immediate = (0xfffU 
+                                               & ((IData)(vlSelf->instruction) 
+                                                  >> 4U));
+        }
     } else {
         if (vlSelf->Core__DOT__en_s) {
+            if ((1U == (3U & (IData)(vlSelf->instruction)))) {
+                vlSelf->Core__DOT__operand = (0xffU 
+                                              & ((IData)(vlSelf->instruction) 
+                                                 >> 5U));
+            }
+            vlSelf->Core__DOT__reg_s = vlSelf->Core__DOT__registers
+                [(7U & ((IData)(vlSelf->instruction) 
+                        >> 0xdU))];
             VCore___024unit____Vdpiimwrap_ALU_TOP____024unit(
                                                              vlSelf->Core__DOT__registers
                                                              [
                                                              (7U 
                                                               & ((IData)(vlSelf->instruction) 
-                                                                 >> 0xdU))], 
-                                                             vlSelf->Core__DOT__registers
-                                                             [
-                                                             (7U 
-                                                              & ((IData)(vlSelf->instruction) 
-                                                                 >> 0xaU))], 
+                                                                 >> 0xdU))], vlSelf->Core__DOT__operand, 
                                                              (7U 
                                                               & ((IData)(vlSelf->instruction) 
                                                                  >> 2U)), __Vfunc_ALU__0__Vfuncout);
-            vlSelf->Core__DOT__reg_s = vlSelf->Core__DOT__registers
-                [(7U & ((IData)(vlSelf->instruction) 
-                        >> 0xdU))];
             vlSelf->Core__DOT__cpp_result = __Vfunc_ALU__0__Vfuncout;
         }
+        vlSelf->Core__DOT__pc_immediate = 0U;
         if (vlSelf->Core__DOT__en_c) {
             if (VL_UNLIKELY((vlSelf->Core__DOT__cpp_result 
-                             == (IData)(vlSelf->Core__DOT__result)))) {
-                VL_WRITEF_NX("cpp_result %11d\nverilog result%5#\n",0,
+                             != (IData)(vlSelf->Core__DOT__result)))) {
+                VL_WRITEF_NX("Error!!!\ncpp_result %11d\nverilog result%5#\n",0,
                              32,vlSelf->Core__DOT__cpp_result,
                              16,(IData)(vlSelf->Core__DOT__result));
             }
@@ -97,11 +120,6 @@ VL_INLINE_OPT void VCore___024root___nba_sequent__TOP__0(VCore___024root* vlSelf
                 = vlSelf->Core__DOT__reg_c;
         }
     }
-    vlSelf->Core__DOT__control__DOT__state = ((IData)(vlSelf->reset)
-                                               ? 0U
-                                               : (IData)(vlSelf->Core__DOT__control__DOT__next_state));
-    vlSelf->Core__DOT____Vcellinp__alu__in_b = vlSelf->Core__DOT__registers
-        [(7U & ((IData)(vlSelf->instruction) >> 0xaU))];
     vlSelf->Core__DOT__result = 0U;
     if (((((((((0U == (7U & ((IData)(vlSelf->instruction) 
                              >> 2U))) | (1U == (7U 
@@ -126,7 +144,7 @@ VL_INLINE_OPT void VCore___024root___nba_sequent__TOP__0(VCore___024root* vlSelf
                                                      >> 2U)))
                                                  ? 
                                                 ((IData)(vlSelf->Core__DOT__reg_s) 
-                                                 + (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                 + (IData)(vlSelf->Core__DOT__operand))
                                                  : 
                                                 ((1U 
                                                   == 
@@ -135,7 +153,7 @@ VL_INLINE_OPT void VCore___024root___nba_sequent__TOP__0(VCore___024root* vlSelf
                                                       >> 2U)))
                                                   ? 
                                                  ((IData)(vlSelf->Core__DOT__reg_s) 
-                                                  - (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                  - (IData)(vlSelf->Core__DOT__operand))
                                                   : 
                                                  ((2U 
                                                    == 
@@ -144,7 +162,7 @@ VL_INLINE_OPT void VCore___024root___nba_sequent__TOP__0(VCore___024root* vlSelf
                                                        >> 2U)))
                                                    ? 
                                                   ((IData)(vlSelf->Core__DOT__reg_s) 
-                                                   & (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                   & (IData)(vlSelf->Core__DOT__operand))
                                                    : 
                                                   ((3U 
                                                     == 
@@ -153,7 +171,7 @@ VL_INLINE_OPT void VCore___024root___nba_sequent__TOP__0(VCore___024root* vlSelf
                                                         >> 2U)))
                                                     ? 
                                                    ((IData)(vlSelf->Core__DOT__reg_s) 
-                                                    | (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                    | (IData)(vlSelf->Core__DOT__operand))
                                                     : 
                                                    ((4U 
                                                      == 
@@ -162,7 +180,7 @@ VL_INLINE_OPT void VCore___024root___nba_sequent__TOP__0(VCore___024root* vlSelf
                                                          >> 2U)))
                                                      ? 
                                                     ((IData)(vlSelf->Core__DOT__reg_s) 
-                                                     ^ (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                     ^ (IData)(vlSelf->Core__DOT__operand))
                                                      : 
                                                     ((5U 
                                                       == 
@@ -170,7 +188,7 @@ VL_INLINE_OPT void VCore___024root___nba_sequent__TOP__0(VCore___024root* vlSelf
                                                        & ((IData)(vlSelf->instruction) 
                                                           >> 2U)))
                                                       ? 
-                                                     VL_SHIFTL_III(16,16,16, (IData)(vlSelf->Core__DOT__reg_s), (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                     VL_SHIFTL_III(16,16,16, (IData)(vlSelf->Core__DOT__reg_s), (IData)(vlSelf->Core__DOT__operand))
                                                       : 
                                                      ((6U 
                                                        == 
@@ -178,14 +196,14 @@ VL_INLINE_OPT void VCore___024root___nba_sequent__TOP__0(VCore___024root* vlSelf
                                                         & ((IData)(vlSelf->instruction) 
                                                            >> 2U)))
                                                        ? 
-                                                      VL_SHIFTR_III(16,16,16, (IData)(vlSelf->Core__DOT__reg_s), (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                      VL_SHIFTR_III(16,16,16, (IData)(vlSelf->Core__DOT__reg_s), (IData)(vlSelf->Core__DOT__operand))
                                                        : 
                                                       (((IData)(vlSelf->Core__DOT__reg_s) 
-                                                        > (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                        > (IData)(vlSelf->Core__DOT__operand))
                                                         ? 1U
                                                         : 
                                                        (((IData)(vlSelf->Core__DOT__reg_s) 
-                                                         < (IData)(vlSelf->Core__DOT____Vcellinp__alu__in_b))
+                                                         < (IData)(vlSelf->Core__DOT__operand))
                                                          ? 2U
                                                          : 0U))))))))));
     }
@@ -218,5 +236,6 @@ VL_INLINE_OPT void VCore___024root___nba_sequent__TOP__0(VCore___024root* vlSelf
             vlSelf->Core__DOT__en_c = 1U;
         }
     }
+    vlSelf->new_pc = vlSelf->Core__DOT__pc_immediate;
     vlSelf->d_out = vlSelf->Core__DOT__result;
 }

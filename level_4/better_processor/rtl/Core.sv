@@ -7,16 +7,19 @@ module Core (
     /* verilator lint_off UNUSEDSIGNAL */
     input reset,
     output [15:0] d_out,
+    output [11:0] new_pc,
+    output en_new_pc,
     output done
 );
-    reg [15:0] reg_i=instruction, reg_c, reg_s; 
+    reg [15:0] reg_i = instruction, reg_c, reg_s; 
     reg [15:0] registers [7:0];
+    reg [11:0] pc_immediate;
     reg en_c, en_s;
     int cpp_result;
     reg [2:0] Rx = instruction[15:13], Ry=instruction[12:10], sel = reg_i[4:2];
     reg [7:0] en_reg;
     reg [15:0] result, operand = registers[Ry];
-    reg [1:0] format = instruction[1:0];
+    reg [1:0] format = instruction[1:0], condition = instruction[3:2];
     ControlUnit control(
         .instruction(reg_i),
         .run(run),
@@ -32,25 +35,37 @@ module Core (
             en_c = 0;
             en_s = 0;
             en_reg = 0;
+       end else if(format==2) begin
+            result = 0;
+            if(condition == 0 && reg_c == 0) pc_immediate <= instruction[15:4];
+            if(condition == 1 && reg_c == 1) pc_immediate <= instruction[15:4];
+            if(condition == 2 && reg_c == 2) pc_immediate <= instruction[15:4];
+            //$display("there is a branch, instruction is %h", instruction);
        end else begin
+            pc_immediate <= 0;
             if(en_s) begin
                 reg_s = registers[Rx];
                 if(format == 1) begin
                     operand = {8'b0, instruction[12:5]};
                 end
-                //$display("instruction %h", instruction);
+                //$display("instruction for cpp_result %h", instruction);
                 cpp_result = ALU({16'b0, registers[Rx]}, {16'b0, operand}, {29'b0, sel});
+                
             end
             if(en_c) begin
                 reg_c = result;
-                if(cpp_result != {16'b0, result}) begin //testing 
-                    $display("cpp_result %d", cpp_result);
-                    $display("verilog result", result);
-                end
-                $display("cpp_result %d and verilog result %d", cpp_result, result);
+                
+                // $display("cpp_result %d and verilog result %d", cpp_result, result);
+                //$display("the instruction is %h", instruction);
             end
             if (en_reg[Rx]) begin
-                registers[Rx] = reg_c;             
+                registers[Rx] = reg_c; 
+                if(cpp_result != {16'b0, reg_c}) begin //testing 
+                    $display("Error!!!");
+                    $display("cpp_result %d", cpp_result);
+                    $display("verilog result %d", reg_c);
+                    $display("instruction for cpp_result %h", instruction);
+                end            
             end
        end
     end
@@ -61,5 +76,7 @@ module Core (
         .alu_out(result)
     );
     assign d_out = result;
+    assign new_pc = pc_immediate;
+    assign en_new_pc = (format == 2);
 endmodule
 

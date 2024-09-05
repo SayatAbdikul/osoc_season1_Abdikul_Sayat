@@ -26,8 +26,10 @@ void VFetchUnit___024root__trace_chg_0_sub_0(VFetchUnit___024root* vlSelf, Veril
     bufp->chgBit(oldp+0,(vlSelf->clk));
     bufp->chgBit(oldp+1,(vlSelf->reset));
     bufp->chgBit(oldp+2,(vlSelf->en_pc));
-    bufp->chgSData(oldp+3,(vlSelf->instruction),16);
-    bufp->chgCData(oldp+4,(vlSelf->FetchUnit__DOT__pc),8);
+    bufp->chgSData(oldp+3,(vlSelf->new_pc),12);
+    bufp->chgBit(oldp+4,(vlSelf->en_new_pc));
+    bufp->chgSData(oldp+5,(vlSelf->instruction),16);
+    bufp->chgSData(oldp+6,(vlSelf->FetchUnit__DOT__pc),12);
 }
 
 void VFetchUnit___024root__trace_cleanup(void* voidSelf, VerilatedVcd* /*unused*/) {

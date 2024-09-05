@@ -32,6 +32,8 @@ class alignas(VL_CACHE_LINE_BYTES) VFetchUnit VL_NOT_FINAL : public VerilatedMod
     VL_IN8(&clk,0,0);
     VL_IN8(&reset,0,0);
     VL_IN8(&en_pc,0,0);
+    VL_IN8(&en_new_pc,0,0);
+    VL_IN16(&new_pc,11,0);
     VL_OUT16(&instruction,15,0);
 
     // CELLS

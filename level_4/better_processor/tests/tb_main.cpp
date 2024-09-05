@@ -3,7 +3,7 @@
 #include "verilated_vcd_c.h"
 #include <iostream>
 #include "BetterEmulator.h"
-#define MAX_SIM_TIME 1000
+#define MAX_SIM_TIME 5000
 int main(int argc, char **argv) {
     Verilated::commandArgs(argc, argv);
 
@@ -32,7 +32,6 @@ int main(int argc, char **argv) {
         trace->dump(sim_time);
         sim_time++;
     }
-
     //std::cout << "Number of Tests: " << tests << "\n";
     trace->close();
     delete dut;
