@@ -39,7 +39,7 @@ module ControlUnit (
     end
 
     always @(posedge clk or posedge reset) begin
-        if (reset) begin
+        if (reset || run==0) begin
             state <= 0;
         end else begin
             state <= next_state;

@@ -3,7 +3,7 @@
 #include "verilated_vcd_c.h"
 #include <iostream>
 #include "BetterEmulator.h"
-#define MAX_SIM_TIME 5000
+#define MAX_SIM_TIME 12000
 int main(int argc, char **argv) {
     Verilated::commandArgs(argc, argv);
 

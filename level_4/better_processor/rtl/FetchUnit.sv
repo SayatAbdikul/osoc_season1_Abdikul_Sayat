@@ -16,6 +16,7 @@ module FetchUnit(
     always @(posedge clk or posedge reset) begin
         if (reset) begin
             pc <= 0;
+            instruction <= 0;
         end else if(en_new_pc) begin
             pc <= new_pc;
             instruction <= memory[pc];

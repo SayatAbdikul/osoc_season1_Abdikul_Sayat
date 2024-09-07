@@ -12,7 +12,6 @@ Vtop_module::Vtop_module(VerilatedContext* _vcontextp__, const char* _vcname__)
     , vlSymsp{new Vtop_module__Syms(contextp(), _vcname__, this)}
     , clk{vlSymsp->TOP.clk}
     , reset{vlSymsp->TOP.reset}
-    , run{vlSymsp->TOP.run}
     , done{vlSymsp->TOP.done}
     , d_out{vlSymsp->TOP.d_out}
     , __PVT____024unit{vlSymsp->TOP.__PVT____024unit}
