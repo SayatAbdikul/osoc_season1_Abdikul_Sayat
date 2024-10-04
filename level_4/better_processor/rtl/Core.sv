@@ -42,9 +42,9 @@ module Core (
             if(en_c) begin
                 reg_c = result;
                 cpp_result = ALU({16'b0, registers[Rx]}, {16'b0, operand}, {29'b0, sel});
-                
-                $display("cpp_result %d and verilog result %d", cpp_result, result);
-                $display("the instruction is %h", instruction);
+                $display("Rx = %d\n Ry = %d\n x = %d\n y = %d\n select = %d\n", Rx, Ry, registers[Rx], operand, sel);
+                // $display("cpp_result %d and verilog result %d", cpp_result, result);
+                // $display("the instruction is %h", instruction);
             end
             if (en_reg[Rx]) begin
                 registers[Rx] = reg_c; 
@@ -53,7 +53,8 @@ module Core (
                     $display("cpp_result %d", cpp_result);
                     $display("verilog result %d", reg_c);
                     $display("instruction for cpp_result %b", instruction);
-                end            
+                end    
+                $display("instruction = %d", instruction);        
             end
        end
     end

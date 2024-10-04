@@ -7,12 +7,15 @@
 class BetterEmulator {
 public:
     BetterEmulator();
-    uint16_t Evaluate(uint16_t instruction);
+    void Evaluate();
     uint16_t GetRegisterValue(uint16_t reg_num) const;
-
-private:
-    std::vector<uint16_t> registers_;
+    void MoveInstruction();
+    bool CheckBranchLogic();
+    bool CheckImmediate();
+//private:
+    std::vector<uint16_t> registers_, memory;
     bool done;
+    uint16_t instruction, instruction_index;
     uint16_t reg_inst;
     uint16_t reg_c;
     uint16_t reg_s;

@@ -62,8 +62,9 @@ void Vtop_module___024root__trace_chg_0_sub_0(Vtop_module___024root* vlSelf, Ver
     bufp->chgBit(oldp+28,(vlSelf->reset));
     bufp->chgSData(oldp+29,(vlSelf->d_out),16);
     bufp->chgBit(oldp+30,(vlSelf->done));
-    bufp->chgSData(oldp+31,(vlSelf->top_module__DOT__new_pc),12);
-    bufp->chgCData(oldp+32,(vlSelf->top_module__DOT__core__DOT__en_reg),8);
+    bufp->chgBit(oldp+31,(vlSelf->top_module__DOT__branch_res));
+    bufp->chgSData(oldp+32,(vlSelf->top_module__DOT__new_pc),12);
+    bufp->chgCData(oldp+33,(vlSelf->top_module__DOT__core__DOT__en_reg),8);
 }
 
 void Vtop_module___024root__trace_cleanup(void* voidSelf, VerilatedVcd* /*unused*/) {

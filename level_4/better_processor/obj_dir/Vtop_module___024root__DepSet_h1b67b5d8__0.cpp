@@ -38,7 +38,20 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__1(Vtop_module___024
     Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___nba_sequent__TOP__1\n"); );
     // Body
+    vlSelf->top_module__DOT__branch_res = 0U;
     if ((2U == (3U & (IData)(vlSelf->top_module__DOT__instruction)))) {
+        vlSelf->top_module__DOT__branch_res = 1U;
+        if ((1U & (~ (IData)(((0U == (0xcU & (IData)(vlSelf->top_module__DOT__instruction))) 
+                              & (0U == (IData)(vlSelf->top_module__DOT__core__DOT__result))))))) {
+            if ((1U & (~ (IData)(((4U == (0xcU & (IData)(vlSelf->top_module__DOT__instruction))) 
+                                  & (1U == (IData)(vlSelf->top_module__DOT__core__DOT__result))))))) {
+                if ((1U & (~ (IData)(((8U == (0xcU 
+                                              & (IData)(vlSelf->top_module__DOT__instruction))) 
+                                      & (2U == (IData)(vlSelf->top_module__DOT__core__DOT__result))))))) {
+                    vlSelf->top_module__DOT__branch_res = 0U;
+                }
+            }
+        }
         if ((IData)(((0U == (0xcU & (IData)(vlSelf->top_module__DOT__instruction))) 
                      & (0U == (IData)(vlSelf->top_module__DOT__core__DOT__result))))) {
             vlSelf->top_module__DOT__new_pc = (0xfffU 
@@ -64,7 +77,6 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__2(Vtop_module___024
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___nba_sequent__TOP__2\n"); );
     // Body
     vlSelf->top_module__DOT__instruction = vlSelf->__Vdly__top_module__DOT__instruction;
-    vlSelf->top_module__DOT__branch = (2U == (3U & (IData)(vlSelf->top_module__DOT__instruction)));
     vlSelf->top_module__DOT__core__DOT__en_reg = 0U;
     if ((0U != (IData)(vlSelf->top_module__DOT__core__DOT__control__DOT__state))) {
         if ((1U != (IData)(vlSelf->top_module__DOT__core__DOT__control__DOT__state))) {

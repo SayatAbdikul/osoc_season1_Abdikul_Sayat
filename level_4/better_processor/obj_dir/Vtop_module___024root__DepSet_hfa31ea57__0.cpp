@@ -44,6 +44,9 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024
     // Body
     __Vdly__top_module__DOT__fetch__DOT__pc = vlSelf->top_module__DOT__fetch__DOT__pc;
     vlSelf->__Vdly__top_module__DOT__instruction = vlSelf->top_module__DOT__instruction;
+    if (((IData)(vlSelf->reset) | (2U == (3U & (IData)(vlSelf->top_module__DOT__instruction))))) {
+        vlSelf->top_module__DOT__en_pc = 1U;
+    }
     if (vlSelf->reset) {
         vlSelf->top_module__DOT__core__DOT__en_c = 0U;
         vlSelf->top_module__DOT__core__DOT__en_s = 0U;
@@ -74,14 +77,20 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024
                 = vlSelf->top_module__DOT__core__DOT__result;
             vlSelf->top_module__DOT__core__DOT__cpp_result 
                 = __Vfunc_ALU__0__Vfuncout;
-            VL_WRITEF_NX("cpp_result %11d and verilog result %5#\nthe instruction is %x\n",0,
-                         32,vlSelf->top_module__DOT__core__DOT__cpp_result,
-                         16,(IData)(vlSelf->top_module__DOT__core__DOT__result),
-                         16,vlSelf->top_module__DOT__instruction);
+            VL_WRITEF_NX("Rx = %1#\n Ry = %1#\n x = %5#\n y = %5#\n select = %1#\n\n",0,
+                         3,(7U & ((IData)(vlSelf->top_module__DOT__instruction) 
+                                  >> 0xdU)),3,(7U & 
+                                               ((IData)(vlSelf->top_module__DOT__instruction) 
+                                                >> 0xaU)),
+                         16,vlSelf->top_module__DOT__core__DOT__registers
+                         [(7U & ((IData)(vlSelf->top_module__DOT__instruction) 
+                                 >> 0xdU))],16,vlSelf->top_module__DOT__core__DOT__operand,
+                         3,(7U & ((IData)(vlSelf->top_module__DOT__instruction) 
+                                  >> 2U)));
         }
-        if ((1U & ((IData)(vlSelf->top_module__DOT__core__DOT__en_reg) 
-                   >> (7U & ((IData)(vlSelf->top_module__DOT__instruction) 
-                             >> 0xdU))))) {
+        if (VL_UNLIKELY((1U & ((IData)(vlSelf->top_module__DOT__core__DOT__en_reg) 
+                               >> (7U & ((IData)(vlSelf->top_module__DOT__instruction) 
+                                         >> 0xdU)))))) {
             vlSelf->top_module__DOT__core__DOT__registers[(7U 
                                                            & ((IData)(vlSelf->top_module__DOT__instruction) 
                                                               >> 0xdU))] 
@@ -93,27 +102,29 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024
                              16,(IData)(vlSelf->top_module__DOT__core__DOT__reg_c),
                              16,vlSelf->top_module__DOT__instruction);
             }
+            VL_WRITEF_NX("instruction = %5#\n",0,16,
+                         vlSelf->top_module__DOT__instruction);
         }
     }
+    vlSelf->top_module__DOT__core__DOT__control__DOT__state 
+        = (((IData)(vlSelf->reset) | (2U == (3U & (IData)(vlSelf->top_module__DOT__instruction))))
+            ? 0U : (IData)(vlSelf->top_module__DOT__core__DOT__control__DOT__next_state));
     if (vlSelf->reset) {
         __Vdly__top_module__DOT__fetch__DOT__pc = 0U;
         vlSelf->__Vdly__top_module__DOT__instruction = 0U;
-    } else if (vlSelf->top_module__DOT__branch) {
+    } else if (vlSelf->top_module__DOT__branch_res) {
         vlSelf->__Vdly__top_module__DOT__instruction 
             = vlSelf->top_module__DOT__fetch__DOT__memory
             [vlSelf->top_module__DOT__fetch__DOT__pc];
         __Vdly__top_module__DOT__fetch__DOT__pc = vlSelf->top_module__DOT__new_pc;
     } else if (vlSelf->top_module__DOT__en_pc) {
-        __Vdly__top_module__DOT__fetch__DOT__pc = (0xfffU 
-                                                   & ((IData)(1U) 
-                                                      + (IData)(vlSelf->top_module__DOT__fetch__DOT__pc)));
         vlSelf->__Vdly__top_module__DOT__instruction 
             = vlSelf->top_module__DOT__fetch__DOT__memory
             [vlSelf->top_module__DOT__fetch__DOT__pc];
+        __Vdly__top_module__DOT__fetch__DOT__pc = (0xfffU 
+                                                   & ((IData)(1U) 
+                                                      + (IData)(vlSelf->top_module__DOT__fetch__DOT__pc)));
     }
-    vlSelf->top_module__DOT__core__DOT__control__DOT__state 
-        = (((IData)(vlSelf->reset) | (2U == (3U & (IData)(vlSelf->top_module__DOT__instruction))))
-            ? 0U : (IData)(vlSelf->top_module__DOT__core__DOT__control__DOT__next_state));
     vlSelf->top_module__DOT__fetch__DOT__pc = __Vdly__top_module__DOT__fetch__DOT__pc;
     vlSelf->top_module__DOT__core__DOT__en_s = 0U;
     if ((0U == (IData)(vlSelf->top_module__DOT__core__DOT__control__DOT__state))) {

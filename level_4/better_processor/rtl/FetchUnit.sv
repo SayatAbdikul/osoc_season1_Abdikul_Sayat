@@ -10,7 +10,7 @@ module FetchUnit(
     reg [15:0] memory [4095:0];
 
     initial begin
-        $readmemh("./Instruction_Generator/instructions.txt", memory);
+        $readmemh("/Users/sayat/Documents/GitHub/osoc_season1_Abdikul_Sayat/level_4/better_processor/tests/instructions.txt", memory);
     end
 
     always @(posedge clk or posedge reset) begin
@@ -20,9 +20,12 @@ module FetchUnit(
         end else if(en_new_pc) begin
             pc <= new_pc;
             instruction <= memory[pc];
+            //$display("instruction from fetch unit %d", memory[pc]);
+            //$display("new pc is %d", pc);
         end else if (en_pc) begin
-            pc <= pc + 1;
             instruction <= memory[pc];
+            pc <= pc + 1;
+            //$display("instruction from fetch unit %d", memory[pc]);
         end
     end
 

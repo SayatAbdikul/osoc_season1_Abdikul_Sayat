@@ -5,15 +5,16 @@ module top_module (
     output done
 );
     reg [15:0] instruction, last_alu_result;
-    reg en_pc, en_new_pc, branch;
+    reg en_pc, en_new_pc, branch, branch_res;
     reg [11:0] new_pc;
 
     BranchLogic branch_logic(
         .instruction(instruction), 
         .clk(clk),
         .new_pc(new_pc),
+        .last_alu_result(last_alu_result),
         .branch(branch),
-        .last_alu_result(last_alu_result)
+        .branch_res(branch_res)
     );
     Core core(
         .instruction(instruction),
@@ -26,7 +27,7 @@ module top_module (
     FetchUnit fetch(
             .clk(clk),
             .reset(reset),
-            .en_new_pc(branch),
+            .en_new_pc(branch_res),
             .new_pc(new_pc),
             .en_pc(en_pc),
             .instruction(instruction)

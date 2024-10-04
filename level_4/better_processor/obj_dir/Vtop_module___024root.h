@@ -22,7 +22,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop_module___024root final : public Verilate
     VL_OUT8(done,0,0);
     CData/*0:0*/ top_module__DOT__en_pc;
     CData/*0:0*/ top_module__DOT__en_new_pc;
-    CData/*0:0*/ top_module__DOT__branch;
+    CData/*0:0*/ top_module__DOT__branch_res;
     CData/*0:0*/ top_module__DOT__core__DOT__en_c;
     CData/*0:0*/ top_module__DOT__core__DOT__en_s;
     CData/*7:0*/ top_module__DOT__core__DOT__en_reg;
