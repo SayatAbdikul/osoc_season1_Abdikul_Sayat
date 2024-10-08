@@ -19,7 +19,7 @@ module FetchUnit(
             instruction <= 0;
         end else if(en_new_pc) begin
             pc <= new_pc;
-            instruction <= memory[pc];
+            instruction <= memory[new_pc];
             //$display("instruction from fetch unit %d", memory[pc]);
             //$display("new pc is %d", pc);
         end else if (en_pc) begin

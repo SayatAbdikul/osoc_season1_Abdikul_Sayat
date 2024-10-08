@@ -19,6 +19,10 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop_module___024root final : public Verilate
     // DESIGN SPECIFIC STATE
     VL_IN8(clk,0,0);
     VL_IN8(reset,0,0);
+    VL_OUT8(Rx_val,2,0);
+    VL_OUT8(Ry_val,2,0);
+    VL_OUT8(sel_val,2,0);
+    VL_OUT8(run_val,0,0);
     VL_OUT8(done,0,0);
     CData/*0:0*/ top_module__DOT__en_pc;
     CData/*0:0*/ top_module__DOT__en_new_pc;
@@ -33,15 +37,20 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop_module___024root final : public Verilate
     CData/*0:0*/ __Vtrigprevexpr___TOP__reset__0;
     CData/*0:0*/ __VactContinue;
     VL_OUT16(d_out,15,0);
+    VL_OUT16(x_val,15,0);
+    VL_OUT16(operand_val,15,0);
+    VL_OUT16(instruction_val,15,0);
     SData/*15:0*/ top_module__DOT__instruction;
+    SData/*15:0*/ top_module__DOT__last_alu_result;
     SData/*11:0*/ top_module__DOT__new_pc;
     SData/*15:0*/ top_module__DOT__core__DOT__reg_c;
     SData/*15:0*/ top_module__DOT__core__DOT__reg_s;
     SData/*15:0*/ top_module__DOT__core__DOT__result;
     SData/*15:0*/ top_module__DOT__core__DOT__operand;
     SData/*11:0*/ top_module__DOT__fetch__DOT__pc;
-    SData/*15:0*/ __Vdly__top_module__DOT__instruction;
+    SData/*11:0*/ __Vdly__top_module__DOT__fetch__DOT__pc;
     IData/*31:0*/ top_module__DOT__core__DOT__cpp_result;
+    IData/*31:0*/ top_module__DOT__core__DOT__i;
     IData/*31:0*/ __VactIterCount;
     VlUnpacked<SData/*15:0*/, 8> top_module__DOT__core__DOT__registers;
     VlUnpacked<SData/*15:0*/, 4096> top_module__DOT__fetch__DOT__memory;

@@ -6,7 +6,7 @@
 #include <fstream>
 #include <string>
 #include "BetterEmulator.h"
-#define MAX_SIM_TIME 120
+#define MAX_SIM_TIME 12000
 int main(int argc, char **argv) {
     
     Verilated::commandArgs(argc, argv);
@@ -18,14 +18,14 @@ int main(int argc, char **argv) {
     int sim_time = 0;
     int tests = 0, state=0;
 
-    // Reset the DUT
-    // dut->clk = 0;
-    // dut->reset = 1;
-    // dut->eval(); // Evaluate once with reset active
-    // dut->clk = 1;
-    // dut->eval();
-    // dut->reset = 0; // Release reset
-    // dut->clk = 0;   // Prepare for next clock cycle
+    //Reset the DUT
+    dut->clk = 0;
+    dut->reset = 1;
+    dut->eval(); // Evaluate once with reset active
+    dut->clk = 1;
+    dut->eval();
+    dut->reset = 0; // Release reset
+    dut->clk = 0;   // Prepare for next clock cycle
 
     BetterEmulator emulator;
     //emulator.Evaluate();
@@ -43,6 +43,7 @@ int main(int argc, char **argv) {
             //if(run) emulator.Evaluate();
             if(emulator.reg_c != dut->d_out){
                 std::cout<<"Error!!! emulator result = "<<emulator.reg_c<<" and verilog result = "<<dut->d_out<<"\n";
+                std::cout<<"Simulation time is "<<sim_time<<"\n";
                 trace->close();
                 delete dut;
                 return 0;

@@ -12,8 +12,15 @@ Vtop_module::Vtop_module(VerilatedContext* _vcontextp__, const char* _vcname__)
     , vlSymsp{new Vtop_module__Syms(contextp(), _vcname__, this)}
     , clk{vlSymsp->TOP.clk}
     , reset{vlSymsp->TOP.reset}
+    , Rx_val{vlSymsp->TOP.Rx_val}
+    , Ry_val{vlSymsp->TOP.Ry_val}
+    , sel_val{vlSymsp->TOP.sel_val}
+    , run_val{vlSymsp->TOP.run_val}
     , done{vlSymsp->TOP.done}
     , d_out{vlSymsp->TOP.d_out}
+    , x_val{vlSymsp->TOP.x_val}
+    , operand_val{vlSymsp->TOP.operand_val}
+    , instruction_val{vlSymsp->TOP.instruction_val}
     , __PVT____024unit{vlSymsp->TOP.__PVT____024unit}
     , rootp{&(vlSymsp->TOP)}
 {

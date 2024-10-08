@@ -102,7 +102,7 @@ void BetterEmulator::Evaluate() {
     std::cout<<"emulator Ry = "<<Ry<<"\n";
     std::cout<<"emulator x = "<<registers_[Rx]<<"\n";
     std::cout<<"emulator y = "<<operand<<"\n";
-    std::cout<<"emulator select "<<select<<"\n";
+    //std::cout<<"emulator select "<<select<<"\n";
     reg_c = ALU(registers_[Rx], operand, select);
     std::cout<<"emulator result = "<<reg_c<<"\n";
     //std::cout<<"reg_c is "<<reg_c<<"\n";
