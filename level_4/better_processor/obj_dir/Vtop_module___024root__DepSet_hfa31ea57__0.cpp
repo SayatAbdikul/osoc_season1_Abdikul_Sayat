@@ -42,14 +42,14 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024
     // Body
     vlSelf->__Vdly__top_module__DOT__fetch__DOT__pc 
         = vlSelf->top_module__DOT__fetch__DOT__pc;
-    if ((1U & ((IData)(vlSelf->reset) | (~ (IData)(vlSelf->run_val))))) {
+    if (((IData)(vlSelf->reset) | (2U != (3U & (IData)(vlSelf->top_module__DOT__instruction))))) {
         vlSelf->top_module__DOT__en_pc = 1U;
     }
     if (vlSelf->reset) {
         vlSelf->top_module__DOT__core__DOT__en_c = 0U;
         vlSelf->top_module__DOT__core__DOT__en_s = 0U;
         vlSelf->top_module__DOT__core__DOT__en_reg = 0U;
-    } else if (vlSelf->run_val) {
+    } else if ((2U == (3U & (IData)(vlSelf->top_module__DOT__instruction)))) {
         if (vlSelf->top_module__DOT__core__DOT__en_s) {
             vlSelf->top_module__DOT__core__DOT__reg_s 
                 = vlSelf->top_module__DOT__core__DOT__registers
@@ -107,7 +107,7 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024
         }
     }
     vlSelf->top_module__DOT__core__DOT__control__DOT__state 
-        = ((1U & ((IData)(vlSelf->reset) | (~ (IData)(vlSelf->run_val))))
+        = (((IData)(vlSelf->reset) | (2U != (3U & (IData)(vlSelf->top_module__DOT__instruction))))
             ? 0U : (IData)(vlSelf->top_module__DOT__core__DOT__control__DOT__next_state));
     vlSelf->operand_val = vlSelf->top_module__DOT__core__DOT__operand;
     vlSelf->top_module__DOT__core__DOT__en_s = 0U;

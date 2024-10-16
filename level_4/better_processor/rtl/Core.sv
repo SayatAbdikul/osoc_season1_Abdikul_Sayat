@@ -42,7 +42,7 @@ module Core (
             en_c = 0;
             en_s = 0;
             en_reg = 0;
-       end else if(branch==0) begin
+       end else if(run) begin
             if(en_s) begin
                 reg_s = registers[Rx];
                 operand = registers[Ry]; // here was the error!!!!!!

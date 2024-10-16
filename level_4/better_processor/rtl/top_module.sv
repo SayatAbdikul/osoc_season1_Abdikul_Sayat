@@ -14,7 +14,7 @@ module top_module (
     reg [15:0] instruction, last_alu_result;
     wire [15:0] last_alu;
     wire en_pc, en_new_pc;
-    wire [1:0] branch;
+    wire branch;
     wire branch_res;
     reg [11:0] new_pc;
     always @(posedge clk) begin

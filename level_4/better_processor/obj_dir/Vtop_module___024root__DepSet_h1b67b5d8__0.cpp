@@ -43,7 +43,7 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__1(Vtop_module___024
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___nba_sequent__TOP__1\n"); );
     // Body
     vlSelf->top_module__DOT__core__DOT__result = 0U;
-    if (vlSelf->run_val) {
+    if ((2U == (3U & (IData)(vlSelf->top_module__DOT__instruction)))) {
         if (((((((((0U == (7U & ((IData)(vlSelf->top_module__DOT__instruction) 
                                  >> 2U))) | (1U == 
                                              (7U & 

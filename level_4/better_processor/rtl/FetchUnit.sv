@@ -25,6 +25,7 @@ module FetchUnit(
         end else if (en_pc) begin
             instruction <= memory[pc];
             pc <= pc + 1;
+            //fetch_val = 1;
             //$display("instruction from fetch unit %d", memory[pc]);
         end
     end
