@@ -39,17 +39,19 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024
     // Init
     IData/*31:0*/ __Vfunc_ALU__0__Vfuncout;
     __Vfunc_ALU__0__Vfuncout = 0;
+    CData/*2:0*/ __Vdly__top_module__DOT__fsm__DOT__state;
+    __Vdly__top_module__DOT__fsm__DOT__state = 0;
+    SData/*11:0*/ __Vdly__top_module__DOT__fetch__DOT__current_pc;
+    __Vdly__top_module__DOT__fetch__DOT__current_pc = 0;
     // Body
-    vlSelf->__Vdly__top_module__DOT__fetch__DOT__pc 
-        = vlSelf->top_module__DOT__fetch__DOT__pc;
-    if (((IData)(vlSelf->reset) | (2U != (3U & (IData)(vlSelf->top_module__DOT__instruction))))) {
-        vlSelf->top_module__DOT__en_pc = 1U;
-    }
+    __Vdly__top_module__DOT__fsm__DOT__state = vlSelf->top_module__DOT__fsm__DOT__state;
+    __Vdly__top_module__DOT__fetch__DOT__current_pc 
+        = vlSelf->top_module__DOT__fetch__DOT__current_pc;
     if (vlSelf->reset) {
         vlSelf->top_module__DOT__core__DOT__en_c = 0U;
         vlSelf->top_module__DOT__core__DOT__en_s = 0U;
         vlSelf->top_module__DOT__core__DOT__en_reg = 0U;
-    } else if ((2U == (3U & (IData)(vlSelf->top_module__DOT__instruction)))) {
+    } else if (vlSelf->top_module__DOT__run) {
         if (vlSelf->top_module__DOT__core__DOT__en_s) {
             vlSelf->top_module__DOT__core__DOT__reg_s 
                 = vlSelf->top_module__DOT__core__DOT__registers
@@ -106,23 +108,31 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024
             }
         }
     }
+    if (VL_LIKELY(((IData)(vlSelf->reset) | (IData)(vlSelf->branch_val)))) {
+        __Vdly__top_module__DOT__fsm__DOT__state = 0U;
+    } else {
+        VL_WRITEF_NX("the fsm state is %1#\n",0,3,vlSelf->top_module__DOT__fsm__DOT__state);
+        __Vdly__top_module__DOT__fsm__DOT__state = vlSelf->top_module__DOT__fsm__DOT__next_state;
+    }
+    if (vlSelf->reset) {
+        __Vdly__top_module__DOT__fetch__DOT__current_pc = 0U;
+    } else if (vlSelf->top_module__DOT__branch_res) {
+        __Vdly__top_module__DOT__fetch__DOT__current_pc 
+            = vlSelf->top_module__DOT__new_pc;
+    } else if (vlSelf->top_module__DOT__en_fetch) {
+        __Vdly__top_module__DOT__fetch__DOT__current_pc 
+            = (0xfffU & ((IData)(1U) + (IData)(vlSelf->top_module__DOT__fetch__DOT__current_pc)));
+    }
     vlSelf->top_module__DOT__core__DOT__control__DOT__state 
-        = (((IData)(vlSelf->reset) | (2U != (3U & (IData)(vlSelf->top_module__DOT__instruction))))
+        = ((1U & ((IData)(vlSelf->reset) | (~ (IData)(vlSelf->top_module__DOT__run))))
             ? 0U : (IData)(vlSelf->top_module__DOT__core__DOT__control__DOT__next_state));
     vlSelf->operand_val = vlSelf->top_module__DOT__core__DOT__operand;
-    vlSelf->top_module__DOT__core__DOT__en_s = 0U;
-    if ((0U == (IData)(vlSelf->top_module__DOT__core__DOT__control__DOT__state))) {
-        vlSelf->top_module__DOT__core__DOT__control__DOT__next_state = 1U;
-        vlSelf->top_module__DOT__core__DOT__en_s = 1U;
-    } else {
-        vlSelf->top_module__DOT__core__DOT__control__DOT__next_state 
-            = ((1U == (IData)(vlSelf->top_module__DOT__core__DOT__control__DOT__state))
-                ? 2U : 0U);
-    }
-    vlSelf->top_module__DOT__core__DOT__en_c = 0U;
-    if ((0U != (IData)(vlSelf->top_module__DOT__core__DOT__control__DOT__state))) {
-        if ((1U == (IData)(vlSelf->top_module__DOT__core__DOT__control__DOT__state))) {
-            vlSelf->top_module__DOT__core__DOT__en_c = 1U;
-        }
-    }
+    vlSelf->top_module__DOT__fsm__DOT__state = __Vdly__top_module__DOT__fsm__DOT__state;
+    vlSelf->top_module__DOT__fetch__DOT__current_pc 
+        = __Vdly__top_module__DOT__fetch__DOT__current_pc;
+    vlSelf->top_module__DOT__pc = vlSelf->top_module__DOT__fetch__DOT__current_pc;
+    vlSelf->instruction_val = vlSelf->top_module__DOT__memory__DOT__memory
+        [vlSelf->top_module__DOT__fetch__DOT__current_pc];
+    vlSelf->branch_val = (2U == (3U & vlSelf->top_module__DOT__memory__DOT__memory
+                                 [vlSelf->top_module__DOT__fetch__DOT__current_pc]));
 }

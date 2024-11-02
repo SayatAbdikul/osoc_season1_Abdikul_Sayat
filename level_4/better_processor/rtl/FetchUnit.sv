@@ -4,30 +4,26 @@ module FetchUnit(
     input en_pc,
     input [11:0] new_pc,
     input en_new_pc,
-    output reg [15:0] instruction
+    output [11:0] pc
 );
-    reg [11:0] pc;
-    reg [15:0] memory [4095:0];
-
+ // there is some work to do
+    reg [11:0] current_pc;
     initial begin
-        $readmemh("/Users/sayat/Documents/GitHub/osoc_season1_Abdikul_Sayat/level_4/better_processor/tests/instructions.txt", memory);
+        current_pc = -1;
     end
-
     always @(posedge clk or posedge reset) begin
         if (reset) begin
-            pc <= 0;
-            instruction <= 0;
+            current_pc <= 0;
         end else if(en_new_pc) begin
-            pc <= new_pc;
-            instruction <= memory[new_pc];
+            current_pc <= new_pc;
+            //instruction <= memory[new_pc];
             //$display("instruction from fetch unit %d", memory[pc]);
             //$display("new pc is %d", pc);
         end else if (en_pc) begin
-            instruction <= memory[pc];
-            pc <= pc + 1;
+            current_pc <= current_pc + 1;
             //fetch_val = 1;
             //$display("instruction from fetch unit %d", memory[pc]);
         end
     end
-
+    assign pc = current_pc;
 endmodule

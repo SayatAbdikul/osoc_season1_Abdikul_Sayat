@@ -86,7 +86,7 @@ void BetterEmulator::Evaluate() {
         return;  // Avoid segmentation fault
     }
     instruction = memory[instruction_index];
-    std::cout<<"emulator's current instruction "<<instruction<<"\n";
+    std::cout<<"emulator's current instruction "<<std::hex<<instruction<<"\n";
     if(CheckBranchLogic()) {
         MoveInstruction();
         std::cout<<"BRANCH!!! current instruction is "<<instruction<<"\n";

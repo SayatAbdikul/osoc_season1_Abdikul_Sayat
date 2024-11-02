@@ -13,3 +13,23 @@ extern const VlWide<26>/*831:0*/ Vtop_module__ConstPool__CONST_hb405f07f_0 = {{
     0x74732f47, 0x756d656e, 0x2f446f63, 0x61796174,
     0x72732f73, 0x2f557365
 }};
+
+extern const VlUnpacked<CData/*0:0*/, 8> Vtop_module__ConstPool__TABLE_h4f20fe51_0 = {{
+    0x00U, 0x00U, 0x00U, 0x01U, 0x01U, 0x01U, 0x00U, 0x00U
+}};
+
+extern const VlUnpacked<CData/*0:0*/, 8> Vtop_module__ConstPool__TABLE_h586c1380_0 = {{
+    0x00U, 0x01U, 0x00U, 0x00U, 0x00U, 0x00U, 0x00U, 0x00U
+}};
+
+extern const VlUnpacked<CData/*0:0*/, 8> Vtop_module__ConstPool__TABLE_h81049ecd_0 = {{
+    0x00U, 0x00U, 0x01U, 0x00U, 0x00U, 0x00U, 0x00U, 0x00U
+}};
+
+extern const VlUnpacked<CData/*2:0*/, 8> Vtop_module__ConstPool__TABLE_hb8412cc7_0 = {{
+    0x01U, 0x02U, 0x03U, 0x04U, 0x05U, 0x00U, 0x00U, 0x00U
+}};
+
+extern const VlUnpacked<CData/*0:0*/, 8> Vtop_module__ConstPool__TABLE_hc129fa19_0 = {{
+    0x01U, 0x00U, 0x00U, 0x00U, 0x00U, 0x00U, 0x00U, 0x00U
+}};

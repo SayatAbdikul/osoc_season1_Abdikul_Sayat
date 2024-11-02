@@ -38,12 +38,12 @@ int main(int argc, char **argv) {
         if(dut->done && dut->clk == 0){
             //int branch = emulator.CheckBranchLogic();
             emulator.Evaluate();
-            std::cout<<" and verilog result = "<<dut->d_out<<"\n";
+            std::cout<<" and verilog result = "<<std::hex<<dut->d_out<<"\n";
             //while(branch) branch = emulator.CheckBranchLogic(), emulator.Evaluate();
             //if(run) emulator.Evaluate();
             if(emulator.reg_c != dut->d_out){
-                std::cout<<"Error!!! emulator result = "<<emulator.reg_c<<" and verilog result = "<<dut->d_out<<"\n";
-                std::cout<<"Simulation time is "<<sim_time<<"\n";
+                std::cout<<"Error!!! emulator result = "<<std::hex<<emulator.reg_c<<" and verilog result = "<<dut->d_out<<"\n";
+                std::cout<<"Simulation time is "<<std::hex<<sim_time<<"\n";
                 trace->close();
                 delete dut;
                 return 0;

@@ -20,17 +20,23 @@ module ControlUnit (
 
         case (state)
             0: begin
-                en_s = 1;                
-                next_state = 1;          
+                next_state = 1;
+                $display("START!!!");
             end
             1: begin
-                en_c = 1;                
-                next_state = 2;         
+                en_s = 1;                
+                next_state = 2;       
             end
             2: begin
+                en_c = 1;                
+                next_state = 3;   
+      
+            end
+            3: begin
                 en_reg[Rx] = 1;          
-                done = 1;                
+                done = 1;
                 next_state = 0;          
+                $display("DONE!!!");                
             end
             default: begin
                 next_state = 0;         
@@ -41,9 +47,10 @@ module ControlUnit (
     always @(posedge clk or posedge reset) begin
         if (reset || run==0) begin
             state <= 0;
-            done = 1;
         end else begin
             state <= next_state;
+            // $display("the state is %d", state);
+            // $display("the run is %d", run);
         end
     end
 endmodule
