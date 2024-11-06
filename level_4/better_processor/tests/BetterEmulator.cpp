@@ -47,7 +47,6 @@ BetterEmulator::BetterEmulator() : registers_(8), instruction(0), instruction_in
         std::cerr << "Error: Unable to open file." << std::endl;
         return;
     }
-    memory.push_back(0);
     std::string hexStr;
 
     while (infile >> hexStr) { 

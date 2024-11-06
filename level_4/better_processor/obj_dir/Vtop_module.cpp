@@ -22,6 +22,7 @@ Vtop_module::Vtop_module(VerilatedContext* _vcontextp__, const char* _vcname__)
     , x_val{vlSymsp->TOP.x_val}
     , operand_val{vlSymsp->TOP.operand_val}
     , instruction_val{vlSymsp->TOP.instruction_val}
+    , pc_val{vlSymsp->TOP.pc_val}
     , __PVT____024unit{vlSymsp->TOP.__PVT____024unit}
     , rootp{&(vlSymsp->TOP)}
 {

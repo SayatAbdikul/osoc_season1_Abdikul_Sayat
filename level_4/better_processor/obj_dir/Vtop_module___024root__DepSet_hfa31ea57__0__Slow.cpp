@@ -16,6 +16,14 @@ VL_ATTR_COLD void Vtop_module___024root___eval_triggers__stl(Vtop_module___024ro
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___eval_triggers__stl\n"); );
     // Body
     vlSelf->__VstlTriggered.set(0U, (IData)(vlSelf->__VstlFirstIteration));
+    vlSelf->__VstlTriggered.set(1U, ((IData)(vlSelf->top_module__DOT__en_memory) 
+                                     != (IData)(vlSelf->__Vtrigprevexpr___TOP__top_module__DOT__en_memory__0)));
+    vlSelf->__Vtrigprevexpr___TOP__top_module__DOT__en_memory__0 
+        = vlSelf->top_module__DOT__en_memory;
+    if (VL_UNLIKELY((1U & (~ (IData)(vlSelf->__VstlDidInit))))) {
+        vlSelf->__VstlDidInit = 1U;
+        vlSelf->__VstlTriggered.set(1U, 1U);
+    }
 #ifdef VL_DEBUG
     if (VL_UNLIKELY(vlSymsp->_vm_contextp__->debug())) {
         Vtop_module___024root___dump_triggers__stl(vlSelf);

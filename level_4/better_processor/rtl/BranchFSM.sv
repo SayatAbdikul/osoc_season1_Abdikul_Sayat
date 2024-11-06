@@ -9,7 +9,7 @@ module BranchFSM(
     output reg en_memory
 );
     reg [2:0] state, next_state;  
-    parameter IDLE = 0, CHECK_BRANCH = 1, FETCH = 2, CORE_START = 3, CORE=4, CORE_END = 5;
+    parameter IDLE = 0, CHECK_BRANCH = 1, FETCH = 2, CORE_START = 3, CORE_1=4, CORE_2 = 5, CORE_END = 6;
 
     always @(*) begin
         run = 0;
@@ -28,13 +28,17 @@ module BranchFSM(
             FETCH : begin
                 next_state = CORE_START;
                 en_fetch = 1;
-
+                if(branch) next_state = IDLE;
             end
             CORE_START : begin
-                next_state = CORE;
+                next_state = CORE_1;
                 run = 1;
             end
-            CORE : begin
+            CORE_1 : begin
+                next_state = CORE_2;
+                run = 1;
+            end
+            CORE_2 : begin
                 next_state = CORE_END;
                 run = 1;
             end
@@ -47,7 +51,7 @@ module BranchFSM(
     end
 
     always @(posedge clk or posedge reset) begin
-        if (reset || branch) begin
+        if (reset) begin
             state <= 0;
         end else begin
             state <= next_state;

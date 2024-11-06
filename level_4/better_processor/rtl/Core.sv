@@ -5,6 +5,7 @@ module Core (
     input run,
     input reset,
     input branch_res,
+    output [15:0] reg_c_out,
     output [15:0] d_out,
     output [2:0] Rx_val,
     output [2:0] Ry_val,
@@ -49,14 +50,14 @@ module Core (
                 if(format == 1) begin
                     operand = {8'b0, instruction[12:5]};
                 end
-                //$display("instruction for cpp_result %h", instruction);
+                //$display("instruction in design %h", instruction);
                 
             end
             if(en_c) begin
                 reg_c = result;
                
                 cpp_result = ALU({16'b0, registers[Rx]}, {16'b0, operand}, {29'b0, sel});
-                $display("Rx = %d\n Ry = %d\n x = %d\n y = %d\n select = %d\n", Rx, Ry, registers[Rx], operand, sel);
+                $display("Rx = %h\n Ry = %h\n x = %h\n y = %h\n select = %h\n", Rx, Ry, registers[Rx], operand, sel);
                 // $display("cpp_result %d and verilog result %d", cpp_result, result);
                 // $display("the instruction is %h", instruction);
             end
@@ -80,6 +81,7 @@ module Core (
         .run(run),
         .alu_out(result)
     );
+    assign reg_c_out = reg_c;
     assign Rx_val = Rx;
     assign Ry_val = Ry;
     assign x_val = registers[Rx];

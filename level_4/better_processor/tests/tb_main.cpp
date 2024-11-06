@@ -6,7 +6,7 @@
 #include <fstream>
 #include <string>
 #include "BetterEmulator.h"
-#define MAX_SIM_TIME 12000
+#define MAX_SIM_TIME 150000
 int main(int argc, char **argv) {
     
     Verilated::commandArgs(argc, argv);
@@ -51,6 +51,7 @@ int main(int argc, char **argv) {
             //std::cout<<"emulator instruction = "<<emulator.instruction<<"\n";
         }
     }
+    std::cout<<"Everything is ok, the simulation time is "<<sim_time;
     trace->close();
     delete dut;
     return 0;

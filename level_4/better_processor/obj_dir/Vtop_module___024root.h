@@ -39,18 +39,23 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop_module___024root final : public Verilate
     CData/*7:0*/ top_module__DOT__core__DOT__en_reg;
     CData/*1:0*/ top_module__DOT__core__DOT__control__DOT__state;
     CData/*1:0*/ top_module__DOT__core__DOT__control__DOT__next_state;
+    CData/*0:0*/ __Vtrigprevexpr___TOP__top_module__DOT__en_memory__0;
+    CData/*0:0*/ __VstlDidInit;
     CData/*0:0*/ __VstlFirstIteration;
+    CData/*0:0*/ __Vtrigprevexpr___TOP__top_module__DOT__en_memory__1;
     CData/*0:0*/ __Vtrigprevexpr___TOP__clk__0;
     CData/*0:0*/ __Vtrigprevexpr___TOP__reset__0;
+    CData/*0:0*/ __VactDidInit;
     CData/*0:0*/ __VactContinue;
     VL_OUT16(d_out,15,0);
     VL_OUT16(x_val,15,0);
     VL_OUT16(operand_val,15,0);
     VL_OUT16(instruction_val,15,0);
-    SData/*15:0*/ top_module__DOT__instruction;
-    SData/*15:0*/ top_module__DOT__last_alu_result;
+    VL_OUT16(pc_val,11,0);
+    SData/*15:0*/ top_module__DOT__last_alu;
     SData/*11:0*/ top_module__DOT__pc;
     SData/*11:0*/ top_module__DOT__new_pc;
+    SData/*11:0*/ top_module__DOT__memory__DOT__current_pc;
     SData/*11:0*/ top_module__DOT__fetch__DOT__current_pc;
     SData/*15:0*/ top_module__DOT__core__DOT__reg_c;
     SData/*15:0*/ top_module__DOT__core__DOT__reg_s;
@@ -61,10 +66,10 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop_module___024root final : public Verilate
     IData/*31:0*/ __VactIterCount;
     VlUnpacked<SData/*15:0*/, 4096> top_module__DOT__memory__DOT__memory;
     VlUnpacked<SData/*15:0*/, 8> top_module__DOT__core__DOT__registers;
-    VlUnpacked<CData/*0:0*/, 3> __Vm_traceActivity;
-    VlTriggerVec<1> __VstlTriggered;
-    VlTriggerVec<2> __VactTriggered;
-    VlTriggerVec<2> __VnbaTriggered;
+    VlUnpacked<CData/*0:0*/, 4> __Vm_traceActivity;
+    VlTriggerVec<2> __VstlTriggered;
+    VlTriggerVec<3> __VactTriggered;
+    VlTriggerVec<3> __VnbaTriggered;
 
     // INTERNAL VARIABLES
     Vtop_module__Syms* const vlSymsp;

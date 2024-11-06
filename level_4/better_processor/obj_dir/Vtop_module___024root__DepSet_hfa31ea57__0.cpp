@@ -15,14 +15,22 @@ void Vtop_module___024root___eval_triggers__act(Vtop_module___024root* vlSelf) {
     Vtop_module__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vtop_module___024root___eval_triggers__act\n"); );
     // Body
-    vlSelf->__VactTriggered.set(0U, ((IData)(vlSelf->clk) 
-                                     & (~ (IData)(vlSelf->__Vtrigprevexpr___TOP__clk__0))));
+    vlSelf->__VactTriggered.set(0U, ((IData)(vlSelf->top_module__DOT__en_memory) 
+                                     != (IData)(vlSelf->__Vtrigprevexpr___TOP__top_module__DOT__en_memory__1)));
     vlSelf->__VactTriggered.set(1U, (((IData)(vlSelf->clk) 
                                       & (~ (IData)(vlSelf->__Vtrigprevexpr___TOP__clk__0))) 
                                      | ((IData)(vlSelf->reset) 
                                         & (~ (IData)(vlSelf->__Vtrigprevexpr___TOP__reset__0)))));
+    vlSelf->__VactTriggered.set(2U, ((IData)(vlSelf->clk) 
+                                     & (~ (IData)(vlSelf->__Vtrigprevexpr___TOP__clk__0))));
+    vlSelf->__Vtrigprevexpr___TOP__top_module__DOT__en_memory__1 
+        = vlSelf->top_module__DOT__en_memory;
     vlSelf->__Vtrigprevexpr___TOP__clk__0 = vlSelf->clk;
     vlSelf->__Vtrigprevexpr___TOP__reset__0 = vlSelf->reset;
+    if (VL_UNLIKELY((1U & (~ (IData)(vlSelf->__VactDidInit))))) {
+        vlSelf->__VactDidInit = 1U;
+        vlSelf->__VactTriggered.set(0U, 1U);
+    }
 #ifdef VL_DEBUG
     if (VL_UNLIKELY(vlSymsp->_vm_contextp__->debug())) {
         Vtop_module___024root___dump_triggers__act(vlSelf);
@@ -55,15 +63,15 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024
         if (vlSelf->top_module__DOT__core__DOT__en_s) {
             vlSelf->top_module__DOT__core__DOT__reg_s 
                 = vlSelf->top_module__DOT__core__DOT__registers
-                [(7U & ((IData)(vlSelf->top_module__DOT__instruction) 
+                [(7U & ((IData)(vlSelf->instruction_val) 
                         >> 0xdU))];
             vlSelf->top_module__DOT__core__DOT__operand 
                 = vlSelf->top_module__DOT__core__DOT__registers
-                [(7U & ((IData)(vlSelf->top_module__DOT__instruction) 
+                [(7U & ((IData)(vlSelf->instruction_val) 
                         >> 0xaU))];
-            if ((1U == (3U & (IData)(vlSelf->top_module__DOT__instruction)))) {
+            if ((1U == (3U & (IData)(vlSelf->instruction_val)))) {
                 vlSelf->top_module__DOT__core__DOT__operand 
-                    = (0xffU & ((IData)(vlSelf->top_module__DOT__instruction) 
+                    = (0xffU & ((IData)(vlSelf->instruction_val) 
                                 >> 5U));
             }
         }
@@ -72,31 +80,31 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024
                                                                    vlSelf->top_module__DOT__core__DOT__registers
                                                                    [
                                                                    (7U 
-                                                                    & ((IData)(vlSelf->top_module__DOT__instruction) 
+                                                                    & ((IData)(vlSelf->instruction_val) 
                                                                        >> 0xdU))], vlSelf->top_module__DOT__core__DOT__operand, 
                                                                    (7U 
-                                                                    & ((IData)(vlSelf->top_module__DOT__instruction) 
+                                                                    & ((IData)(vlSelf->instruction_val) 
                                                                        >> 2U)), __Vfunc_ALU__0__Vfuncout);
             vlSelf->top_module__DOT__core__DOT__reg_c 
                 = vlSelf->top_module__DOT__core__DOT__result;
             vlSelf->top_module__DOT__core__DOT__cpp_result 
                 = __Vfunc_ALU__0__Vfuncout;
-            VL_WRITEF_NX("Rx = %1#\n Ry = %1#\n x = %5#\n y = %5#\n select = %1#\n\n",0,
-                         3,(7U & ((IData)(vlSelf->top_module__DOT__instruction) 
+            VL_WRITEF_NX("Rx = %x\n Ry = %x\n x = %x\n y = %x\n select = %x\n\n",0,
+                         3,(7U & ((IData)(vlSelf->instruction_val) 
                                   >> 0xdU)),3,(7U & 
-                                               ((IData)(vlSelf->top_module__DOT__instruction) 
+                                               ((IData)(vlSelf->instruction_val) 
                                                 >> 0xaU)),
                          16,vlSelf->top_module__DOT__core__DOT__registers
-                         [(7U & ((IData)(vlSelf->top_module__DOT__instruction) 
+                         [(7U & ((IData)(vlSelf->instruction_val) 
                                  >> 0xdU))],16,vlSelf->top_module__DOT__core__DOT__operand,
-                         3,(7U & ((IData)(vlSelf->top_module__DOT__instruction) 
+                         3,(7U & ((IData)(vlSelf->instruction_val) 
                                   >> 2U)));
         }
         if ((1U & ((IData)(vlSelf->top_module__DOT__core__DOT__en_reg) 
-                   >> (7U & ((IData)(vlSelf->top_module__DOT__instruction) 
+                   >> (7U & ((IData)(vlSelf->instruction_val) 
                              >> 0xdU))))) {
             vlSelf->top_module__DOT__core__DOT__registers[(7U 
-                                                           & ((IData)(vlSelf->top_module__DOT__instruction) 
+                                                           & ((IData)(vlSelf->instruction_val) 
                                                               >> 0xdU))] 
                 = vlSelf->top_module__DOT__core__DOT__reg_c;
             if (VL_UNLIKELY((vlSelf->top_module__DOT__core__DOT__cpp_result 
@@ -104,11 +112,11 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024
                 VL_WRITEF_NX("Error!!!\ncpp_result %11d\nverilog result %5#\ninstruction for cpp_result %b\n",0,
                              32,vlSelf->top_module__DOT__core__DOT__cpp_result,
                              16,(IData)(vlSelf->top_module__DOT__core__DOT__reg_c),
-                             16,vlSelf->top_module__DOT__instruction);
+                             16,vlSelf->instruction_val);
             }
         }
     }
-    if (VL_LIKELY(((IData)(vlSelf->reset) | (IData)(vlSelf->branch_val)))) {
+    if (VL_LIKELY(vlSelf->reset)) {
         __Vdly__top_module__DOT__fsm__DOT__state = 0U;
     } else {
         VL_WRITEF_NX("the fsm state is %1#\n",0,3,vlSelf->top_module__DOT__fsm__DOT__state);
@@ -118,7 +126,8 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024
         __Vdly__top_module__DOT__fetch__DOT__current_pc = 0U;
     } else if (vlSelf->top_module__DOT__branch_res) {
         __Vdly__top_module__DOT__fetch__DOT__current_pc 
-            = vlSelf->top_module__DOT__new_pc;
+            = (0xfffU & ((IData)(vlSelf->top_module__DOT__new_pc) 
+                         - (IData)(1U)));
     } else if (vlSelf->top_module__DOT__en_fetch) {
         __Vdly__top_module__DOT__fetch__DOT__current_pc 
             = (0xfffU & ((IData)(1U) + (IData)(vlSelf->top_module__DOT__fetch__DOT__current_pc)));
@@ -130,9 +139,5 @@ VL_INLINE_OPT void Vtop_module___024root___nba_sequent__TOP__0(Vtop_module___024
     vlSelf->top_module__DOT__fsm__DOT__state = __Vdly__top_module__DOT__fsm__DOT__state;
     vlSelf->top_module__DOT__fetch__DOT__current_pc 
         = __Vdly__top_module__DOT__fetch__DOT__current_pc;
-    vlSelf->top_module__DOT__pc = vlSelf->top_module__DOT__fetch__DOT__current_pc;
-    vlSelf->instruction_val = vlSelf->top_module__DOT__memory__DOT__memory
-        [vlSelf->top_module__DOT__fetch__DOT__current_pc];
-    vlSelf->branch_val = (2U == (3U & vlSelf->top_module__DOT__memory__DOT__memory
-                                 [vlSelf->top_module__DOT__fetch__DOT__current_pc]));
+    vlSelf->pc_val = vlSelf->top_module__DOT__fetch__DOT__current_pc;
 }

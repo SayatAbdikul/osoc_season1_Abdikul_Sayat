@@ -10,20 +10,20 @@ module top_module (
     output [15:0] instruction_val,
     output branch_val,
     output run_val,
-    output done
+    output done,
+    output [11:0] pc_val
 );
     reg [15:0] instruction, last_alu_result;
     wire [15:0] last_alu;
     wire en_pc, en_new_pc;
     wire branch;
+    /* verilator lint_off UNOPTFLAT */
     reg run, en_branch, en_fetch, en_memory;
+    /* verilator lint_on UNOPTFLAT */
     wire branch_res;
     reg [11:0] pc, new_pc;
     initial begin
         pc = 0;
-    end
-    always @(posedge clk) begin
-        last_alu_result <= last_alu;
     end
     // controls stages
     BranchFSM fsm(
@@ -69,7 +69,8 @@ module top_module (
         .run(run),
         .branch_res(branch_res),
         .reset(reset),
-        .d_out(last_alu),
+        .reg_c_out(last_alu_result),
+        .d_out(d_out),
         .done(done),
         .Rx_val(Rx_val),
         .Ry_val(Ry_val),
@@ -78,8 +79,8 @@ module top_module (
         .sel_val(sel_val)
     );
     assign run_val = run;
-    assign d_out = last_alu_result;
     assign instruction_val = instruction;
     assign branch_val = branch;
+    assign pc_val = pc;
 endmodule
 

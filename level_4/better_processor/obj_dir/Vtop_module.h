@@ -44,6 +44,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vtop_module VL_NOT_FINAL : public VerilatedMo
     VL_OUT16(&x_val,15,0);
     VL_OUT16(&operand_val,15,0);
     VL_OUT16(&instruction_val,15,0);
+    VL_OUT16(&pc_val,11,0);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.
