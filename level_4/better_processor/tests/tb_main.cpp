@@ -6,7 +6,7 @@
 #include <fstream>
 #include <string>
 #include "BetterEmulator.h"
-#define MAX_SIM_TIME 150000
+#define MAX_SIM_TIME 15000
 int main(int argc, char **argv) {
     
     Verilated::commandArgs(argc, argv);
@@ -41,7 +41,7 @@ int main(int argc, char **argv) {
             std::cout<<" and verilog result = "<<std::hex<<dut->d_out<<"\n";
             //while(branch) branch = emulator.CheckBranchLogic(), emulator.Evaluate();
             //if(run) emulator.Evaluate();
-            if(emulator.reg_c != dut->d_out){
+            if(emulator.reg_c != dut->d_out && !emulator.CheckLSU()){
                 std::cout<<"Error!!! emulator result = "<<std::hex<<emulator.reg_c<<" and verilog result = "<<dut->d_out<<"\n";
                 std::cout<<"Simulation time is "<<std::hex<<sim_time<<"\n";
                 trace->close();

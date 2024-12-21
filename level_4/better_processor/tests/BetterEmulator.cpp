@@ -125,6 +125,7 @@ void BetterEmulator::Evaluate() {
         bool l_s = getRange(2, 2, instruction);
         if(l_s) memory[Ry] = registers_[Rx];
         else registers_[Rx] = memory[Ry];
+        return;
     }
     std::cout<<"emulator Rx = "<<Rx<<"\n";
     std::cout<<"emulator Ry = "<<Ry<<"\n";

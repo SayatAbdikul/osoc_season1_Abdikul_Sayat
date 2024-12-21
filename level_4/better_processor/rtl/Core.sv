@@ -12,8 +12,13 @@ module Core (
     output [2:0] sel_val,
     output [15:0] x_val,
     output [15:0] operand_val,
+    output [1:0] format_val,
     output done
 );
+    reg [15:0] memory [7:0];
+    initial begin
+        $readmemh("/Users/sayat/Documents/GitHub/osoc_season1_Abdikul_Sayat/level_4/better_processor/rtl/Memory.txt", memory);
+    end
     reg [15:0] reg_i = instruction, reg_c, reg_s; 
     reg [15:0] registers [7:0];
     reg en_c, en_s;
@@ -51,23 +56,31 @@ module Core (
                     operand = {8'b0, instruction[12:5]};
                 end
                 //$display("instruction in design %h", instruction);
-                
             end
             if(en_c) begin
                 reg_c = result;
-               
+                // load/store handling part
+                if(format == 3) begin
+                    if(reg_i[2] == 0) begin
+                        registers[Rx] = memory[Ry];
+                    end else begin
+                        memory[Ry] = registers[Rx];
+                    end
+                end
                 cpp_result = ALU({16'b0, registers[Rx]}, {16'b0, operand}, {29'b0, sel});
-                $display("Rx = %h\n Ry = %h\n x = %h\n y = %h\n select = %h\n", Rx, Ry, registers[Rx], operand, sel);
+                // $display("Rx = %h\n Ry = %h\n x = %h\n y = %h\n select = %h\n", Rx, Ry, registers[Rx], operand, sel);
                 // $display("cpp_result %d and verilog result %d", cpp_result, result);
                 // $display("the instruction is %h", instruction);
             end
             if (en_reg[Rx]) begin
-                registers[Rx] = reg_c; 
-                if(cpp_result != {16'b0, reg_c}) begin //testing 
-                    $display("Error!!!");
-                    $display("cpp_result %d", cpp_result);
-                    $display("verilog result %d", reg_c);
-                    $display("instruction for cpp_result %b", instruction);
+                if(format != 3) begin
+                    registers[Rx] = reg_c; 
+                    if(cpp_result != {16'b0, reg_c}) begin //testing 
+                        $display("Error!!!");
+                        $display("cpp_result %d", cpp_result);
+                        $display("verilog result %d", reg_c);
+                        $display("instruction for cpp_result %b", instruction);
+                    end
                 end    
                 //$display("instruction = %d", instruction);        
             end
@@ -87,6 +100,7 @@ module Core (
     assign x_val = registers[Rx];
     assign operand_val = operand;
     assign sel_val = sel;
+    assign format_val = format;
     assign d_out = result;
 endmodule
 

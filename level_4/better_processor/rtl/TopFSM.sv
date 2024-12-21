@@ -1,4 +1,4 @@
-module BranchFSM(
+module TopFSM(
     input clk,
     input reset,
     input done,
@@ -9,7 +9,7 @@ module BranchFSM(
     output reg en_memory
 );
     reg [2:0] state, next_state;  
-    parameter IDLE = 0, CHECK_BRANCH = 1, FETCH = 2, CORE_START = 3, CORE_1=4, CORE_2 = 5, CORE_END = 6;
+    parameter IDLE = 0, CHECK_BRANCH = 1, FETCH = 2, EXEC_START = 3, EXEC_1=4, EXEC_2 = 5, EXEC_END = 6;
 
     always @(*) begin
         run = 0;
@@ -26,23 +26,23 @@ module BranchFSM(
                 en_branch = 1;
             end
             FETCH : begin
-                next_state = CORE_START;
+                next_state = EXEC_START;
                 en_fetch = 1;
                 if(branch) next_state = IDLE;
             end
-            CORE_START : begin
-                next_state = CORE_1;
+            EXEC_START : begin
+                next_state = EXEC_1;
                 run = 1;
             end
-            CORE_1 : begin
-                next_state = CORE_2;
+            EXEC_1 : begin
+                next_state = EXEC_2;
                 run = 1;
             end
-            CORE_2 : begin
-                next_state = CORE_END;
+            EXEC_2 : begin
+                next_state = EXEC_END;
                 run = 1;
             end
-            CORE_END: begin
+            EXEC_END: begin
                 next_state = IDLE;
                 run = 1;
             end

@@ -8,6 +8,7 @@ module top_module (
     output [15:0] x_val,
     output [15:0] operand_val,
     output [15:0] instruction_val,
+    output [1:0] format_val,
     output branch_val,
     output run_val,
     output done,
@@ -18,7 +19,7 @@ module top_module (
     wire en_pc, en_new_pc;
     wire branch;
     /* verilator lint_off UNOPTFLAT */
-    reg run, en_branch, en_fetch, en_memory;
+    reg run, en_branch, en_fetch, en_memory, en_ls;
     /* verilator lint_on UNOPTFLAT */
     wire branch_res;
     reg [11:0] pc, new_pc;
@@ -26,7 +27,7 @@ module top_module (
         pc = 0;
     end
     // controls stages
-    BranchFSM fsm(
+    TopFSM fsm(
         .clk(clk),
         .reset(reset),
         .done(en_pc),
@@ -76,6 +77,7 @@ module top_module (
         .Ry_val(Ry_val),
         .x_val(x_val),
         .operand_val(operand_val),
+        .format_val(format_val),
         .sel_val(sel_val)
     );
     assign run_val = run;
