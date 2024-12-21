@@ -12,8 +12,9 @@ public:
     void MoveInstruction();
     bool CheckBranchLogic();
     bool CheckImmediate();
+    bool CheckLSU();
 //private:
-    std::vector<uint16_t> registers_, memory;
+    std::vector<uint16_t> registers_, instructions_memory, memory;
     bool done;
     uint16_t instruction, instruction_index;
     uint16_t reg_inst;

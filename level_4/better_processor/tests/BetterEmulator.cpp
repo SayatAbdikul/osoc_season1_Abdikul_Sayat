@@ -44,12 +44,32 @@ BetterEmulator::BetterEmulator() : registers_(8), instruction(0), instruction_in
     // std::ifstream infile("./instructions.txt"); 
     std::ifstream infile("/Users/sayat/Documents/GitHub/osoc_season1_Abdikul_Sayat/level_4/better_processor/tests/instructions.txt"); 
     if (!infile.is_open()) {
-        std::cerr << "Error: Unable to open file." << std::endl;
+        std::cerr << "Error: Unable to open instructions file." << std::endl;
         return;
     }
     std::string hexStr;
 
     while (infile >> hexStr) { 
+        try {
+            int value = std::stoi(hexStr, nullptr, 16); 
+            instructions_memory.push_back(value); 
+            //std::cout << "Read hex: " << hexStr << " as integer: " << value << std::endl;
+        } catch (const std::invalid_argument &e) {
+            std::cerr << "Invalid hex value: " << hexStr << std::endl;
+        } catch (const std::out_of_range &e) {
+            std::cerr << "Hex value out of range: " << hexStr << std::endl;
+        }
+    }
+
+    infile.close();
+
+    std::ifstream inmemory("/Users/sayat/Documents/GitHub/osoc_season1_Abdikul_Sayat/level_4/better_processor/rtl/Memory.txt"); 
+    if (!inmemory.is_open()) {
+        std::cerr << "Error: Unable to open memory file." << std::endl;
+        return;
+    }
+
+    while (inmemory >> hexStr) { 
         try {
             int value = std::stoi(hexStr, nullptr, 16); 
             memory.push_back(value); 
@@ -61,14 +81,17 @@ BetterEmulator::BetterEmulator() : registers_(8), instruction(0), instruction_in
         }
     }
 
-    infile.close();
+    inmemory.close();
 
+}
+bool BetterEmulator::CheckImmediate(){
+    return getRange(0, 1, instruction) == 1;
 }
 bool BetterEmulator::CheckBranchLogic(){
     return getRange(0, 1, instruction) == 2;
 }
-bool BetterEmulator::CheckImmediate(){
-    return getRange(0, 1, instruction) == 1;
+bool BetterEmulator::CheckLSU(){
+    return getRange(0, 1, instruction) == 3;
 }
 void BetterEmulator::MoveInstruction(){
     if(getRange(2, 3, instruction) == 0 && reg_c==0 || getRange(2, 3, instruction) == 1 && reg_c==1 || 
@@ -80,11 +103,11 @@ void BetterEmulator::MoveInstruction(){
 
 }
 void BetterEmulator::Evaluate() {
-    if (instruction_index >= memory.size()) {
+    if (instruction_index >= instructions_memory.size()) {
         std::cerr << "Error: Out of bounds instruction access. instruction_index = "<<instruction_index << std::endl;
         return;  // Avoid segmentation fault
     }
-    instruction = memory[instruction_index];
+    instruction = instructions_memory[instruction_index];
     std::cout<<"emulator's current instruction "<<std::hex<<instruction<<"\n";
     if(CheckBranchLogic()) {
         MoveInstruction();
@@ -97,6 +120,12 @@ void BetterEmulator::Evaluate() {
     int Ry = getRange(10, 12, instruction);
     int operand = registers_[Ry];
     if(CheckImmediate()) operand = getRange(5, 12, instruction);
+    if(CheckLSU()){
+        std::cout<<"WE HAVE L/S HERE\n";
+        bool l_s = getRange(2, 2, instruction);
+        if(l_s) memory[Ry] = registers_[Rx];
+        else registers_[Rx] = memory[Ry];
+    }
     std::cout<<"emulator Rx = "<<Rx<<"\n";
     std::cout<<"emulator Ry = "<<Ry<<"\n";
     std::cout<<"emulator x = "<<registers_[Rx]<<"\n";
