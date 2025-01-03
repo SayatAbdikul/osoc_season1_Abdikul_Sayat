@@ -15,7 +15,7 @@ module Core (
     output [1:0] format_val,
     output done
 );
-    reg [15:0] memory [7:0];
+    reg [15:0] memory [65535:0];
     initial begin
         $readmemh("/Users/sayat/Documents/GitHub/osoc_season1_Abdikul_Sayat/level_4/better_processor/rtl/Memory.txt", memory);
     end
@@ -62,9 +62,9 @@ module Core (
                 // load/store handling part
                 if(format == 3) begin
                     if(reg_i[2] == 0) begin
-                        registers[Rx] = memory[Ry];
+                        registers[Rx] = memory[registers[Ry]];
                     end else begin
-                        memory[Ry] = registers[Rx];
+                        memory[registers[Ry]] = registers[Rx];
                     end
                 end
                 cpp_result = ALU({16'b0, registers[Rx]}, {16'b0, operand}, {29'b0, sel});

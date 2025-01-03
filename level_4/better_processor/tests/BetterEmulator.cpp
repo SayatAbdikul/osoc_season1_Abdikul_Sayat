@@ -123,8 +123,8 @@ void BetterEmulator::Evaluate() {
     if(CheckLSU()){
         std::cout<<"WE HAVE L/S HERE\n";
         bool l_s = getRange(2, 2, instruction);
-        if(l_s) memory[Ry] = registers_[Rx];
-        else registers_[Rx] = memory[Ry];
+        if(l_s) memory[registers_[Ry]] = registers_[Rx];
+        else registers_[Rx] = registers_[Ry];
         return;
     }
     std::cout<<"emulator Rx = "<<Rx<<"\n";
