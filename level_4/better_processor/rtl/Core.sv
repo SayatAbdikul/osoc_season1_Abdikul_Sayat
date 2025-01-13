@@ -4,7 +4,6 @@ module Core (
     input clk,
     input run,
     input reset,
-    input branch_res,
     output [15:0] reg_c_out,
     output [15:0] d_out,
     output done

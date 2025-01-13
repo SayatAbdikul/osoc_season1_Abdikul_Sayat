@@ -58,7 +58,6 @@ module top_module (
         .instruction(instruction),
         .clk(clk),
         .run(run),
-        .branch_res(branch_res),
         .reset(reset),
         .reg_c_out(last_alu_result),
         .d_out(d_out),

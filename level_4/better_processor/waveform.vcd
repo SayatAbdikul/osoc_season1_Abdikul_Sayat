@@ -38,7 +38,6 @@ $timescale 1ps $end
     $var wire 1 B clk $end
     $var wire 1 & run $end
     $var wire 1 C reset $end
-    $var wire 1 * branch_res $end
     $var wire 16 3 reg_c_out [15:0] $end
     $var wire 16 D d_out [15:0] $end
     $var wire 1 E done $end
