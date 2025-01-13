@@ -7,12 +7,6 @@ module Core (
     input branch_res,
     output [15:0] reg_c_out,
     output [15:0] d_out,
-    output [2:0] Rx_val,
-    output [2:0] Ry_val,
-    output [2:0] sel_val,
-    output [15:0] x_val,
-    output [15:0] operand_val,
-    output [1:0] format_val,
     output done
 );
     reg [15:0] memory [65535:0];
@@ -95,12 +89,6 @@ module Core (
         .alu_out(result)
     );
     assign reg_c_out = reg_c;
-    assign Rx_val = Rx;
-    assign Ry_val = Ry;
-    assign x_val = registers[Rx];
-    assign operand_val = operand;
-    assign sel_val = sel;
-    assign format_val = format;
     assign d_out = result;
 endmodule
 

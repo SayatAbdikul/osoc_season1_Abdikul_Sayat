@@ -2,17 +2,7 @@ module top_module (
     input clk,
     input reset,
     output [15:0] d_out,
-    output [2:0] Rx_val,
-    output [2:0] Ry_val,
-    output [2:0] sel_val,
-    output [15:0] x_val,
-    output [15:0] operand_val,
-    output [15:0] instruction_val,
-    output [1:0] format_val,
-    output branch_val,
-    output run_val,
-    output done,
-    output [11:0] pc_val
+    output done
 );
     reg [15:0] instruction, last_alu_result;
     wire [15:0] last_alu;
@@ -72,17 +62,7 @@ module top_module (
         .reset(reset),
         .reg_c_out(last_alu_result),
         .d_out(d_out),
-        .done(done),
-        .Rx_val(Rx_val),
-        .Ry_val(Ry_val),
-        .x_val(x_val),
-        .operand_val(operand_val),
-        .format_val(format_val),
-        .sel_val(sel_val)
+        .done(done)
     );
-    assign run_val = run;
-    assign instruction_val = instruction;
-    assign branch_val = branch;
-    assign pc_val = pc;
 endmodule
 
