@@ -13,10 +13,12 @@ public:
     int AssembleGeneral(std::string instruction);
     int AssembleImmediate(std::string instruction);
     int AssembleCondition(std::string instruction);
+    //int AssembleLSU(std::string instruction);
     std::string Disassemble(int instruction);
     std::string DisassembleGeneral(int instruction);
     std::string DisassembleImmediate(int instruction);
     std::string DisassembleCondition(int instruction);
+    //std::string DisassembleLSU(int instruction);
 };
 
 #endif

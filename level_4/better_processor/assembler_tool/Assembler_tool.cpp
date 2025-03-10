@@ -118,3 +118,22 @@ std::string Assembler_tool::Disassemble(int instruction){
     else if(getRange(0, 1, instruction)==2) return DisassembleCondition(instruction);
     else return DisassembleGeneral(instruction);
 }
+
+// int Assembler_tool::AssembleLSU(std::string instruction){
+//     std::string command = ""; 
+//     int i=0, x=0, condition=0;
+//     while(instruction[i]!=' ') command += instruction[i], i++;
+//     i+=2;
+//     while(instruction[i]!='\n' && instruction[i]!=' ' && i<instruction.length()) x*=10, x+=(instruction[i]-'0'), i++;
+//     int result=0;
+    
+//     for(char ch: command) ch = toupper(ch);
+//     if(command == "BIE") condition = 0;
+//     if(command == "BIG") condition = 1;
+//     if(command == "BIL") condition = 2;
+//     result += (x<<4);
+//     result += (condition<<2);
+//     result += 2;
+//     std::cout<<"from "<<instruction<<" to "<<result<<"\n";
+//     return result;
+// }
